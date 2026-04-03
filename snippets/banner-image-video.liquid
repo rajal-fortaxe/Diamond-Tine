@@ -1,0 +1,37 @@
+
+{%  if main_section.settings.media_type_desktop == "video" %}
+    {% if  section.settings.video_desktop != blank %}
+        {{
+            section.settings.video_desktop
+            | video_tag:
+            image_size: '3500x',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            class: "small-hide"
+        }} 
+    {% endif %}
+{% elsif main_section.settings.media_type_desktop == "image" %}
+    {%  if main_section.settings.desktop_image != blank %}
+     {{ main_section.settings.desktop_image | image_url: width: 3500 | image_tag: class: "image-banner__image small-hide" }}
+    {%  endif %}
+{%  endif %}
+
+{%  if main_section.settings.media_type_mobile == "video" %}
+    {% if  section.settings.video_desktop != blank or section.settings.video_mobile != blank %}
+        {{
+            section.settings.video_mobile | default: section.settings.video_desktop
+            | video_tag:
+            image_size: '3000x',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            class: "medium-hide large-up-hide"
+        }}  
+    {%  endif %}
+
+{% elsif main_section.settings.media_type_mobile == "image" %}
+     {% if  section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+      {{ main_section.settings.mobile_image | default: main_section.settings.desktop_image | image_url: width: 2500 | image_tag: class: "image-banner__image large-up-hide medium-hide" }}
+    {%  endif %}
+{%  endif %}

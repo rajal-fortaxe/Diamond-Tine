@@ -1,0 +1,167 @@
+{{ 'main-faq.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #faq-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-link : var(--color-foreground);
+  }
+{%- endstyle -%}
+
+<section id="faq-{{ section.id }}" class="main-faq section-{{ section.id }}-padding">
+  {% if section.settings.heading_text != blank %}
+    <div class="heading-wrapper page-width flex">
+        {%  if section.settings.heading_text != blank %}
+          <div class="section-heading heading-text-large-thin small-heading-text-large-thin center" style="color: {{ section.settings.heading_text_color  }}">
+            {{ section.settings.heading_text }}
+          </div>
+        {%  endif %}
+        
+    </div>
+  {% endif %}
+
+  <div class="faq-wrapper page-width">
+    {% for block in section.blocks %}
+      <acordion-animated>
+        <details>
+          <summary class="accordian-title-wrapper">
+            <div class="accordian-title body-text">
+              <span class="flex">{{ block.settings.question }}</span>
+            </div>
+            <span class="acoordian-icon-wrapper flex relative">
+              <span class="accordian-icon-plus flex">{% render 'icons', icon: 'accordian-plus' %}</span>
+              <span class="accordian-icon-minus flex">{% render 'icons', icon: 'accordian-minus' %}</span>
+            </span>
+          </summary>
+          <div class="details-content">
+            <div class="details-content-ineer body-text" style="color: {{ section.settings.answer_text_color }}">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </details>
+      </acordion-animated>
+    {% endfor %}
+  </div>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Main FAQ",
+    "tag": "section",
+    "settings": [
+       //{
+      //  "type": "color",
+        //"id": "background_color",
+        //"label": "Background Color",
+        //"default": "#F5EFE6"
+      //},
+      {
+        "type": "color",
+        "id": "heading_text_color",
+        "label": "Heading Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "answer_text_color",
+        "label": "Answer Text Color",
+        "default": "#777777"
+      },
+      
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading"
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq",
+        "name": "Quetion and Answers",
+        "settings": [
+          {
+            "type": "text",
+            "id": "question",
+            "label": "Question"
+          },
+          {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Anaswer",
+          },
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Main FAQ",
+      }
+    ]
+  }
+{% endschema %}

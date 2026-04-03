@@ -1,0 +1,15 @@
+.recently-viewed .heading-wrapper{
+  margin-bottom: 3rem;
+}
+.recently-viewed .js-recentPdpBlock{
+  padding-inline: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .recently-viewed .heading-wrapper{
+    margin-bottom: 2rem;
+  }
+  .recently-viewed .js-recentPdpBlock{
+    padding-inline: 1.6rem;
+  }
+}

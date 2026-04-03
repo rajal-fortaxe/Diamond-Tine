@@ -1,0 +1,73 @@
+<div
+  class="fiter-heading gradient heading-text-small-thin"
+>
+  {{ filter.label | escape }}
+</div>
+  {% comment %}
+    <div class="facets__price">
+    </div>
+  {% endcomment %}
+{% liquid
+  assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+  assign uses_comma_decimals = false
+  
+  if currencies_using_comma_decimals contains cart.currency.iso_code
+    assign uses_comma_decimals = true
+  endif
+  
+  assign filter_min_value = filter.min_value.value | money_without_currency | replace: ',', ''
+  assign filter_max_value = filter.max_value.value | money_without_currency | replace: ',', ''
+  assign filter_range_min = filter.range_min | money_without_currency | replace: ',', ''
+  assign filter_range_max = filter.range_max | money_without_currency | replace: ',', ''
+  
+  if uses_comma_decimals
+    if filter.min_value.value
+      assign filter_min_value = filter.min_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+    endif
+    if filter.max_value.value
+      assign filter_max_value = filter.max_value.value | money_without_currency | replace: '.', '' | replace: ',', '.'
+    endif
+    assign filter_range_min = filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.'
+    assign filter_range_max = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.'
+  endif
+  
+  comment
+    Format display values - remove decimals and add currency symbol
+  endcomment
+  assign display_min = filter.min_value.value | default: filter.range_min | money_without_trailing_zeros | remove: '.00' | remove: ',00'
+  assign display_max = filter.max_value.value | default: filter.range_max | money_without_trailing_zeros | remove: '.00' | remove: ',00'
+%}
+  <div
+    class="price-range"
+    data-min="{{ filter_range_min }}"
+    data-max="{{ filter_range_max }}"
+    data-min-value="{{ filter_min_value | default: filter_range_min }}"
+    data-max-value="{{ filter_max_value | default: filter_range_max }}"
+  >
+ 
+
+    <div class="price-range__slider-wrapper">
+      <div class="price-range__slider"></div>
+    </div>
+
+    <input
+      type="hidden"
+      class="price-range__input-min"
+      name="{{ filter.min_value.param_name }}"
+      value="{{ filter_min_value | default: filter_range_min }}"
+    >
+
+    <input
+      type="hidden"
+      class="price-range__input-max"
+      name="{{ filter.max_value.param_name }}"
+      value="{{ filter_max_value | default: filter_range_max }}"
+    >
+
+      <div class="price-range__display-wrapper">
+        <span class="body-text">{{ filter.label | escape }}:&nbsp;</span>
+        <span class="price-range__display-min body-text">{{ display_min }}</span>
+        <span class="body-text">&nbsp;-&nbsp;</span>
+        <span class="price-range__display-max body-text">{{ display_max }}</span>
+      </div>
+  </div>

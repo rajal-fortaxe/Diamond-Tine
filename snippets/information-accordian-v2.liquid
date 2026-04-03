@@ -1,0 +1,165 @@
+{% assign metafield_content = false %}
+{% assign price_breakup = product.metafields.custom.price_breakup  %}
+{% assign details = product.metafields.custom.details %}
+{% comment %} {% assign key_info = product.metafields.custom.key_information | metafield_tag  %} {% endcomment %}
+{% comment %} {% assign shipping_returns = product.metafields.custom.shipping_returns | metafield_tag %} {% endcomment %}
+{%  if price_breakup != blank or details != blank or key_info != blank  or shipping_returns != blank  %}
+  {% assign metafield_content = true %}
+{% endif %}
+
+{%  for block in section.blocks %}
+  
+    {% if block.settings.key_info_text != blank %}
+        {% assign key_info = block.settings.key_info_text  %}
+    {% endif %}
+
+    {% if block.settings.shipping_return_text != blank %}
+      {% assign shipping_returns = block.settings.shipping_return_text %}
+    {% endif %}
+
+{%  endfor %}
+{%  liquid 
+   assign has_details = false
+
+   if product.metafields.custom.gemstone_mainstone1 != blank or product.metafields.custom.shape_of_mainstone_catawiki  != blank or product.metafields.custom.total_carat_weight_of_main_stone != blank or product.metafields.custom.diamond_clarity_of_main_stone or diamond_colour_grade_of_main_stone
+      assign details_1 = true
+   endif
+
+   if product.metafields.custom.secondary_stone_catawiki != blank or product.metafields.custom.shape_of_surrounding_stone1 != blank or product.metafields.custom.total_carat_weight_of_surrounding_stone != blank or product.metafields.custom.diamond_clarity_of_surrounding_stone1 != blank or product.metafields.custom.total_carat_weight_of_surrounding_stone != blank
+    assign details_2 = true
+  endif
+
+  if product.metafields.custom.stone_3_type_of_stone != blank or product.metafields.custom.stone_3_shape != blank or product.metafields.custom.stone_3_carat != blank or product.metafields.custom.stone_3_clarity != blank or product.metafields.custom.stone_3_color != blank
+    assign details_3 = true
+  endif
+
+  if product.metafields.custom.stone_4_type_of_stone != blank or product.metafields.custom.stone_4_shape != blank or product.metafields.custom.stone_4_carat != blank or product.metafields.custom.stone_4_clarity != blank or product.metafields.custom.stone_4_color != blank
+    assign details_4 = true
+  endif
+
+  if product.metafields.custom.stone_5_type_of_stone != blank or product.metafields.custom.stone_5_shape != blank or product.metafields.custom.stone_5_carat != blank or product.metafields.custom.stone_5_clarity != blank or product.metafields.custom.stone_5_color != blank
+    assign details_5 = true
+  endif
+
+  if product.metafields.custom.stone_6_type_of_stone != blank or product.metafields.custom.stone_6_shape != blank or product.metafields.custom.stone_6_carat != blank or product.metafields.custom.stone_6_clarity != blank or product.metafields.custom.stone_6_color != blank
+    assign details_6 = true
+  endif
+
+  if details_1 == true or details_2 == true or details_3 == true or details_4 == true or details_5 == true or details_6 == true
+    assign has_details = true
+  endif
+%}
+{% if metafield_content != blank or collapsible_desc == true %}
+  <div class="product-block" {{ block.shopify_attributes }} style="--accordian-background: {{ background }}">
+    <div class="metafield-accordian-wrapper">
+      <details-wrappper>
+        {% if product.description != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Description</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text color-gray">
+                  {{ product.description }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if price_breakup != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Price Breakup </span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {{ price_breakup | metafield_tag  }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if has_details == true %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Details </span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {% comment %} {% if details != blank %}
+                    {{ details | metafield_tag }}
+                  {% endif %} {% endcomment %}
+                  {% if has_details == true %}
+                    {% render 'details-accordian', block: block, product: product, 
+                      details_1: details_1, 
+                      details_2: details_2,
+                      details_3: details_3, 
+                      details_4: details_4,
+                      details_5: details_5, 
+                      details_6: details_6 %}
+                  {%  endif %}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+         {% if key_info != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Key Information</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text all-prod-info">
+                  {{ key_info }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if shipping_returns != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Shipping & Returns</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text all-prod-info">
+                  {{ shipping_returns }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %} 
+      </details-wrappper>
+    </div>
+  </div>
+{% endif %}

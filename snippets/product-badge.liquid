@@ -1,0 +1,61 @@
+{% assign product_title = product.title | downcase %}
+
+{% assign tags_down = product.tags | join: ',' | downcase %}
+{%  if product_title contains 'ready to ship' or tags_down contains 'ready to ship' %}
+  {%  assign redy_to_ship = true %}
+{%  endif %}
+{% if product.compare_at_price > product.price and product.available %}
+  {%  assign sale = true %}
+{%  endif %}
+{% if product.metafields.custom.product_badge !=  blank  %}
+  {% assign custom_badge = true %}
+{% endif %}
+{%  if tags_down contains 'new' %}
+  {% assign new = true %}
+{%  endif %}
+{%  if  product.selected_or_first_available_variant.inventory_quantity <= 0 and 
+        product.selected_or_first_available_variant.inventory_policy != "continue" %}
+        {%  assign sold_out = true %}
+{%  endif %}
+
+
+{% assign has_badge = false %}
+{%  if  sold_out  == true or redy_to_ship == true or sale == true or custom_badge == true or new == true %}
+  {%  assign  has_badge = true %}
+{%  endif %}
+{%  if  has_badge == true %}
+  <div class="product-card__badge body-text-extra-small">
+    {%- if sold_out  == true  -%}
+      <span
+        class="product-badge body-text-extra-small color-{{ settings.sold_out_badge_color_scheme }}"
+      >
+        {{- 'products.product.sold_out' | t -}}
+      </span>
+
+    {%- elsif redy_to_ship == true or sale == true or custom_badge == true or new == true -%}
+      {%- if custom_badge == true -%} 
+        <span class="product-badge body-text-extra-small">
+          {{ product.metafields.custom.product_badge }}
+        </span>
+      {%- endif -%}
+      {%- if new == true -%} 
+        <span class="product-badge body-text-extra-small">
+          {{- 'products.product.new' | t -}}
+        </span>
+      {%- endif -%}
+      {%- if redy_to_ship == true -%} 
+        <span class="product-badge body-text-extra-small">
+          {{- 'products.product.redy_to_ship' | t -}}
+        </span>
+      {%- endif -%}
+      {%- if sale == true -%} 
+        <span class="product-badge body-text-extra-small">
+          {{- 'products.product.on_sale' | t -}}
+        </span>
+      {%- endif -%}
+
+    {%- endif -%}
+  </div>
+{%  endif %}
+
+                                                                                      

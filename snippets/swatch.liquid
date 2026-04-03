@@ -1,0 +1,60 @@
+{% comment %}
+  Renders a swatch component.
+  Accepts:
+  - swatch: {Object} a swatch object
+  - shape: {String} swatch shape. Accepts 'square', defaults to circle.
+
+  Usage:
+  {% render 'swatch',
+    swatch: value.swatch
+    shape: 'square'
+  %}
+{% endcomment %}
+
+{% assign color_pattern = shop.metaobjects.shopify--color-pattern.values %}
+{% assign color_value = value | replace: ' ', '_' | downcase %}
+
+{% for data in color_pattern %}
+  {% assign color_label = data.label | replace: ' ', '_' | downcase %}
+    {% comment %} {%  if color_value contains "+" %}
+         {% if color_value != color_label %}
+          {% assign color_value = color_value | replace: "+", "and" %}
+         {% endif %}
+    {%  endif %} {% endcomment %}
+    {% if color_value == color_label %}
+      {% if data.image != blank %}
+        {% assign image_url = data.image | image_url: width: 50 %}
+        {% assign swatch_value = 'url(' | append: image_url | append: ')' %}
+      {% elsif data.color != blank %}
+        {% assign swatch_value = data.color %}
+    {% endif %}
+  {% endif %}
+  
+{% endfor %}
+{% if swatch_value == blank %}
+  {%- liquid
+    assign swatch_value = null
+    assign swatch_focal_point = null
+
+    if swatch.image
+      assign image_url = swatch.image | image_url: width: 50
+      assign swatch_value = 'url(' | append: image_url | append: ')'
+      assign swatch_focal_point = swatch.image.presentation.focal_point
+    elsif swatch.color
+      assign swatch_value = 'rgb(' | append: swatch.color.rgb | append: ')'
+    endif
+  -%}
+{%  endif %}
+
+
+
+<span
+  class="swatch{% if shape == 'square' %} swatch--square{% endif %}{% unless swatch_value %} swatch--unavailable{% endunless %}"
+  {% if swatch_value %}
+    style="
+      --swatch--background: {{ swatch_value }};
+      {% if swatch_focal_point %}--swatch-focal-point: {{ swatch_focal_point }};{% endif %}
+    "
+  {% endif %}
+></span>
+

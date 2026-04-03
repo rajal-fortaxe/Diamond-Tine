@@ -1,0 +1,371 @@
+{{ 'recently-viewd.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+    #recently-viewed-{{ section.id }}{
+      --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+      --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+      --badge-color: {{ section.settings.badge_text_color }};
+      --badge-background-color: {{ section.settings.badge_background_color }};
+      --color-link : var(--color-foreground);
+  }
+{%- endstyle -%}
+<section id="recently-viewed-{{ section.id }}" class="recently-viewed isolate section-{{ section.id }}-padding">
+  {% if section.settings.heading_text != blank or section.settings.link_text != blank  %}
+    <div class="heading-wrapper uppercase page-width flex">
+        {%  if section.settings.heading_text != blank %}
+          <div class="section-heading body-text-large  small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+            {{ section.settings.heading_text }}
+          </div>
+        {%  endif %}
+    
+    </div>
+  {% endif %}
+
+{% if template.name == 'product' %}
+
+<section class="recently-viewed">
+
+
+    <!-- Swiper -->
+    <div class="swiper recently-swiper">
+      <div class="swiper-wrapper js-recentPdpBlock"></div>
+    </div>
+
+
+</section>
+
+<script>
+(function () {
+ const STORAGE_KEY = 'recently_viewed';
+ const MAX_PRODUCTS = 10;
+
+ {% assign product_title = product.title | downcase %}
+ {% assign tags_down = product.tags | join: ',' | downcase %}
+ {% assign redy_to_ship = false %}
+ {% assign sale = false %}
+ {% assign custom_badge = false %}
+ {% assign new = false %}
+ {% assign sold_out = false %}
+
+ {% if product_title contains 'ready to ship' or tags_down contains 'ready to ship' %}
+  {% assign redy_to_ship = true %}
+ {% endif %}
+ {% if product.compare_at_price > product.price and product.available %}
+  {% assign sale = true %}
+ {% endif %}
+ {% if product.metafields.custom.product_badge != blank %}
+  {% assign custom_badge = true %}
+ {% endif %}
+ {% if tags_down contains 'new' %}
+  {% assign new = true %}
+ {% endif %}
+ {% if product.selected_or_first_available_variant.inventory_quantity <= 0 and 
+    product.selected_or_first_available_variant.inventory_policy != "continue" %}
+  {% assign sold_out = true %}
+ {% endif %}
+
+   {% if redy_to_ship or sale or custom_badge or new  %}
+    {% assign has_other_badges = true %}
+   {% endif %}
+   {% if sold_out or has_other_badges %}
+  {% assign has_badge = true %}
+   {% endif %}
+
+ {% capture badge_html %}
+  {%- if has_badge -%}
+   <div class="product-card__badge body-text-extra-small">
+    {%- if sold_out == true -%}
+     <span class="product-badge body-text-extra-small color-{{ settings.sold_out_badge_color_scheme }}">
+      {{- 'products.product.sold_out' | t -}}
+     </span>
+    {%- elsif has_other_badges -%}
+     {%- if custom_badge == true -%} 
+      <span class="product-badge body-text-extra-small">
+       {{ product.metafields.custom.product_badge }}
+      </span>
+     {%- endif -%}
+     {%- if new == true -%} 
+      <span class="product-badge body-text-extra-small">
+       {{- 'products.product.new' | t -}}
+      </span>
+     {%- endif -%}
+     {%- if redy_to_ship == true -%} 
+      <span class="product-badge body-text-extra-small">
+       {{- 'products.product.redy_to_ship' | t -}}
+      </span>
+     {%- endif -%}
+     {%- if sale == true -%} 
+      <span class="product-badge body-text-extra-small">
+       {{- 'products.product.on_sale' | t -}}
+      </span>
+     {%- endif -%}
+    {%- endif -%}
+   </div>
+  {%- endif -%}
+ {% endcapture %}
+ 
+ const pdpData = {
+  productTitle: {{ product.title | json }},
+  productImg: {{ product.featured_image | img_url: '3500x' | json }},
+  productSecondImage: {{ product.media[1] | img_url: '3500x' | json }},
+  productPrice: {{ product.price | money | json }},
+  productUrl: {{ product.url | json }},
+  productHandle: {{ product.handle | json }},
+  productBadges: {{ badge_html | strip_newlines | json }}
+ };
+
+ let stored = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+ stored = stored.filter(item => item.productHandle !== pdpData.productHandle);
+
+ stored.unshift(pdpData); 
+  
+ if (stored.length > MAX_PRODUCTS) {
+  stored.pop();
+ }
+ 
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+})();
+</script>
+
+<script>
+
+(function () {
+ const container = document.querySelector('.js-recentPdpBlock');
+ // Ensure the container exists and we aren't running in a theme editor block where we can't fetch data
+ if (!container || window.Shopify.designMode) return; 
+
+ const data = JSON.parse(localStorage.getItem('recently_viewed')) || [];
+ 
+ // Filter out the current product from the display list
+ const currentHandle = {{ product.handle | json }};
+ const productsToDisplay = data.filter(item => item.productHandle !== currentHandle);
+
+ if (!productsToDisplay.length) {
+    // If no products to display (e.g., only the current product was viewed) hide the section wrapper
+    const sectionWrapper = document.getElementById(`recently-viewed-{{ section.id }}`);
+    if (sectionWrapper) {
+      sectionWrapper.style.display = 'none';
+    }
+    return;
+ }
+
+ let html = '';
+  
+  // Clear loading message
+ const loadingMessage = container.querySelector('.loading-message');
+ if (loadingMessage) {
+  loadingMessage.remove();
+ }
+  
+ // Data is already ordered Newest -> Oldest from the tracking script, no need to reverse().
+ productsToDisplay.forEach(item => {
+  // 1. Conditional Rendering for Secondary Image
+  const secondaryImageTag = (item.productSecondImage && item.productSecondImage !== 'null') 
+    ? `<img 
+      src="${item.productSecondImage}" 
+      alt="${item.productTitle} secondary view" 
+      class="product-image product-main-image product-secondary-image"
+     >` 
+    : '';
+  
+  // 2. Conditional Rendering for Badges (Checks for existence and empty/whitespace string)
+  const badgesHtml = (item.productBadges && item.productBadges.trim() !== "") 
+    ? item.productBadges
+    : '';
+    
+  html += `
+   <div class="main-product swiper-slide">
+    <a class="link text-decoration-none" href="${item.productUrl}">
+        <div class="product-media relative flex">
+          
+          ${badgesHtml}
+                
+                <div class="button-wishlist mobile" data-title="wishlist">
+          <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="${ item.productHandle }">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon icon-wishlist">
+            <path d="M12.0051 19.1127L4.77114 12.5602C0.839611 8.62871 6.61894 1.0802 12.0051 7.18715C17.3913 1.0802 23.1445 8.65493 19.2392 12.5602L12.0051 19.1127Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          </div>
+                
+        <div class="product-media-inner w-100 flex relative">
+          <img src="${item.productImg}" alt="${item.productTitle}" class="product-image product-main-image" loading="lazy">
+          
+          ${secondaryImageTag}
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="product-title body-text">
+          ${item.productTitle}
+          </div>
+
+          <div class="product-price body-text-v3 color-gray">${item.productPrice}</div>
+        </div>
+     </a>
+   </div>
+  `;
+ });
+
+ container.innerHTML = html;
+
+ function initRecentlyViewedSwiper() {
+   // Check for Swiper definition again to handle late loading
+   if (typeof Swiper === 'undefined') {
+    setTimeout(initRecentlyViewedSwiper, 100);
+    return;
+   }
+    
+    // Only initialize if there are actually slides to prevent errors
+    if (container.querySelector('.swiper-slide')) {
+      new Swiper('.recently-swiper', {
+      slidesPerView: 1.375,
+     spaceBetween: 10,
+     slidesOffsetAfter: 0,
+     a11y: true,
+     breakpoints: {
+     769: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+      slidesOffsetAfter: 40,
+     },
+     1024: {
+      slidesPerView: 5.034,
+      spaceBetween: 20,
+      slidesOffsetAfter: 40,
+     }
+    }
+     });
+    }
+  }
+
+  // Initialize the swiper after DOM is updated
+  initRecentlyViewedSwiper();
+
+})();
+</script>
+
+{% endif %}
+
+</section>
+
+{% schema %}
+  {
+    "name": "Recently Viewed",
+    "tag": "section",
+    "settings": [
+       //{
+      //  "type": "color",
+        //"id": "background_color",
+        //"label": "Background Color",
+        //"default": "#F5EFE6"
+      //},
+      {
+        "type": "color",
+        "id": "heading_text_color",
+        "label": "Heading Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "badge_background_color",
+        "label": "Badge Background Color",
+        "alpha": true,
+        "default": "#5A0117"
+      },
+      {
+        "type": "color",
+        "id": "badge_text_color",
+        "label": "Badge Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading"
+      },
+      //{
+        //"type": "text",
+        //"id": "link_text",
+        //"label": "Link text",
+        //"default": "view All"
+      //},
+
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "presets": [
+      {
+        "name": "Recently Viewed",
+      }
+    ]
+  }
+{% endschema %}

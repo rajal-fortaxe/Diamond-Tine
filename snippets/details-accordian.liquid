@@ -1,0 +1,166 @@
+{% liquid 
+  assign show_stone = false
+  assign show_shape = false
+  assign show_carat = false
+  assign show_clarity = false
+  assign show_color = false
+
+  assign type_1 = product.metafields.custom.gemstone_mainstone1 | downcase
+  if product.metafields.custom.gemstone_mainstone1 != blank
+    assign show_stone = true
+  endif
+  if product.metafields.custom.shape_of_mainstone_catawiki != blank
+    assign show_shape = true
+  endif 
+
+    if product.metafields.custom.total_carat_weight_of_main_stone != blank
+      assign show_carat = true
+    endif
+    if type_1 contains 'diamond'
+      if product.metafields.custom.diamond_clarity_of_main_stone != blank
+        assign show_clarity = true
+      endif
+      endif
+    if product.metafields.custom.diamond_colour_grade_of_main_stone != blank
+      assign show_color = true
+    endif
+
+
+  assign type_2 = product.metafields.custom.secondary_stone_catawiki | downcase
+  if product.metafields.custom.secondary_stone_catawiki != blank
+    assign show_stone = true
+  endif
+  if product.metafields.custom.shape_of_surrounding_stone1 != blank
+    assign show_shape = true
+  endif
+  
+    if product.metafields.custom.total_carat_weight_of_surrounding_stone != blank
+      assign show_carat = true
+    endif
+    if type_2 contains 'diamond'
+      if product.metafields.custom.diamond_clarity_of_surrounding_stone1 != blank
+        assign show_clarity = true
+      endif
+    endif
+    if product.metafields.custom.diamond_colour_grade_of_surrounding_stones != blank
+      assign show_color = true
+    endif
+
+  for i in (3..6)
+    assign st_key = "stone_" | append: i | append: "_type_of_stone"
+    assign sh_key = "stone_" | append: i | append: "_shape"
+    assign ca_key = "stone_" | append: i | append: "_carat"
+    assign cl_key = "stone_" | append: i | append: "_clarity"
+    assign co_key = "stone_" | append: i | append: "_color"
+    
+    assign type_val = product.metafields.custom[st_key] | downcase
+
+    if product.metafields.custom[st_key] != blank
+      assign show_stone = true
+    endif
+    if product.metafields.custom[sh_key] != blank
+      assign show_shape = true
+    endif
+    
+   
+      if product.metafields.custom[ca_key] != blank
+        assign show_carat = true
+      endif
+        if type_val contains 'diamond'
+          if product.metafields.custom[cl_key] != blank
+            assign show_clarity = true
+          endif
+        endif
+      if product.metafields.custom[co_key] != blank
+        assign show_color = true
+      endif
+  endfor
+%}
+<div class="details-table-wrapper">
+  <table class="details-table">
+    <thead>
+      <tr>
+      {% if show_stone %}<th>Stone</th>{% endif %}
+      {% comment %} {%  if show_weight  %}<th>Main Stone Weight</th> {%  endif %} {% endcomment %}
+        {% if show_shape %}<th>Shape</th>{% endif %}
+        {% if show_carat %}<th>Weight</th>{% endif %}
+        {% if show_clarity %}<th>Clarity</th>{% endif %}
+        {% if show_color %}<th>Color</th>{% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% if details_1 == true %}
+        {% assign diamond_type_1 = product.metafields.custom.gemstone_mainstone1 | downcase %}
+        <tr class="details-item">
+          <td>
+            {{ product.metafields.custom.stone_source_etsy | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }} 
+            {{ product.metafields.custom.gemstone_mainstone1 | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}
+          </td>
+          {% comment %} {%  if show_weight %}
+          <td> {{  product.metafields.custom.gross_weight_catawiki1.value }}</td>
+          {%  endif %} {% endcomment %}
+          <td>{{ product.metafields.custom.shape_of_mainstone_catawiki | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}</td>
+          <td>
+              {{ product.metafields.custom.total_carat_weight_of_main_stone | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}
+           
+          </td>
+          <td>
+            {% if diamond_type_1 contains 'diamond' %}
+            {{ product.metafields.custom.diamond_clarity_of_main_stone | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}
+             {% endif %}
+          </td>
+          <td>{{ product.metafields.custom.diamond_colour_grade_of_main_stone | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}</td>
+        </tr>
+      {% endif %}
+
+      {% if details_2 == true %}
+        {% assign diamond_type_2 = product.metafields.custom.secondary_stone_catawiki | downcase %}
+        <tr class="details-item">
+          <td>
+            {{ product.metafields.custom.stone_source_etsy | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }} 
+            {{ product.metafields.custom.secondary_stone_catawiki | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}
+          </td>
+          {% comment %} <td></td> {% endcomment %}
+          <td>{{ product.metafields.custom.shape_of_surrounding_stone1 | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}</td>
+          <td>{{ product.metafields.custom.total_carat_weight_of_surrounding_stone | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}</td>
+          <td>
+            {% if diamond_type_2 contains 'diamond' %}
+              {{ product.metafields.custom.diamond_clarity_of_surrounding_stone1 | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}
+            {% endif %}
+          </td>
+          <td>{{ product.metafields.custom.diamond_colour_grade_of_surrounding_stones | replace: '"', "" | replace: "]", "" | replace: "[", "" | replace: ",", ", " }}</td>
+        </tr>
+      {% endif %}
+
+      {% for i in (3..6) %}
+        {% capture details_check %}details_{{ i }}{% endcapture %}
+        {% if [details_check] == true %}
+          {% capture stone_type_key %}stone_{{ i }}_type_of_stone{% endcapture %}
+          {% capture stone_shape_key %}stone_{{ i }}_shape{% endcapture %}
+          {% capture stone_carat_key %}stone_{{ i }}_carat{% endcapture %}
+          {% capture stone_clarity_key %}stone_{{ i }}_clarity{% endcapture %}
+          {% capture stone_color_key %}stone_{{ i }}_color{% endcapture %}
+          
+          {% assign type_val = product.metafields.custom[stone_type_key] | downcase %}
+          
+          <tr class="details-item">
+            <td>
+              {{ product.metafields.custom.stone_source_etsy | replace: '"', "" | remove: "[" | remove: "]" }}
+              {{ product.metafields.custom[stone_type_key] | replace: '"', "" | remove: "[" | remove: "]" }}
+            </td>
+            {% comment %} <td></td> {% endcomment %}
+            <td>{{ product.metafields.custom[stone_shape_key] | replace: '"', "" | remove: "[" | remove: "]" }}</td>
+            <td>{{ product.metafields.custom[stone_carat_key] | replace: '"', "" | remove: "[" | remove: "]" }}</td>
+            <td>
+              {% if type_val contains 'diamond' %}
+                {{ product.metafields.custom[stone_clarity_key] | replace: '"', "" | remove: "[" | remove: "]" }}
+              {% endif %}
+            </td>
+            <td>{{ product.metafields.custom[stone_color_key] | replace: '"', "" | remove: "[" | remove: "]" }}</td>
+          </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+

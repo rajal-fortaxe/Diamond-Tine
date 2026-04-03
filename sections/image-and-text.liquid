@@ -1,0 +1,294 @@
+{{ 'image-and-text.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    text-align: {{ section.settings.text_align_mobile }};
+  }
+    
+  {% if section.settings.auto_height == false %}
+    {% if section.settings.enable_padding == true %}
+      #image-and-text-{{ section.id }} .image-and-text-wrapper img{
+          aspect-ratio: 690/{{ section.settings.media_height_mobile }}
+      }
+    {% else %}
+      #image-and-text-{{ section.id }} .image-and-text-wrapper img{
+          aspect-ratio: 710/{{ section.settings.media_height_mobile }}
+      }
+    {% endif %}
+  {% endif %}
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      text-align: {{ section.settings.text_align }};
+    }
+    
+    {% if section.settings.content_background_color != null %}
+      #image-and-text-{{ section.id }}  .image-and-text-content {
+        background: {{ section.settings.content_background_color }};
+      }
+    {% endif %}
+      
+    {% if section.settings.auto_height == false %}
+      {% if section.settings.enable_padding == true %}
+        #image-and-text-{{ section.id }} .image-and-text-wrapper img{
+            aspect-ratio: 690/{{ section.settings.media_height_desktop }}
+        }
+      {% else %}
+        #image-and-text-{{ section.id }} .image-and-text-wrapper img{
+            aspect-ratio: 710/{{ section.settings.media_height_desktop }}
+        }
+      {% endif %}
+    {% endif %}
+  }
+  #image-and-text-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-link : var(--color-foreground);
+  }
+
+{%- endstyle -%}
+<section id="image-and-text-{{ section.id }}" class="image-and-text section-{{ section.id }}-padding">
+  <div class="image-and-text-wrapper media-position-{{ section.settings.media_position_desktop }}-desktop media-position-{{ section.settings.media_position_mobile }}-mobile {% if section.settings.enable_padding == true %} page-width {% endif %}">
+    <div class="image-and-text-media flex">
+        {%- if section.settings.desktop_image != blank -%}
+            {{ section.settings.desktop_image | image_url: width: 3500 | image_tag: class: "image-banner__image small-hide", loading:"lazy"  }}
+            {{ section.settings.mobile_image | default: section.settings.desktop_image | image_url: width: 3000 | image_tag: class: "image-banner__image large-up-hide medium-hide", loading:"lazy"  }}
+        {%- endif -%}
+    </div>
+    <div class="image-and-text-content {% if section.settings.enable_padding == false %} content-padding {% endif %}" >
+      {%- if section.settings.heading_text != blank -%}
+        <div class="content-heading heading-text-thin">
+          {{ section.settings.heading_text }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="content-description body-text">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.link != blank and section.settings.link_text -%}
+        <a class="content-link link body-text-v2 uppercase" href="{{ section.settings.link }}">
+          {{ section.settings.link_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Image And Text",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "content_background_color",
+        "label": "Content Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#000000"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_padding",
+        "label": "Enable Container Spacing"
+      },
+      {
+        "type": "select",
+        "id": "media_position_desktop",
+        "label": "Media Position - Desktop",
+        "default": "left",
+        "options": [
+          { 
+            "value": "left", 
+            "label": "Left" 
+          },
+          { 
+            "value": "right", 
+            "label": "Right" 
+          }
+        ]
+      },
+      
+      {
+        "type": "select",
+        "id": "media_position_mobile",
+        "label": "Media Position - Mobile",
+        "default": "top",
+        "options": [
+          { 
+            "value": "top", 
+            "label": "Top" 
+          },
+          { 
+            "value": "bottom", 
+            "label": "Bottom" 
+          }
+        ],
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "auto_height",
+        "label": "Enable Image height auto"
+      },
+      {
+        "type": "range",
+        "id": "media_height_desktop",
+        "label": "Media Height - Desktop",
+        "min": 400,
+        "max": 600,
+        "step": 20,
+        "unit": "px",
+        "default": 500,
+        "visible_if": "{{ section.settings.auto_height == false }}"
+      },
+      {
+        "type": "range",
+        "id": "media_height_mobile",
+        "label": "Media Height - Mobile",
+        "min": 200,
+        "max": 500,
+        "step": 5,
+        "unit": "px",
+        "default": 500,
+        "visible_if": "{{ section.settings.auto_height == false }}"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align_mobile",
+        "label": "Text Alignment Mobile",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading_text",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image And Text",
+      }
+    ]
+  }
+{% endschema %}

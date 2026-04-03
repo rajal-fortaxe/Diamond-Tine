@@ -1,0 +1,135 @@
+.contact img {
+  max-width: 100%;
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 769px) {
+  .contact .field {
+    margin-bottom: 2rem;
+  }
+}
+
+.contact__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 769px) {
+  .contact__button {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+  }
+}
+
+.contact-page{
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+}
+.contact-page > *{
+  flex: 1;
+}
+
+.contact-info-image img{
+  aspect-ratio: 710/710;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-page-heading,
+.contact-informmation{
+  padding-bottom: 3rem;
+  border-bottom:.1rem solid #D9D9D9;
+}
+.contact-form a{
+  color: currentColor;
+  text-underline-offset: .3rem;
+  text-decoration: none;
+}
+.contact-informmation,
+#ContactForm{
+  padding-top: 3rem;
+}
+.contact-info-main-heading{
+  padding-bottom: 2rem;
+}
+.contact-info-heading:not(:last-child){
+  padding-bottom: 1.5rem
+}
+.contact-info-description:not(:last-child){
+  padding-bottom: 2rem
+}
+.main-form-heading{
+  margin-bottom: 2rem;
+}
+#ContactForm .field__input::placeholder{
+  opacity: 1;
+  color: rgb(var(--color-foreground));
+}
+#ContactForm .field__input{
+  border-bottom: .1rem solid #D9D9D9;
+  padding: 0;
+  padding-bottom: 1.5rem;
+  min-height: unset;
+  height: auto;
+}
+#ContactForm .field::before,
+#ContactForm .field::after{
+ content: none;
+}
+.file-input{
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.file-input-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: .1rem solid #D9D9D9;
+  padding-bottom: 1.5rem;
+
+}
+.file-input-wrapper .icon-wrapper{
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.contact-button{
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  padding: 0;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: .3rem;
+}
+@media screen and (max-width: 768px) {
+ .contact-info-image{
+    aspect-ratio: 343/343;
+  }
+  .contact-page{
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

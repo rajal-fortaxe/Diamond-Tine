@@ -1,0 +1,14 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .related-products__heading {
+    margin: 0 0 2rem;
+  }
+
+}

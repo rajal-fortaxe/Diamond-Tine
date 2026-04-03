@@ -1,0 +1,93 @@
+{%- assign group_product = product.metafields.bwp_fields.group_product | default: '' -%}
+{%- assign group_product_array = group_product | split: ',' -%}
+{%- assign countdowns = product.metafields.bwp_fields.countdowns -%}
+{%- assign external = product.metafields.bwp_fields.external -%}
+{%- assign short_description = product.metafields.bwp_fields.shortdesc -%}
+
+{%- capture group -%}
+  {%- paginate collections.all.products by 30 -%}
+    {%- for p in collections.all.products -%}
+      {%- for group_id in group_product_array -%}
+        {% assign grp_id = group_id | plus: 0   %}
+        {%- if p.id == grp_id -%}
+          {{ p.handle }},
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endcapture -%}
+
+<div class="product-content-card grid__item">
+  <div
+    class="product-card product-card-wishlist main-product"
+    data-short_description="{{ short_description | escape }}"
+    data-group_product="{{ group | strip }}"
+    data-is_group_product="{% if group_product != blank %}true{% else %}false{% endif %}"
+    data-countdowns="{{ countdowns }}"
+    data-external="{{ external }}"
+  >
+    <a class="link text-decoration-none w-100" href="{{ product.url }}">
+      <div class="product-media relative flex">
+        {% render 'product-badge', block: block, product: product %}
+
+        <div class="button-wishlist mobile" data-title="Remove">
+          <button
+            type="button"
+            aria-label="wishlist"
+            button-wishlist
+            data-product-handle="{{ product.handle }}"
+          >
+            {% render 'icons', icon: 'wishlist-remove' %}
+          </button>
+        </div>
+
+        <div class="product-media-inner flex relative w-100">
+          {% if product.featured_image %}
+            {{ product.featured_image | image_url: width: 2500 | image_tag:
+              class: "product-image product-main-image",
+              loading: "lazy"
+            }}
+
+            {% comment %} {% if product.media[1] %}
+              {{ product.media[1] | image_url: width: 2500 | image_tag:
+                class: "product-image product-secondary-image",
+                loading: "lazy"
+              }}
+            {% endif %} {% endcomment %}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="product-content">
+        <div class="product-title body-text">
+          {{ product.title }}
+        </div>
+
+        <div class="product-price">
+          {% render 'price',
+            product: product,
+            block: block,
+            enable_policy: false,
+            font_class: "body-text-v3 color-gray",
+            use_variant: true
+          %}
+        </div>
+        <div class="product-buy-button">
+         <wish-buy-button>
+          <form method="post" action="/cart/add" accept-charset="UTF-8" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            
+            <button type="submit" class="product-buy-button button button--secondary w-100">
+              <span>Add to cart</span>
+              <div class="loading-overlay__spinner hidden">
+                <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
+              </div>
+            </button>
+          </form>
+        </wish-buy-button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+.video-banner .video-banner-media video{
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.video-banner .video-banner-media img{
+    height: 100%;
+}
+.video-banner .video-banner-wrapper{
+    position: relative;  
+}
+.video-banner .video-banner-wrapper.has-spacing{
+     padding-inline: 3.125rem;
+}
+.video-banner .video-banner-content{
+    position: absolute;
+    width: fit-content;
+    z-index: 2;
+    padding-block: 1.875rem 
+}
+.video-banner .video-content__description i,
+.video-banner .video-content__description em{
+    font-family: var(--font-heading-family-thin-italic);
+}
+.video-banner .video-banner-content.content-align-center-left{
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+}
+.video-banner img{
+    width: 100%;
+}
+.video-banner .video-banner-content.content-align-center-right{
+    top:50%;
+    transform: translateY(-50%);
+    right:0;
+    text-align: right;
+}
+.video-banner .video-banner-content.content-align-center-center{
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 72.4rem;
+    width: 100%;
+    padding-inline: 0;
+}
+.video-content-arrow__button{
+    width: auto;
+    align-items: center;
+    gap: .625rem;
+    text-transform: uppercase;
+}
+.video-banner .video-banner-content.content-align-bottom-left{
+    bottom:0;
+    left:0;
+}
+.video-banner .video-banner-content.content-align-bottom-right{
+    bottom:0;
+    right:0;
+    text-align: right;
+}
+.video-banner .video-banner-content.content-align-bottom-center{
+    bottom:0;
+    left:50%;
+    transform: translateX(-50%);
+    text-align: center;
+     max-width: 72.4rem;
+    width: 100%;
+    padding-inline: 0;
+}
+.video-banner-content__inner-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.index-section--hero:has(.transprent-header){
+    margin-top: calc(-1 * var(--header-height));
+}
+@media screen and (max-width: 768px) {
+    .video-banner .video-banner-content{
+        padding-block: 1rem 
+    }
+    .video-banner-content__inner-wrapper{
+        gap: 1;
+        padding-inline: 1.6rem;
+    }
+    .video-banner .video-banner-wrapper{
+        padding: 0
+    }
+}

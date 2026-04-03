@@ -1,0 +1,140 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in section.settings.menu.links -%}
+      {% assign main_index = forloop.index %}
+      <li>
+        {%- if link.links != blank -%}
+          <header-menu>
+            <accordian-hover-animate>
+              <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+                <summary
+                  id="HeaderMenu-{{ link.handle }}"
+                  class="header__menu-item list-menu__item body-text-v2 uppercase link focus-inset"
+                  data-url = {{ link.url }}
+                >
+               
+                  <span
+                    {%- if link.child_active %}
+                      class="header__active-menu-item"
+                    {% endif %}
+                  >
+                       <a href="{{ link.url }}" class="text-decoration-none">
+                    {{- link.title | escape -}}
+                     </a>
+                  </span>
+                 
+                </summary>
+                <div
+                  id="MegaMenu-Content-{{ forloop.index }}"
+                  class="mega-menu__content details-content page-width color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                  tabindex="-1"
+                >
+                  <ul
+                    class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                    role="list"
+                  >
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 body-text-v2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="list-unstyled" role="list">
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link link body-text-v2{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  {% for block in section.blocks %}
+                    {% if block.type == "megamenu_block" %}
+                      {% assign  menu_id = block.settings.megamenu_id  %}
+                      {% assign first_part = menu_id | split: "-" | first | times: 1 %}
+                      {% assign last_part = menu_id | split: "-" | last | times: 1 %}
+                      
+                      {% if first_part == main_index and last_part == forloop.index %}
+                        {% if block.settings.megamenu_image_desktop != blank and block.settings.megamenu_url != blank or  block.settings.megamenu_image_desktop_2 != blank and block.settings.megamenu_url_2 != blank %}
+                          <div class="menu-image-wrapper flex">
+                            {% if  block.settings.megamenu_image_desktop != blank and block.settings.megamenu_url != blank %}
+                              <div class="menu-image-item flex">
+                                <a class="link flex text-decoration-none" href="{{ block.settings.megamenu_url }}">
+                                  {{ block.settings.megamenu_image_desktop  | image_url: width:3500 | image_tag  }}
+                                  {% if block.settings.megamenu_text != blank %}
+                                    <div class="meagenu-image-text body-text-v2 uppercase">
+                                      {{ block.settings.megamenu_text }}
+                                    </div>
+                                  {% endif %}
+                                </a>
+                              </div>
+                            {% endif %}
+                            {% if  block.settings.megamenu_image_desktop_2 != blank and block.settings.megamenu_url_2 != blank %}
+                              <div class="menu-image-item flex">
+                                <a class="link flex text-decoration-none" href="{{ block.settings.megamenu_url_2 }}">
+                                  {{ block.settings.megamenu_image_desktop_2  | image_url: width: 3500 | image_tag  }}
+                                  {% if block.settings.megamenu_text_2 != blank %}
+                                    <div class="meagenu-image-text body-text-v2 uppercase">
+                                      {{ block.settings.megamenu_text_2 }}
+                                    </div>
+                                  {% endif %}
+                                </a>
+                              </div>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                    
+                  {% endfor %}
+                </div>
+              </details>
+            </accordian-hover-animate>
+          </header-menu>
+        {%- else -%}
+          <a
+            id="HeaderMenu-{{ link.handle }}"
+            href="{{ link.url }}"
+            class="header__menu-item list-menu__item body-text-v2 uppercase link link--text focus-inset non-hovered"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span
+              {%- if link.current %}
+                class="header__active-menu-item"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 70,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "info_r7DEfc": {
+          "type": "info",
+          "settings": {
+            "heading_text": "Phone",
+            "info_description": "<p><a href=\"tel:+1 (227) 204-8394\" title=\"tel:+1 (227) 204-8394\">+1 (227) 204-8394</a></p>"
+          }
+        },
+        "info_nFJigD": {
+          "type": "info",
+          "settings": {
+            "heading_text": "Email",
+            "info_description": "<p><a href=\"mailto:thediamondaffaire@gmail.com\" title=\"mailto:thediamondaffaire@gmail.com\">thediamondaffaire@gmail.com</a></p>"
+          }
+        },
+        "info_e8fpU3": {
+          "type": "info",
+          "settings": {
+            "heading_text": "Address",
+            "info_description": "<p>HerndonVirginia 20170 USA</p>"
+          }
+        }
+      },
+      "block_order": [
+        "info_r7DEfc",
+        "info_nFJigD",
+        "info_e8fpU3"
+      ],
+      "settings": {
+        "heading": "Let’s talk",
+        "contact_image": "shopify://shop_images/Rectangle_161125039.png",
+        "description": "<p>Discover a refined collection of diamond rings, earrings, bracelets, and necklaces, thoughtfully crafted to celebrate life’s most meaningful moments. Each piece is designed with exceptional attention to detail, combining timeless elegance with modern craftsmanship to create jewellery that shines for a lifetime.</p>",
+        "info_heading": "Contact Us",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 70,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form"
+  ]
+}

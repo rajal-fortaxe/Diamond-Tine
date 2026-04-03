@@ -1,0 +1,144 @@
+.header-logo-fonts{
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 2rem;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+.heading-text-large-thin{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+    letter-spacing: .8px;
+}
+.heading-text-thin{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    letter-spacing: .7px;
+}
+.heading-text-small-thin{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 1.6rem;
+    line-height: 1.2rem;
+    letter-spacing: .5px;
+
+}
+.body-text-small{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: .9rem;
+    letter-spacing: 0;
+}
+.body-text-large{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 1.8rem;
+    letter-spacing: 0;
+}
+.body-text-medium{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4rem;
+    letter-spacing: 0;
+}
+.body-text{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    letter-spacing: 0;
+}
+.body-text-v2{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    letter-spacing: 0;
+}
+.body-text-v3{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1rem;
+    letter-spacing: 0;
+}
+.body-text-v4{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    letter-spacing: 0;
+}
+.body-text-v5{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1rem;
+    letter-spacing: 0;
+}
+.body-text-extra-small{
+    font-family: var(--font-body-family);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: .9rem;
+    letter-spacing: 0;
+}
+.drawer-heading-text-medium-thin{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    letter-spacing: 0;
+}
+@media screen and (max-width: 768px) {
+    .header-logo-fonts{
+        font-family: var(--font-heading-family);
+        font-weight: 400;
+        font-size: 2rem;
+        line-height: 1.6rem;
+        letter-spacing: 0;
+    }
+    .small-heading-text-large-thin{
+        font-family: var(--font-heading-family-thin);
+        font-weight: 100;
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+        letter-spacing: .7px;
+    }
+    .small-body-text-v3{
+        font-family: var(--font-body-family);
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1rem;
+        letter-spacing: 0;
+    }
+    .small-body-text-large{
+        font-family: var(--font-body-family);
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 1.2rem;
+        letter-spacing: 0;
+    }
+    .small-body-text-v2{
+        font-family: var(--font-body-family);
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: .9rem;
+        letter-spacing: 0;
+    }
+    .small-body-text-medium{
+        font-family: var(--font-body-family);
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.4rem;
+        letter-spacing: 0;
+    }
+}

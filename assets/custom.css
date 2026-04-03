@@ -1,0 +1,371 @@
+.product-badge{
+  padding: .7rem 1rem;
+  color: var(--badge-color, #ffffff);
+  backdrop-filter: blur(1rem);
+  background: var(--badge-background-color, #00000080);
+  border-radius: 9rem;
+}
+.product-card__badge{
+  position: absolute;
+  display: flex;
+  gap: .2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  /* top: 1rem; */
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  width: calc(100% - 2rem);
+}
+
+.color-gray{
+  color: #777777;
+}
+.color-dark-gray{
+  color: #9E9E9E
+}
+/* PRODUCT CARD  */
+.main-product img{
+ aspect-ratio: 270/270; 
+ height: 100%;
+ width: 100%;
+}
+.main-product .product-title,.card__heading{
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+     display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 4rem;
+}
+.main-product .product-secondary-image{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: all .3s ease-in-out
+}
+.product-media {
+  overflow: hidden;
+}
+.product-media .product-media-inner{
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+    transform: scale(1);
+}
+/* .main-product .product-media:hover .product-secondary-image{
+    opacity: 1;
+    transition: all .3s ease-in-out
+} */
+.main-product .product-media .product-media-inner:hover {
+  transition: all .3s ease-in-out;
+    transform: scale(1.03);
+}
+/* REVIEW APP  */
+.reputon-etsy-reviews-widget .hnjnEJ{
+  padding: 3.5rem 0 !important;
+}
+.reputon-etsy-reviews-widget .qdcMa{
+  justify-content: flex-end !important;
+  gap: 2rem !important;
+  flex-direction: row-reverse !important;
+}
+.reputon-etsy-reviews-widget .eYGvTM{
+  margin: 0 !important;
+}
+.reputon-carousel > *,
+.reputon-etsy-reviews-widget .qdcMa,
+.reputon-etsy-reviews-widget .cqgirw,
+.reputon-etsy-reviews-widget .gtvVQB{
+  border-radius: 0 !important;
+}
+.reputon-swiper-button-next,
+.reputon-swiper-button-prev,
+.reputon-etsy-reviews-widget .ihZUZE,
+.reputon-etsy-reviews-widget .jftrgv,
+.reputon-etsy-reviews-widget .deyJFc,
+.reputon-etsy-reviews-widget .DTBcb{
+  display: none !important;
+}
+.reputon-etsy-reviews-widget .dWLPoh{
+  display: flex !important;
+  /* font-family: var(--font-body-family) !important;
+  font-weight: 400 !important;
+  font-size: 2.4rem !important;
+  line-height: 1.8rem !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important; */
+}
+.reputon-etsy-reviews-widget .hnjnEJ{
+  gap: 0 !important;
+}
+.reputon-etsy-reviews-widget .eYGvTM{
+  padding: 0 !important;
+  padding-bottom: 3rem !important;
+}
+
+.reputon-etsy-reviews-widget .jbbPuD{
+  font-family: var(--font-heading-family-thin);
+  font-weight: 100;
+  font-size: 1.6rem;
+  line-height: 1.2rem;
+  letter-spacing: .5px;
+  height: 2rem;
+  align-items: center;
+  color: #000000 !important;
+}
+.reputon-etsy-reviews-widget .hfEnTU{
+  width: 2.6rem !important;
+  height: 1.2rem !important;
+}
+.reputon-etsy-reviews-widget .eYGvTM{
+  background: transparent !important;
+}
+.reputon-carousel-holder{
+  margin-inline: -2rem !important;
+}
+.reputon-carousel-holder .swiper-wrapper{
+  padding-inline: 2rem !important;
+}
+.reputon-carousel-holder .swiper-wrapper .swiper-slide{
+  margin-right: 2rem !important;
+}
+.reputon-etsy-reviews-widget .cqgirw,
+.reputon-top-part{
+  padding: 1rem !important;
+  background: #FFF8EE !important;
+  border-radius: 0 !important;
+  padding-bottom: 1.5rem !important;
+}
+.reputon-etsy-reviews-widget .cZXwdu{
+  height: auto !important;
+}
+.reputon-etsy-reviews-widget .vHlEe{
+  font-family: var(--font-body-family) !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  line-height: 2rem !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+}
+ .reputon-etsy-reviews-widget .hXRcxb,
+  .reputon-etsy-reviews-widget .dVHvXf,
+  .reputon-carousel-header{
+    background: transparent !important;
+    flex-direction: row-reverse !important;
+    justify-content: start !important;
+    gap: 1rem !important;
+    padding: 0 !important;
+    /* padding-bottom: 2rem !important;  */
+     width: 100%;
+    margin: 0 !important;
+  }
+  .reputon-carousel-header{
+    gap: 1rem !important;
+  }
+  .reputon-count-number{
+    font-weight: 400 !important;
+    font-size: 2.4rem !important;
+    line-height: 1.8rem !important;
+    letter-spacing: 0 !important;
+    color: #000000 !important;
+  }
+  .reputon-rating-stars{
+    color: #EDC152 !important;
+  }
+  .reputon-rating-stars svg{
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+  }
+  .reputon-etsy-reviews-widget a svg{
+    width: 5.4rem;
+    height: 2.6rem;
+  }
+  .reputon-etsy-reviews-widget *{
+    border-radius: 0 !important;
+  }
+  .reputon-carousel-container{
+    padding-inline: 0 !important;
+  }
+  .reputon-text{
+      font-weight: 400 !important;
+      font-size: 1.4rem !important;
+      line-height: 2rem !important;
+      letter-spacing: 0 !important;
+      -webkit-line-clamp: 3 !important;
+      color: #000000 !important;
+  }
+  .reputon-show-more{
+    font-weight: 400 !important;
+      font-size: 1.2rem !important;
+      line-height: .9rem !important;
+      letter-spacing: 0 !important;
+      padding-top: 1.5rem !important;
+      
+  }
+  .reputon-show-more span{
+    color: #777777 !important;
+    text-underline-offset: .3rem;
+    text-transform: uppercase;
+  }
+@media screen and (max-width: 780px) {
+  .reputon-etsy-reviews-widget .hXRcxb,
+  .reputon-etsy-reviews-widget .dVHvXf,
+  .reputon-carousel-header{
+    background: transparent !important;
+    flex-direction: row-reverse !important;
+    justify-content: start !important;
+    gap: 1rem !important;
+    padding: 0 !important;
+    /* padding-bottom: 2rem !important;  */
+    width: 100%;
+    margin: 0 !important;
+  }
+  .reputon-etsy-reviews-widget .jKuTKO,
+  .reputon-etsy-reviews-widget .faHgaA{
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  .reputon-carousel-holder{
+    margin-inline: -1.6rem !important;
+  }
+  .reputon-carousel-holder .swiper-wrapper{
+    padding-inline: 1.6rem !important;
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .reputon-etsy-reviews-widget .fELjOs{
+    margin-inline: -1.6rem;
+  }
+  .reputon-etsy-reviews-widget .ilYIrL{
+    margin-right: 1rem !important;
+  }
+}
+/* INSTA FEED  */
+.instafeed-new-layout-wrapper{
+  gap: .5rem !important;
+}
+#insta-feed > *,
+.instafeed-hover-layer{
+  border-radius: 0 !important;
+}
+#insta-feed{
+  padding-block: 3.5rem !important;
+}
+#insta-feed h2{
+  margin-top: 0 !important;
+  font-family: var(--font-heading-family-thin);
+  font-weight: 100;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  letter-spacing: .8px;
+
+}
+#insta-feed .instafeed-new-layout-item img{
+  border-radius: 0 !important;
+}
+@media screen and (max-width: 768px) {
+    #insta-feed h2{
+      margin-top: 0 !important;
+      font-family: var(--font-heading-family-thin);
+      font-weight: 100;
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+      letter-spacing: .7px;
+      margin-bottom: 2rem !important;
+  }
+  #insta-feed{
+    padding-block: 3rem 1.5rem !important;
+  }
+}
+
+/* WISHLIST */
+
+.button-wishlist{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1;
+}
+
+.button-wishlist button,
+.product-button-wishlist button{
+  background: transparent;
+  padding: 0;
+  height: auto;
+  width: 3rem;
+  border: 0;
+  cursor: pointer;
+}
+.product-button-wishlist{
+  position: relative;
+  left: unset;
+  right: unset;
+  top: unset;
+}
+.product-button-wishlist button{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+}
+.button-wishlist button.active svg,
+.product-button-wishlist button.active svg{
+ fill: currentColor;
+}
+
+span.wishlist-count{
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 100%;
+  right: -1rem;
+  top: -.5rem;
+  display: flex;
+  justify-content: center;
+}
+.wishlist-count:empty{
+  display: none;
+}
+.wishlist__grid img{
+  width: 100%;
+  height: 100%;
+}
+.main-wishlist-page .main-page-title{
+  margin-bottom: 5rem;
+}
+.main-wishlist-page{
+  padding-block: 5rem 5.5rem;
+}
+.main-wishlist-page .product-buy-button{
+  margin-top: 2rem;
+}
+load-more-products,
+load-more-products-search{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  cursor: pointer;
+}
+load-more-products .load-more-button,
+load-more-products-search .load-more-button{
+ text-decoration: underline;
+ text-underline-offset: .3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .main-product img{
+    aspect-ratio: 270/270;
+    height: auto;
+  }
+}

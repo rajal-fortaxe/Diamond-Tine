@@ -1,0 +1,39 @@
+@keyframes scrollLeft{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
+}
+
+.scrolling-item-inner-wrappr{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.scrolling-item-inner-wrappr img{
+  width: 1rem;
+  height: 1rem;
+  aspect-ratio: 10/10;
+}
+.scroll-promotions{
+  overflow:hidden;
+  width:100%;
+  padding-block:1.6rem 1.5rem;
+}
+
+.scroll-track{
+  display:flex;
+  width:max-content;
+  white-space:nowrap;
+  animation: scrollLeft var(--scrolling-speed) linear infinite;
+}
+
+.scroll-item{
+  padding-right: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+    

@@ -1,0 +1,86 @@
+{% assign metafield_content = product.metafields.custom.product_information.value %}
+
+{% if metafield_content != blank or collapsible_desc == true %}
+  <div class="product-block" {{ block.shopify_attributes }} style="--accordian-background: {{ background }}">
+    <div class="metafield-accordian-wrapper">
+      <details-wrappper>
+        {% if product.description != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Description</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {{ product.description }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if metafield_content.details != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Details </span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {{ metafield_content.details }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if metafield_content.key_information != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Key Information</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {{ metafield_content.key_information }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+        {% if metafield_content.shipping_returns != blank %}
+          <acordion-animated>
+            <details>
+              <summary class="accordian-title-wrapper">
+                <div class="accordian-title">
+                  <span class="body-text flex">Shipping & Returns</span>
+                </div>
+                <span class="acoordian-arrow flex">
+                  {% render 'icons', icon: 'accordian-down-arrow' %}
+                </span>
+              </summary>
+              <div class="details-content">
+                <div class="details-content-ineer body-text">
+                  {{ metafield_content.shipping_returns }}
+                </div>
+              </div>
+            </details>
+          </acordion-animated>
+        {% endif %}
+      </details-wrappper>
+    </div>
+  </div>
+{% endif %}

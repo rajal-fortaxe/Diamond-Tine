@@ -1,0 +1,264 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.vendor }}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "enable_accordian": true
+          }
+        },
+        "text_fEmnze": {
+          "type": "text",
+          "settings": {
+            "text_iamge": "shopify://shop_images/Frame_52.svg",
+            "text": "Order in the next 10 hours 57 minutes to get it between Tuesday, Dec 9 and Monday, Dec 15"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share This Product"
+          }
+        },
+        "icon_with_text_dKqbmw": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Group_1171275988.svg",
+            "heading_1": "Certified Diamonds",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Multiple-Stars--Streamline-Plump.svg",
+            "heading_2": "Always 14k Solid Gold",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Layer_1.svg",
+            "heading_3": "Hand Crafted"
+          }
+        },
+        "accordians_LryDKn": {
+          "type": "accordians",
+          "settings": {}
+        },
+        "key_info_Lb3RDk": {
+          "type": "key_info",
+          "settings": {
+            "key_info_text": "<ul><li><strong>Personalized Just for You</strong> We happily offer custom design services to bring your unique vision to life.\t\t\t\t\t\t\t\t</li><li><strong>Your Choice of Gold</strong> Can be made in 9k, 10k, 14k, or 18k gold—choose what suits your style and budget best.\t\t\t\t\t\t</li><li><strong>Complimentary Engraving for Rings and Pendants</strong> Add your initials or name (up to 5 letters) and we'll engrave it for you at no extra cost.\t\t\t\t</li><li><strong>Ethically Sourced Diamonds</strong> We use only conflict-free diamonds, committed to ethical and responsible sourcing.\t\t\t\t\t\t</li><li><strong>Gift-Ready Packaging</strong> Every piece comes in an elegant jewelry box—perfect for gifting or cherishing.</li></ul>"
+          }
+        },
+        "shipping_and_retrn_7BffVG": {
+          "type": "shipping_and_retrn",
+          "settings": {
+            "shipping_return_text": "<ul><li><strong>Made-to-Order Items</strong> Crafting takes ten to fourteen days. Shipping takes an extra 7-10 days, depending on your location.\t\t\t\t\t\t\t\t\t\t\t\t\t</li><li><strong>Returns</strong> Please contact us within 30 days of delivery. For details on eligibility and complete return policies, please consult our shop policy. </li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "text_fEmnze",
+        "share",
+        "icon_with_text_dKqbmw",
+        "accordians_LryDKn",
+        "key_info_Lb3RDk",
+        "shipping_and_retrn_7BffVG"
+      ],
+      "settings": {
+        "highlighated_background": "#fff8ee",
+        "hide_variants": true,
+        "enable_video_looping": true,
+        "padding_top_desktop": 20,
+        "padding_bottom_desktop": 25,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 25
+      }
+    },
+    "image_and_text_carousel_xJCmpq": {
+      "type": "image-and-text-carousel",
+      "blocks": {
+        "iamge_slide_aWgAmp": {
+          "type": "iamge_slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
+            "heading_text": "Gift Ready <em>Packaging</em>",
+            "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "iamge_slide_MJraEf": {
+          "type": "iamge_slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/il_fullxfull.6966156516_nop2.jpg",
+            "heading_text": "Size Chart",
+            "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "iamge_slide_XzPa6Y": {
+          "type": "iamge_slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
+            "heading_text": "Gift Ready Packaging",
+            "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "iamge_slide_wLzwMB": {
+          "type": "iamge_slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/il_fullxfull.6966156516_nop2.jpg",
+            "heading_text": "Size Chart",
+            "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "iamge_slide_NfB67i": {
+          "type": "iamge_slide",
+          "settings": {
+            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
+            "heading_text": "Gift Ready Packaging",
+            "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+            "link_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "iamge_slide_aWgAmp",
+        "iamge_slide_MJraEf",
+        "iamge_slide_XzPa6Y",
+        "iamge_slide_wLzwMB",
+        "iamge_slide_NfB67i"
+      ],
+      "name": "Image And Text Carousel",
+      "settings": {
+        "content_background_color": "#fff8ee",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "text_align": "center",
+        "text_align_mobile": "left",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "image_and_text_Qfhx8T": {
+      "type": "image-and-text",
+      "disabled": true,
+      "name": "Image And Text",
+      "settings": {
+        "content_background_color": "#fff8ee",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "enable_padding": true,
+        "media_position_desktop": "left",
+        "media_position_mobile": "top",
+        "desktop_image": "shopify://shop_images/Rectangle_14_59eb1ed8-2bf3-4766-8388-b5282ead32e1.png",
+        "auto_height": true,
+        "media_height_desktop": 500,
+        "media_height_mobile": 500,
+        "text_align": "center",
+        "text_align_mobile": "left",
+        "heading_text": "Gift Ready <em>Packaging</em>",
+        "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
+        "link_text": "",
+        "link": "",
+        "padding_top_desktop": 25,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "badge_background_color": "#00000080",
+        "badge_text_color": "#ffffff",
+        "heading": "You may also like",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25
+      }
+    },
+    "recently_viewed_G33Yy9": {
+      "type": "recently-viewed",
+      "name": "Recently Viewed",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "button_color": "#000000",
+        "badge_background_color": "#00000080",
+        "badge_text_color": "#ffffff",
+        "heading_text": "Recently Viewed",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_and_text_carousel_xJCmpq",
+    "image_and_text_Qfhx8T",
+    "related-products",
+    "recently_viewed_G33Yy9"
+  ]
+}

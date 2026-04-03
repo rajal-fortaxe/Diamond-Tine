@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 70,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "main_faq_XTx6Gx": {
+      "type": "main-faq",
+      "blocks": {
+        "faq_4Mg4GJ": {
+          "type": "faq",
+          "settings": {
+            "question": "1. What shipping methods do you offer?",
+            "answer": "<p>We provide complimentary standard shipping through trusted carriers such as UPS or DHL. Delivery typically takes 10–14 business days.</p><p>All shipments are fully insured, trackable, and require an adult signature upon delivery to ensure the safe arrival of your jewelry.</p><p><strong>For International Customers:</strong></p><ul><li><strong>United States:</strong> Customs duties are covered by us.<br/></li><li><strong>Other Countries:</strong> Import duties, VAT, and clearance charges may apply according to your country’s regulations. These fees are not included in our pricing and remain the buyer’s responsibility.</li></ul>"
+          }
+        },
+        "faq_bDYxt7": {
+          "type": "faq",
+          "settings": {
+            "question": "2. Do you provide third-party diamond certification?",
+            "answer": "<p>Yes, we offer third-party certification for selected diamond pieces from respected gemological laboratories such as IGI, HRD, IDGL, GIN, and SGL.</p><p></p><p>If you would like certification included with your purchase, please contact us prior to placing your order so we can assist you accordingly.</p>"
+          }
+        },
+        "faq_NN8qNJ": {
+          "type": "faq",
+          "settings": {
+            "question": "3. Do you accept rush orders?",
+            "answer": "<p>We do accommodate rush orders depending on availability and production timelines. Kindly reach out to us before placing your order to confirm feasibility.</p><p>Please note:</p><ul><li>Rush services involve an additional fee and upgraded shipping.<br/></li><li>Rush orders are considered final sale and are non-refundable.</li></ul>"
+          }
+        },
+        "faq_pbYxCK": {
+          "type": "faq",
+          "settings": {
+            "question": "4. Are your diamonds natural?",
+            "answer": "<p>Yes. All diamonds used in our listed pieces are 100% natural and untreated. We do not use lab-created diamonds unless specifically requested.</p><p>We are happy to create pieces using lab-grown diamonds upon request—please contact us for details.</p><p>All our jewelry is crafted in solid gold as described. We do not use plated or gold-filled materials in our fine jewelry collections.</p>"
+          }
+        },
+        "faq_9biL7k": {
+          "type": "faq",
+          "settings": {
+            "question": "5. Do you accept custom and personalized orders?",
+            "answer": "<p>Absolutely. We welcome custom and personalized projects—whether you wish to recreate a cherished design or bring a new idea to life.</p><p>Kindly note that all custom and personalized pieces are final sale and non-refundable.</p>"
+          }
+        },
+        "faq_aEwhQD": {
+          "type": "faq",
+          "settings": {
+            "question": "6. How should I clean and care for my jewelry?",
+            "answer": "<p>To maintain the brilliance of your jewelry:</p><ul><li>Soak the piece in warm water mixed with mild dish soap (10:2 ratio) for up to 3 hours.<br/></li><li>Gently clean using a soft brush.<br/></li><li>Rinse thoroughly with clean water.<br/></li><li>Pat dry with a soft cloth (avoid paper towels).<br/></li><li>Use a jewelry polishing cloth for additional shine.<br/></li><li>Avoid exposure to bleach, harsh chemicals, or abrasive cleaners.<br/></li></ul><p>Proper care will help preserve the beauty of your jewelry for years to come.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_4Mg4GJ",
+        "faq_bDYxt7",
+        "faq_NN8qNJ",
+        "faq_pbYxCK",
+        "faq_9biL7k",
+        "faq_aEwhQD"
+      ],
+      "name": "Main FAQ",
+      "settings": {
+        "heading_text_color": "#000000",
+        "text_color": "#000000",
+        "answer_text_color": "#777777",
+        "heading_text": "FAQs",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 55,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 15
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_faq_XTx6Gx"
+  ]
+}

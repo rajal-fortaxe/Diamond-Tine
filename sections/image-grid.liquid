@@ -1,0 +1,118 @@
+{{ 'image-grid.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  #image-grid-{{ section.id }} {
+    height: {{ section.settings.section_height_mobile }}px;
+    --section-mobile-height: {{ section.settings.section_height_mobile }}px;
+    background: {{ section.settings.background_color }};
+  }
+   #image-grid-{{ section.id }} .image-grid-wrapper .image-grid-item img{
+      height: {{ section.settings.section_height_mobile }}px;;
+      aspect-ratio: 375/{{section.settings.section_height_mobile}};
+    }
+  @media screen and (min-width: 769px) {
+     #image-grid-{{ section.id }}{
+      height: {{ section.settings.section_height_desktop }}px;
+      --section-desktop-height: {{ section.settings.section_height_desktop }}px;
+    }
+    #image-grid-{{ section.id }} .image-grid-wrapper .image-grid-item img{
+      height: {{ section.settings.section_height_desktop }}px;;
+      aspect-ratio: 480/{{section.settings.section_height_desktop}};
+    }
+  }
+{%- endstyle -%}
+<section id="image-grid-{{ section.id }}" class="image-grid " >
+
+  <div class="image-grid-wrapper relative">
+    {% for block in section.blocks %}
+      {% if block.settings.image != blank%}
+        <div class="image-grid-item flex {%  if forloop.index == 1 or forloop.index == 3 %} small-hide {% endif %}">
+          {{ block.settings.image  | image_url: width: 2500, height:3500 | image_tag  }}
+        </div>
+      {% endif %}
+    {% endfor %}
+     <div class="image-grid-logo-item-wrapper">
+        <div class="item-inner-wrapper">
+          {% if section.settings.logo_image != blank %}
+            {{ section.settings.logo_image  | image_url: width: 1000, height:20000 | image_tag  }}
+          {% endif %}
+           {% if section.settings.logo_text != blank %}
+            <div class="header-logo-fonts" style="color: {{ section.settings.text_color }}">{{ section.settings.logo_text }}</div>
+          {% endif %}
+        </div>
+      </div>
+  </div>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Image Grid",
+    "tag": "section",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "section_height_desktop",
+        "label": "Sectio Height - Desktop",
+        "min": 50,
+        "max": 150,
+        "step": 1,
+        "unit": "px",
+        "default": 70
+      },
+      {
+        "type": "range",
+        "id": "section_height_mobile",
+        "label": "Section Height - Mobile",
+        "min": 30,
+        "max": 130,
+        "step": 1,
+        "unit": "px",
+        "default": 50
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo Image"
+      },
+       {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo Text"
+      },
+      
+    ],
+    "blocks": [
+      {
+        "type": "Image",
+        "name": "Image",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Image Grid",
+      }
+    ]
+  }
+{% endschema %}

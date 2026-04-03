@@ -1,0 +1,39 @@
+<div class="select">
+{%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+
+<div class="sort-by-button">
+  <span class="sort-by-active-value body-text">
+     {%- for option in results.sort_options -%}
+      {% if option.value == sort_by %}
+        {{ option.name }}
+      {% endif %}
+     {% endfor %}
+     </span>
+</div>
+<div class="sort-by-wrappper">
+  <div class="page-width">
+      <div class="sort-drawer-header">
+        <div class="sort-heading heading-text-large-thin">Sort By</div>
+        <div class="sort-close">
+          {% render 'icons', icon: 'drawer-close' %}
+        </div>
+      </div>
+
+    <div class="sort-by-radios" role="radiogroup" aria-label="Sort products">
+      {%- for option in results.sort_options -%}
+        <label class="sort-option body-text">
+          <input
+            type="radio"
+            name="sort_by"
+            value="{{ option.value | escape }}"
+            data-title="{{ option.name | escape }}"
+            {% if option.value == sort_by %}checked{% endif %}
+            onchange="this.form.submit()"   
+          >
+          <span class="body-text">{{ option.name | escape }}</span>
+        </label>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,284 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact contact-page page-width section-{{ section.id }}-padding">
+    <div class="contact-info-image">
+      {% if section.settings.contact_image != blank %}
+        {{ section.settings.contact_image  | image_url: width: 2500, height:3500 | image_tag  }}
+      {% endif %}
+    </div>
+    <div class="contact-form">
+       {%- if section.settings.heading != blank or section.settings.description != blank -%}
+        <div class="contact-page-heading">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="title title-wrapper--no-top-margin inline-richtext uppercase body-text-large {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.heading }}
+            </h2>
+          {%- endif -%}
+          {% if section.settings.description != blank %}
+            <div class="contact-description body-text">
+              {{ section.settings.description }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+        <div class="contact-informmation">
+          {%- if section.settings.info_heading != blank -%}
+            <div class="contact-info-main-heading uppercase body-text-large"> {{ section.settings.info_heading }}</div>
+          {%- endif -%}
+          {% for block in section.blocks %}
+            {% if block.settings.heading_text != blank %}
+              <div class="contact-info-heading body-text-v3 color-dark-gray">{{  block.settings.heading_text }}</div>
+            {% endif %}
+            {% if block.settings.info_description != blank %}
+              <div class="contact-info-description body-text-v3">{{ block.settings.info_description }}</div>
+            {% endif %}
+          {% endfor  %}
+        </div>
+      {% endif %}
+      {%- liquid
+        assign contact_form_class = 'isolate'
+        if settings.animations_reveal_on_scroll
+          assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+        endif
+      -%}
+   
+      {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+           <div class="uppercase body-text-large main-form-heading">
+              Tell Us About Your Needs
+            </div>
+        {%- if form.posted_successfully? -%}
+          <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+            {{- 'icon-success.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.post_success' | t }}
+          </h2>
+        {%- elsif form.errors -%}
+          <div class="form__message">
+            <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+              {{- 'icon-error.svg' | inline_asset_content -}}
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+          </div>
+          <ul class="form-status-list caption-large" role="list">
+            <li>
+              <a href="#ContactForm-email" class="link">
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+            <div class="field">
+            <input
+              class="field__input body-text-v3"
+              autocomplete="name"
+              type="text"
+              id="ContactForm-name"
+              name="contact[{{ 'templates.contact.form.name' | t }}]"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              placeholder="{{ 'templates.contact.form.name' | t }} *"
+              required
+            >
+          </div>
+          <div class="field">
+          <input
+            type="tel"
+            id="ContactForm-phone"
+            class="field__input body-text-v3"
+            autocomplete="tel"
+            name="contact[{{ 'templates.contact.form.phone' | t }}]"
+            pattern="[0-9\-]*"
+            value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            placeholder="{{ 'templates.contact.form.phone' | t }} *"
+            required
+          >
+        </div>
+           <div class="field field--with-error">
+            <input
+              autocomplete="email"
+              type="email"
+              id="ContactForm-email"
+              class="field__input body-text-v3"
+              name="contact[email]"
+              spellcheck="false"
+              autocapitalize="off"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="ContactForm-email-error"
+              {% endif %}
+              placeholder="{{ 'templates.contact.form.email' | t }} *"
+              required
+            >
+            {%- if form.errors contains 'email' -%}
+              <small class="contact__field-error" id="ContactForm-email-error">
+                <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                <span class="form__message">
+                  <span class="svg-wrapper">
+                    {{- 'icon-error.svg' | inline_asset_content -}}
+                  </span>
+                  {{- form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email -}}
+                </span>
+              </small>
+            {%- endif -%}
+          </div>
+        
+         <div class="field attachment-field relative">
+            <input
+              type="file"
+              id="ContactForm-file"
+              class="field__input body-text-v3 file-input"
+              autocomplete="file"
+              name="contact[Attachments]"
+              placeholder="Attachments"
+              required
+            >
+              <div class="file-input-wrapper body-text-v3">
+                <span> Attachments * </span>
+                <span class="icon-wrapper flex"> {% render 'icons', icon: "upload" %} <span>Upload</span></span>
+              </div>
+          </div>
+        <div class="field">
+      
+        <input
+              class="field__input body-text-v3"
+              autocomplete="name"
+              type="text"
+              id="ContactForm-body"
+              name="contact[{{ 'templates.contact.form.comment' | t }}]"
+              placeholder="How Can We Help You?"
+              
+            >
+        </div>
+        <div class="contact__button">
+          <button type="submit" class="contact-button body-text-v2 uppercase">
+            {{ 'templates.contact.form.send' | t }}
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.contact-form.settings.title.default",
+      "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "contact_image",
+      "label": "Contact Image"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+     {
+      "type": "inline_richtext",
+      "id": "info_heading",
+      "label": "Contact Info Heading"
+    },
+    {
+      "type": "header",
+      "content": "Padding - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Padding - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info",
+      "name": "Information Tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Info Heading "
+        },
+        {
+          "type": "richtext",
+          "id": "info_description",
+          "label": "Info Description",
+        },
+        
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name"
+    }
+  ]
+}
+{% endschema %}

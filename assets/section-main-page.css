@@ -1,0 +1,125 @@
+.page-title {
+  margin-top: 0;
+}
+
+.main-page-title {
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 769px) {
+  .main-page-title {
+    margin-bottom: 5rem;
+  }
+}
+
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}
+
+p,ul,li{
+  margin: 0 !important;
+}
+.main-page table{
+  width: 100%;
+}
+.main-page table td{
+  width: auto !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.main-page table td b,
+.main-page table td strong{
+  font-weight: 700;
+}
+.main-page table tr td:not(:last-child){
+  border-right: 1px solid #D9D9D9 !important;
+}
+.main-page table tr td:last-child{
+  padding-left: 2rem !important;
+}
+.main-page table tr td:first-child{
+  text-transform: uppercase;
+  max-width: 35rem;
+  padding-right: 2rem !important;
+}
+.main-page table tbody tr:not(:last-child) td{
+  padding-bottom: 3rem !important
+}
+.main-page table tbody tr:last-child td{
+  padding-bottom: 5rem !important
+}
+.main-page table td ul{
+  padding-left: 2rem;
+}
+.main-page table td a{
+  color: currentColor;
+}
+.main-page table td ul li::marker{
+  font-size: 1rem;
+}
+.main-page table td ul li:not(:last-child){
+  padding-bottom: .2rem;
+}
+.main-page table td p:not(:last-child),
+.main-page table td ul:not(:last-child){
+  padding-bottom: 1rem;
+  
+}
+.main-page p,
+.main-page li{
+  line-height: 2rem !important;
+}
+
+.main-page tr {
+  counter-increment: row;
+}
+
+.main-page tr td:first-child {
+  position: relative;
+  padding-left: 2rem !important;
+}
+
+.main-page tr td:first-child::before {
+  content: counter(row) ".";
+  position: absolute;
+  left: 0;
+  font-size:1.4rem;
+  line-height: 1.4rem;
+  top: .27rem;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .main-page table tr td,
+  .main-page table tr td:not(:last-child){
+    border: none !important;
+    border-right: none !important;
+  }
+  .main-page tr{
+    display: flex;
+    flex-direction: column;
+  }
+  .main-page table tbody tr:not(:last-child) td{
+    padding-bottom: 2rem !important;
+  }
+  .main-page table tr td:last-child{
+    padding-left: 0 !important;
+  }
+  .main-page table tbody tr:last-child td{
+    padding-bottom: 0 !important;
+  }
+  .main-page table tbody tr:not(:last-child) td:first-child,
+  .main-page table tbody tr:last-child td:first-child{
+    padding-bottom: 1rem !important;
+  }
+  .main-page table tr td:first-child{
+    max-width: 100%;
+  }
+
+}

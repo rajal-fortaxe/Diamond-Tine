@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_eAiWk9": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Products",
+            "menu": "products-2-0",
+            "container_width": 82
+          }
+        },
+        "link_list_n8AGhi": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help With",
+            "menu": "help-with-2-0",
+            "container_width": 88
+          }
+        },
+        "link_list_6qXm9a": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "quick-links-2-0",
+            "container_width": 172
+          }
+        }
+      },
+      "block_order": [
+        "link_list_eAiWk9",
+        "link_list_n8AGhi",
+        "link_list_6qXm9a"
+      ],
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to Learn More About Our L:atest News,<br> Products and Adventures",
+        "newsletter_container_width": 491,
+        "also_available_title": "Also Available In",
+        "walmart_link": "https://www.walmart.com/browse/0?facet=brand:DiamondAffaire",
+        "ebay_link": "https://www.ebay.com/str/diamondaffaire?_trksid=p4429486.m145687.l149086",
+        "etsy_link": "https://www.etsy.com/shop/diamondaffaire?ref=seller-platform-mcnav",
+        "also_available": true,
+        "social_title": "Social",
+        "show_social": true,
+        "social_container_width": 82,
+        "margin_top": 35,
+        "margin_top_mobile": 15,
+        "padding_top_desktop": 70,
+        "padding_bottom_desktop": 30,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "image_grid_n7CcdP": {
+      "type": "image-grid",
+      "blocks": {
+        "image_eygLLr": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_35.png"
+          }
+        },
+        "image_irbrGe": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_37.png"
+          }
+        },
+        "image_ETYBVE": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_36.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_eygLLr",
+        "image_irbrGe",
+        "image_ETYBVE"
+      ],
+      "name": "Image Grid",
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "section_height_desktop": 70,
+        "section_height_mobile": 70,
+        "logo_image": "shopify://shop_images/Group_1171275688.svg",
+        "logo_text": "Diamond Affaire"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "image_grid_n7CcdP"
+  ]
+}

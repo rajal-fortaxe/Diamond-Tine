@@ -1,0 +1,14 @@
+{% comment %} {% section 'page-breadcrumb' %} {% endcomment %}
+<section id="wishlists" class="wishlist main-wishlist-page">
+  <div class="main-page-title center page-title heading-text-large-thin small-heading-text-large-thin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </div>
+  <div class="page-width">
+    {% comment %} <div class="wishlist_empty hidden">{{ 'products.product.empty_wishlist' | t }}</div> {% endcomment %}
+    <div class="page__inner">
+      <div class="page__content">
+        <div class="wishlist__grid  grid  grid--2-col-tablet-down grid--4-col-desktop loaded loading_wishlist" grid-wishlist=""></div>
+      </div>
+    </div>
+  </div>
+</section>

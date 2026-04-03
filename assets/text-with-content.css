@@ -1,0 +1,29 @@
+.text-with-content .text-with-content-wrapper{
+  /* display: grid; */
+  /* gap: 2rem; */
+}
+.text-with-content .text-with-content-item{
+  height: 100%;
+  padding: 2rem;
+}
+.text-with-content .text-with-content-item a{
+  text-decoration: none;
+}
+
+.text-with-content .text-with-content-item .text-with-content__description{
+  margin-top: 2rem;
+}
+.text-with-content .swiper-wrapper{
+  padding-inline: 2rem;
+  width: calc(100% - 4rem);
+}
+.text-with-content .swiper-slide{
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .text-with-content .swiper-wrapper{
+    padding-inline: 1.6rem;
+    width: calc(100% - 3.2rem);
+  }
+} 

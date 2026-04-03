@@ -1,0 +1,108 @@
+{{ 'scrolling-promotion.css' | asset_url | stylesheet_tag }}
+{% style %}
+#scrolling-promotion-{{ section.id }} {
+   color: {{ section.settings.color_text }};
+      background: {{ section.settings.color_background }};
+}
+{%  endstyle %}
+<div id="scrolling-promotion-{{ section.id }}" class="">
+  {% if section.blocks.size > 0 %}
+    <div class="scroll-promotions body-text-small uppercase" style="--scrolling-speed:{{ section.settings.scrooling_speed }}s">
+      <div class="scroll-track body-text-small uppercase">
+        {% for i in (1..15) %}
+          {% for block in section.blocks %}
+            {% if block.type == "scrolling_promotion" %}
+              <div class="scroll-item body-text-small uppercase">
+                <div class="scrolling-item-inner-wrappr uppercase body-text-small">
+                    {%- if block.settings.link != blank -%}
+                      <a
+                        href="{{ block.settings.link }}"
+                        class="announcement-bar__link link link--text focus-inset animate-arrow uppercase body-text-small"
+                      >
+                    {%- endif -%}
+                      {{ block.settings.text }}
+                      {% if block.settings.text_icon != blank  %}
+                        <span class="flex">
+                          {{ block.settings.text_icon | image_url: width: 10, height: 10 | image_tag  }}
+                        </span>
+                      {% endif %}
+                    {%- if block.settings.link != blank -%}
+                    </a>
+                    {%- endif -%}
+                </div>
+                  {% if section.settings.enable_scrooling_seperator == true %}
+                    <span>{% render 'icons', icon: 'scrolling-separator' %}</span>
+                  {%  endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {%  endif %}
+</div>
+{% schema %}
+{
+  "name": "Scrolling Promotion",
+  "class": "scrolling-promotion-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },   
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scrooling_seperator",
+      "default": false,
+      "label": "Enable Scrooling text seperator"
+    },
+    {
+      "type": "range",
+      "id": "scrooling_speed",
+      "min": 3,
+      "max": 50,
+      "step": 1,
+      "unit": "s",
+      "label": "scrolling speed",
+      "default": 20
+    },  
+  ],
+  "blocks": [
+    {
+      "type": "scrolling_promotion",
+      "name": "Scroling Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Text",
+        },
+        {
+          "type": "image_picker",
+          "id": "text_icon",
+          "label": "Text Icon"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Promotion",
+    }
+  ]
+}
+{% endschema %}

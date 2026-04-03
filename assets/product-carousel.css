@@ -1,0 +1,23 @@
+.product-carousel .heading-wrapper{
+  width: 100%;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+/* .product-carousel .swiper-slide{
+  max-width: 33.5rem;
+} */
+.product-carousel .swiper-wrapper .swiper-slide:last-child{
+  margin-right: 0 !important;
+}
+.product-carousel .js-collection-product-carousel .swiper-slide{
+    height: auto;
+}
+@media screen and (max-width: 768px) {
+  .product-carousel .heading-wrapper{
+     margin-bottom: 2rem; 
+  }
+  
+  
+}
