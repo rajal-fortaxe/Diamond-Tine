@@ -1,0 +1,231 @@
+{{ 'collection-tab.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #collection-tab-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-tab-background: {{  section.settings.tab_background_color }};
+    --color-tab-text-color: {{ section.settings.tab_text_color }};
+    --color-active-tab-background: {{ section.settings.active_tab_background_color }};
+    --color-active-tab-text-color: {{ section.settings.active_tab_text_color }};
+  } 
+   #collection-tab-{{ section.id }} .subhedaing{
+    color: {{ section.settings.subheading_text_color }};
+   }
+   #collection-tab-{{ section.id }} .subhedaing span{
+        color: {{ section.settings.subheading_highlighted_text_color }};
+   }
+{%- endstyle -%}
+<section id="collection-tab-{{ section.id }}" class="collection-tab section-{{ section.id }}-padding">
+  {% if section.settings.heading_text != blank or section.settings.link != blank and section.settings.link_text != blank  %}
+    <div class="heading-wrapper page-width flex page-width">
+        {%  if section.settings.heading_text != blank %}
+          <div class="section-heading heading-extra-large uppercase body-text-large small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+            {{ section.settings.heading_text }}
+          </div>
+        {%  endif %}
+    </div>
+  {% endif %}
+  <collection-tab>
+    <div class="collection-tabs">
+
+        <!-- Tabs -->
+        <div class="collection-tabs-nav page-width">
+            {% for block in section.blocks %}
+                <button class="collection-tab-btn {% if forloop.index == 1 %}active {%  endif %}" data-tab="tab{{ forloop.index }}">
+                    <div class="slide-pill">
+                        {% render 'icons', icon:"animataed-header-logo" %}
+                    </div>
+                    {{ block.settings.collection_name }}
+                </button>
+            {% endfor %}
+        </div>
+        {%  if section.settings.subheading %}
+            <div class="subhedaing body-text-v6">
+                {{ section.settings.subheading }}
+            </div>
+        {% endif %}
+        <!-- Content -->
+        <div class="collection-tabs-content">
+            {% for block in section.blocks %}
+                <div class="collection-tab-panel {% if forloop.index == 1 %} active {% endif %}" id="tab{{ forloop.index }}">
+                    <div class="swiper js-collection-tab-caousel">
+                        <div class="swiper-wrapper">
+                            {% for product in block.settings.collection.products limit: 10 %}
+                                <div class="main-product swiper-slide">
+                                    {%  render 'custom-product-card', product: product %}
+                                </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                   
+                    {%  if block.settings.collection.products.size > 5 %}
+                        <div class="collection-tab-all-button center">
+                            <a class="link uppercase center heading-text-small-thin-v2 collection-tab-all-button" href="{{ block.settings.collection.url  }}" style="color: {{  section.settings.button_color }}"> {{ section.settings.link_text }}</a>
+                        </div>
+                    {%  endif %}
+                
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+  </collection-tab>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Collection Tab",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "heading_text_color",
+        "label": "Heading Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "subheading_text_color",
+        "label": "subheading Text Color",
+        "default": "#777777"
+      },
+      {
+        "type": "color",
+        "id": "subheading_highlighted_text_color",
+        "label": "subheading Highlighted Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "tab_background_color",
+        "label": "Tab Background Color",
+        "default": "#F5F5F5"
+      },
+      {
+        "type": "color",
+        "id": "tab_text_color",
+        "label": "Tab Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "active_tab_background_color",
+        "label": "Active Tab Background Color",
+        "default": "#721520"
+      },
+      {
+        "type": "color",
+        "id": "active_tab_text_color",
+        "label": "Active Tab Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button Color",
+        "default": "#000000"
+      },
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading"
+      },
+     {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link text",
+        "default": "view All"
+      },
+      {
+        "type": "html",
+        "id": "subheading",
+        "label": "Subheading",
+        "info": "add span tag for highight EX: <span> </span>"
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+           {
+            "type": "text",
+            "id": "collection_name",
+            "label": "Collection Tab Name",
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Collection Tab",
+      }
+    ]
+  }
+{% endschema %}

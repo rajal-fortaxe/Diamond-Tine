@@ -15,12 +15,12 @@
   endif
 
   assign show_popular_countries = false
-  if localization.available_countries.size > 9 and popular_countries.size > 1
+  if localization.available_countries.size > 9 and popular_countries.size > 0
     assign show_popular_countries = true
   endif
 
   assign show_currencies = false
-  if currencies.size > 1
+  if currencies.size > 0
     assign show_currencies = true
   endif
 %}
@@ -28,17 +28,16 @@
 <div class="disclosure">
   <button
     type="button"
-    class="disclosure__button localization-form__select localization-selector link link--text caption-large"
+    class="disclosure__button body-text localization-form__select localization-selector link link--text caption-large"
     aria-expanded="false"
     aria-controls="{{ localPosition }}-country-results"
     aria-describedby="{{ localPosition }}Label"
   >
     <span>
-      {{- localization.country.name }} |
       {{ localization.country.currency.iso_code }}
       {{ localization.country.currency.symbol -}}
     </span>
-    {{ 'icon-caret.svg' | inline_asset_content }}
+     {% render 'icons', icon:"menu-down-arrow" %}
   </button>
   <div class="disclosure__list-wrapper country-selector" hidden>
     <div class="country-filter{% unless show_country_filter %} country-filter--no-padding{% endunless %}">
@@ -105,14 +104,13 @@
                 id="{{ country.name }}"
               >
                 <span
-                  {% if country.iso_code != localization.country.iso_code %}
-                    class="visibility-hidden"
-                  {% endif %}
+                  
+                    class="{% if country.iso_code != localization.country.iso_code %}visibility-hidden {% endif %} check-box-span"
+                 
                 >
                   {{- 'icon-checkmark.svg' | inline_asset_content -}}
                 </span>
-                <span class="country">{{- country.name }}</span>
-                <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}">
+                <span class="localization-form__currency motion-reduce localization-text{% unless show_currencies %} hidden{% endunless %}">
                   {{ country.currency.iso_code }}
                   {{ country.currency.symbol -}}
                 </span>
@@ -134,14 +132,13 @@
               id="{{ country.name }}"
             >
               <span
-                {% if country.iso_code != localization.country.iso_code %}
-                  class="visibility-hidden"
-                {% endif %}
+               
+                  class=" {% if country.iso_code != localization.country.iso_code %}visibility-hidden  {% endif %} check-box-span"
+               
               >
                 {{- 'icon-checkmark.svg' | inline_asset_content -}}
               </span>
-              <span class="country">{{- country.name }}</span>
-              <span class="localization-form__currency motion-reduce{% unless show_currencies %} hidden{% endunless %}">
+              <span class="localization-form__currency motion-reduce body-text localization-text{% unless show_currencies %} hidden{% endunless %}">
                 {{ country.currency.iso_code }}
                 {{ country.currency.symbol -}}
               </span>

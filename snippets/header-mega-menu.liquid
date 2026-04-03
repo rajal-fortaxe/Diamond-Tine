@@ -16,17 +16,23 @@
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                 <summary
                   id="HeaderMenu-{{ link.handle }}"
-                  class="header__menu-item list-menu__item body-text-v2 uppercase link focus-inset"
+                  class="header__menu-item list-menu__item body-text-v7 link focus-inset"
                   data-url = {{ link.url }}
                 >
                
                   <span
-                    {%- if link.child_active %}
-                      class="header__active-menu-item"
-                    {% endif %}
+                    class="header__menu-item-child {%- if link.child_active %} header__active-menu-item {% endif %}"
                   >
-                       <a href="{{ link.url }}" class="text-decoration-none">
-                    {{- link.title | escape -}}
+                    <a href="{{ link.url }}" class="text-decoration-none flex">
+                      {%- if link.child_active %}
+                        <div class="slide-pill">
+                          {% render 'icons', icon:"animataed-header-logo" %}
+                        </div>
+                      {% endif %}
+                      {{- link.title | escape -}}
+                       {%- unless link.child_active %}
+                        {% render 'icons', icon:"menu-down-arrow" %}
+                      {% endunless %}
                      </a>
                   </span>
                  
@@ -45,7 +51,7 @@
                         <a
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           href="{{ childlink.url }}"
-                          class="mega-menu__link mega-menu__link--level-2 body-text-v2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          class="mega-menu__link mega-menu__link--level-2 body-text-v7 link{% if childlink.current %} mega-menu__link--active{% endif %}"
                           {% if childlink.current %}
                             aria-current="page"
                           {% endif %}
@@ -59,7 +65,7 @@
                                 <a
                                   id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                   href="{{ grandchildlink.url }}"
-                                  class="mega-menu__link link body-text-v2{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  class="mega-menu__link link body-text-v7{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
                                   {% if grandchildlink.current %}
                                     aria-current="page"
                                   {% endif %}
@@ -77,9 +83,9 @@
                     {% if block.type == "megamenu_block" %}
                       {% assign  menu_id = block.settings.megamenu_id  %}
                       {% assign first_part = menu_id | split: "-" | first | times: 1 %}
-                      {% assign last_part = menu_id | split: "-" | last | times: 1 %}
+                      {% comment %} {% assign last_part = menu_id | split: "-" | last | times: 1 %} {% endcomment %}
                       
-                      {% if first_part == main_index and last_part == forloop.index %}
+                      {% if first_part == main_index %}
                         {% if block.settings.megamenu_image_desktop != blank and block.settings.megamenu_url != blank or  block.settings.megamenu_image_desktop_2 != blank and block.settings.megamenu_url_2 != blank %}
                           <div class="menu-image-wrapper flex">
                             {% if  block.settings.megamenu_image_desktop != blank and block.settings.megamenu_url != blank %}
@@ -87,7 +93,7 @@
                                 <a class="link flex text-decoration-none" href="{{ block.settings.megamenu_url }}">
                                   {{ block.settings.megamenu_image_desktop  | image_url: width:3500 | image_tag  }}
                                   {% if block.settings.megamenu_text != blank %}
-                                    <div class="meagenu-image-text body-text-v2 uppercase">
+                                    <div class="meagenu-image-text body-text-v7">
                                       {{ block.settings.megamenu_text }}
                                     </div>
                                   {% endif %}
@@ -99,7 +105,7 @@
                                 <a class="link flex text-decoration-none" href="{{ block.settings.megamenu_url_2 }}">
                                   {{ block.settings.megamenu_image_desktop_2  | image_url: width: 3500 | image_tag  }}
                                   {% if block.settings.megamenu_text_2 != blank %}
-                                    <div class="meagenu-image-text body-text-v2 uppercase">
+                                    <div class="meagenu-image-text body-text-v7">
                                       {{ block.settings.megamenu_text_2 }}
                                     </div>
                                   {% endif %}
@@ -120,16 +126,20 @@
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
-            class="header__menu-item list-menu__item body-text-v2 uppercase link link--text focus-inset non-hovered"
+            class="header__menu-item list-menu__item body-text-v7 link link--text focus-inset non-hovered"
             {% if link.current %}
               aria-current="page"
             {% endif %}
           >
             <span
-              {%- if link.current %}
-                class="header__active-menu-item"
-              {% endif %}
+              class="header__menu-item-child flex{%- if link.current %} header__active-menu-item {% endif %}"
             >
+
+              {%- if link.current %}
+                 <div class="slide-pill">
+                    {% render 'icons', icon:"animataed-header-logo" %}
+                  </div>
+              {% endif %}
               {{- link.title | escape -}}
             </span>
           </a>

@@ -113,13 +113,13 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 769px) {
   .page-width {
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
 
   .header.page-width,
   .utility-bar__grid.page-width {
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .page-width--narrow {
@@ -137,8 +137,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .page-width--narrow {
@@ -1626,8 +1626,7 @@ details[open] > .share-button__fallback {
 .field:before,
 .select:before,
 .customer .field:before,
-.customer select:before,
-.localization-form__select:before {
+.customer select:before {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -1644,8 +1643,7 @@ details[open] > .share-button__fallback {
 .field:after,
 .select:after,
 .customer .field:after,
-.customer select:after,
-.localization-form__select:after {
+.customer select:after {
   pointer-events: none;
   content: '';
   position: absolute;
@@ -1775,11 +1773,10 @@ details[open] > .share-button__fallback {
 .search .field__label {
   top: calc(100% - 2.5rem);
   left: 0;
-  color: #9E9E9E;
+  color: rgba(var(--color-foreground));
 }
  .search__input::placeholder{
-  color: #9E9E9E;
-  text-transform:uppercase;
+  color: rgba(var(--color-foreground));
   opacity: 1 !important;
 }
 .field__input:focus ~ .field__label,
@@ -1801,7 +1798,7 @@ details[open] > .share-button__fallback {
   color: #000000;
 }
 .search:has(.field__input:focus) .search__button svg{
-   color: #000000;
+   /* color: #000000; */
 }
 .field__input:focus,
 .field__input:not(:placeholder-shown),
@@ -2129,15 +2126,20 @@ input[type='checkbox'] {
   display: none;
 }
 
-.cart-count-bubble {
-  /* position: absolute; */
-  /* background-color: rgb(var(--color-button)); */
-  /* color: rgb(var(--color-button-text)); */
+.cart-count-bubble,
+.wishlist-bubble {
+  position: absolute;
+  background-color: rgba(114, 21, 32, 1);
+  color: rgb(var(--color-button-text));
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: -.4rem;
+  right: .5rem;
   text-decoration: none;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 /* utility-bar */
@@ -2570,7 +2572,7 @@ input[type='checkbox'] {
   } */
 
   .header__heading-link{
-    padding-bottom: 2rem;
+    padding-bottom: 1.6rem;
     height: 100%;
     display: flex;
   }
@@ -2600,7 +2602,7 @@ input[type='checkbox'] {
   gap: 1.5rem;
   align-items: center;
   text-decoration: none;
-  padding-bottom: 2rem;
+  padding-bottom: 1.6rem;
   height: 100%;
 }
 
@@ -2616,6 +2618,7 @@ input[type='checkbox'] {
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
 }
 
 .header__icon {
@@ -2650,8 +2653,8 @@ input[type='checkbox'] {
 }
 
 .header__icon {
-  height: 2.4rem;
-  width: 2.4rem;
+  height: fit-content;
+  width: fit-content;
   padding: 0;
 }
 
@@ -2711,18 +2714,12 @@ account-icon {
   }
 
 }
-.header__icon--wishlist,
-.header__icon--cart{
-  width: 4.5rem;
-}
 .header__icon.header__icon--wishlist .svg-wrapper,
 .header__icon.header__icon--cart .svg-wrapper{
   width: 4.5rem;
   gap: .3rem;
 }
-.header__icon.header__icon--cart  .cart-count-bubble{
-  margin-left: .3rem;
-}
+
 /* Search */
 menu-drawer + .header__search {
   display: none;
@@ -2855,7 +2852,7 @@ details[open] .modal-overlay::after {
 
 @media screen and (min-width: 990px) {
   .search-modal__form {
-    max-width: 100%;
+    max-width: 80rem;
   }
 
   .search-modal__close-button {
@@ -2947,7 +2944,7 @@ details[open] > .header__submenu {
 
 .header__menu-item {
   padding: 0;
-  padding-bottom: 2rem;
+  padding-bottom: 1.6rem;
   text-decoration: none;
   /* padding-bottom: 0; */
   color: rgba(var(--color-foreground));
@@ -2958,12 +2955,13 @@ details[open] > .header__submenu {
 }
 
 .header__menu-item span {
-  transition: text-decoration var(--duration-short) ease;
+  transition: opacity .3s ease-in-out
+
 }
 
 .header__menu-item:hover span {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  transition: opacity .3s ease-in-out;
+  opacity: .5;
 }
 
 details[open] > .header__menu-item {
@@ -2984,11 +2982,33 @@ details[open] > .header__menu-item .icon-caret {
 .accordian-hover-animate details[open] .details-content {
   opacity: 1;
 }
-.header__active-menu-item {
-  transition: text-decoration-thickness var(--duration-short) ease;
-  color: rgb(var(--color-foreground));
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+span.header__menu-item-child {
+    /* padding: 1.2rem 1.7rem; */
+    /* border: 1px solid transparent; */
+    /* border-radius: 3.2rem; */
+    transition: border .3s ease-in-out;
+    align-items: center;
+    gap: 1rem;
+}
+summary span.header__menu-item-child a{
+  align-items: center;
+  gap: 1rem;
+}
+span.header__menu-item-child .menu-down-arrow{
+  transition: all .3s ease-in-out;
+}
+details[open] span.header__menu-item-child .menu-down-arrow,
+summary span.header__menu-item-child a:hover .menu-down-arrow{
+  transition: all .3s ease-in-out;
+  rotate: 180deg;
+ 
+}
+
+span.header__menu-item-child.header__active-menu-item {
+     border: 1px solid transparent;
+    border-color: rgb(var(--color-foreground));
+    transition: border .3s ease-in-out;
+    padding: 1.2rem 1.7rem;
 }
 
 .header__menu-item:hover .header__active-menu-item {
@@ -3812,7 +3832,9 @@ button.shopify-payment-button__button--unbranded:hover,
   }
 }
 body:has(.transprent-header) sticky-header,
-body:has(.transprent-header) sticky-header .header__menu-item{
+body:has(.transprent-header) sticky-header .header__menu-item,
+body:has(.transprent-header) header,
+body:has(.transprent-header) .has-inline-searchbar-layout .inline-searchbar-menu-layout{
   background: transparent;
   --color-foreground: var(--color-transprent);
   /* transition: all .1s ease-in-out; */
@@ -3823,16 +3845,32 @@ body:has(header-menu .mega-menu[open]) sticky-header,
 body:has(.header__search details[open]) sticky-header,
 body:has(.header__search details[open]) sticky-header .header__menu-item,
 body:has(header-menu .mega-menu[open]) sticky-header .header__menu-item,
-.body:has(.transprent-header) .shopify-section-header-sticky sticky-header .link--text,
+body:has(.transprent-header) .shopify-section-header-sticky sticky-header .link--text,
 body:has(header-drawer details[open]) sticky-header,
-body:has(.transprent-header) .shopify-section-header-sticky sticky-header .header__menu-item{
+body:has(.transprent-header) .shopify-section-header-sticky sticky-header .header__menu-item,
+body:has(header-drawer details[open]) header,
+body:has(.transprent-header) .shopify-section-header-sticky header,
+body:has(header-menu .mega-menu[open]) header,
+body:has(.header__search details[open]) header,
+body:has(.transprent-header) .shopify-section-header-sticky header.has-inline-searchbar-layout .inline-searchbar-menu-layout,
+body:has(header-menu .mega-menu[open])  header.has-inline-searchbar-layout .inline-searchbar-menu-layout,
+body:has(.header__search details[open]) header.has-inline-searchbar-layout .inline-searchbar-menu-layout
+{
   background: rgb(var(--color-background));
-  --color-foreground: var( --color-menu-text);
+  --color-foreground: var(--color-menu-text);
   /* transition: all .1s ease-in-out; */
   border-color: #D9D9D9;
 }
+  body:has(.transprent-header) .shopify-section-header-sticky .header-logo-text,
+  body:has(header-menu .mega-menu[open])  .header-logo-text,
+  body:has(.header__search details[open]) .header-logo-text{
+    color: var(--header-logo-color);
+  }
+  body:has(.transprent-header) .header-logo-text{
+    color: rgb(var(--color-transprent));
+  }
 .header__submenu .header__menu-item{
-    --color-foreground: var( --color-menu-text) !important;
+    --color-foreground: var(--color-menu-text) !important;
 }
 .text-decoration-none{
   text-decoration: none;

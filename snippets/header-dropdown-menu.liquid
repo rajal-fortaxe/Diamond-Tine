@@ -14,7 +14,7 @@
             <details id="Details-HeaderMenu-{{ forloop.index }}">
               <summary
                 id="HeaderMenu-{{ link.handle }}"
-                class="header__menu-item list-menu__item  body-text-v2 uppercase link focus-inset"
+                class="header__menu-item list-menu__item  body-text-v7 link focus-inset"
               >
                 <span
                   {%- if link.child_active %}
@@ -36,7 +36,7 @@
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
-                        class="header__menu-item list-menu__item  body-text-v2 uppercase link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                        class="header__menu-item list-menu__item  body-text-v7 link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
                         {% if childlink.current %}
                           aria-current="page"
                         {% endif %}
@@ -61,7 +61,7 @@
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
-                                class="header__menu-item list-menu__item  body-text-v2 uppercase link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                class="header__menu-item list-menu__item  body-text-v7 link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
                                 {% if grandchildlink.current %}
                                   aria-current="page"
                                 {% endif %}
@@ -82,7 +82,7 @@
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
-            class="header__menu-item list-menu__item  body-text-v2 uppercase link link--text focus-inset"
+            class="header__menu-item list-menu__item  body-text-v7 link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
             {% endif %}

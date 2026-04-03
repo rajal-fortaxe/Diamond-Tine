@@ -200,29 +200,6 @@
     },
     "1765951286e7d005c9": {
       "type": "apps",
-      "blocks": {
-        "instafeed_app_block_N4ejif": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "Follow @diamondaffaire for your daily sparkle and shine. #LiveBrilliantly",
-            "title_color": "",
-            "title_size_v2": 0,
-            "alignment": "left",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_N4ejif"
-      ],
       "settings": {
         "include_margins": true
       }

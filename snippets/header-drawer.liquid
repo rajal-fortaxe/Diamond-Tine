@@ -55,7 +55,7 @@
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
                                     href="{{ childlink.url }}"
-                                    class="body-text-v2 menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    class="body-text-v7 menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                     {% if childlink.current %}
                                       aria-current="page"
                                     {% endif %}
@@ -66,7 +66,7 @@
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
                                     <summary
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                      class="menu-drawer__menu-item body-text-v2 link link--text list-menu__item focus-inset"
+                                      class="menu-drawer__menu-item body-text-v7 link link--text list-menu__item focus-inset"
                                     >
                                       {{ childlink.title | escape }}
                                       <span class="flex">
@@ -98,7 +98,7 @@
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                               href="{{ grandchildlink.url }}"
-                                              class="body-text-v2 menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              class="body-text-v7 menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                               {% if grandchildlink.current %}
                                                 aria-current="page"
                                               {% endif %}
@@ -133,7 +133,7 @@
                                         <a class="link flex text-decoration-none w-100" href="{{ block.settings.megamenu_url }}">
                                           {{ block.settings.megamenu_image_mobile |default: block.settings.megamenu_image_desktop  | image_url: width: 3500 | image_tag  }}
                                           {% if block.settings.megamenu_text != blank %}
-                                            <div class="meagenu-image-text body-text-v2 uppercase">
+                                            <div class="meagenu-image-text body-text-v7">
                                               {{ block.settings.megamenu_text }}
                                             </div>
                                           {% endif %}
@@ -145,7 +145,7 @@
                                         <a class="link flex text-decoration-none w-100" href="{{ block.settings.megamenu_url_2 }}">
                                           {{ block.settings.megamenu_image_mobile_2 |default: block.settings.megamenu_image_desktop_2  | image_url: width: 3500 | image_tag  }}
                                           {% if block.settings.megamenu_text_2 != blank %}
-                                            <div class="meagenu-image-text body-text-v2 uppercase">
+                                            <div class="meagenu-image-text body-text-v7">
                                               {{ block.settings.megamenu_text_2 }}
                                             </div>
                                           {% endif %}

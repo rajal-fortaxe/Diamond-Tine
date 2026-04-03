@@ -72,7 +72,7 @@
                 </a>
             </div>
         {%  else %}
-          {%  if  section.settings.title != blank or section.settings.subheading != blank or  section.settings.link != blank and section.settings.link_text != blank %}
+          {%  if  section.settings.title != blank or section.settings.description != blank or section.settings.subheading != blank or  section.settings.link != blank and section.settings.link_text != blank %}
               <div class="video-banner-content page-width content-align-{{ section.settings.text_align }}">
                   <div class="video-banner-content__inner-wrapper">
                   {%- if section.settings.title != blank -%}
@@ -82,7 +82,7 @@
                       <div class="video-content__subheading heading-text-small-thin">{{ section.settings.subheading }}</div>
                   {%  endif %}
                   {%- if section.settings.description != blank -%}
-                      <div class="video-content__description body-text">{{ section.settings.description }}</div>
+                      <div class="video-content__description heading-extra-large">{{ section.settings.description }}</div>
                   {%  endif %}
                   {%- if section.settings.link != blank and section.settings.link_text != blank -%}
                       <a href='{{ section.settings.link }}' class="video-content__button button {%if section.settings.button_type == "outline" %} button--secondary {% endif %} body-text-small small-body-text-small">{{ section.settings.link_text }}</a>
@@ -255,18 +255,6 @@
         }
       ]
     },
- 
-   // {
-     // "type": "range",
-     /// "id": "overlay_opacity",
-    //  "label": "t:sections.hero-video.settings.overlay_opacity.label",
-   //   "info": "t:sections.hero-video.settings.overlay_opacity.info",
-    //  "default": 0,
-   //   "min": 0,
-    //  "max": 100,
-     // "step": 2,
-     // "unit": "%"
-    //},
     {
       "type": "select",
       "id": "section_height",

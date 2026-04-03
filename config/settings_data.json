@@ -10,10 +10,9 @@
 {
   "current": {
     "logo_width": 90,
-    "favicon": "shopify://shop_images/Nested_Sequence_02.00_00_01_17.Still002.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
-    "type_body_font": "sans_serif_n4",
+    "type_body_font": "assistant_n4",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,
@@ -23,7 +22,7 @@
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 99,
+    "buttons_radius": 0,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
@@ -109,20 +108,20 @@
     "brand_headline": "",
     "brand_description": "<p></p>",
     "brand_image_width": 100,
-    "social_facebook_link": "https://www.facebook.com/diamondaffaire/",
-    "social_instagram_link": "https://www.instagram.com/diamondaffaire/",
+    "social_facebook_link": "",
+    "social_instagram_link": "",
     "social_youtube_link": "",
     "social_tiktok_link": "",
     "social_twitter_link": "",
     "social_snapchat_link": "",
-    "social_pinterest_link": "https://in.pinterest.com/diamondaffaire/",
+    "social_pinterest_link": "",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
-    "predictive_search_show_price": true,
+    "predictive_search_show_price": false,
     "currency_code_enabled": false,
-    "cart_type": "drawer",
+    "cart_type": "notification",
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
@@ -142,67 +141,16 @@
       }
     },
     "content_for_index": [],
-    "blocks": {
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": true,
-        "settings": {}
-      },
-      "11813581335429059158": {
-        "type": "shopify://apps/seedgrow-whatsapp-chat/blocks/app-embed/b85b5e45-9cea-417a-9b9e-0aa961ccf3ef",
-        "disabled": true,
-        "settings": {
-          "show_on_desktop": true,
-          "show_on_mobile": true,
-          "show_label_on_desktop": false,
-          "show_dismiss_button_desktop": false,
-          "show_label_on_mobile": false,
-          "show_dismiss_button_mobile": false,
-          "show_scroll_bar": false,
-          "show_gdpr_notice": false,
-          "use_click_to_chat": false,
-          "widget_label_text": "Need Help? Chat with us",
-          "widget_text": "Start a Conversation",
-          "description": "Hi! Click one of our member below to chat on WhatsApp",
-          "response_text": "The team typically replies in a few minutes.",
-          "gdpr_text": "Please accept our privacy policy first to start a conversation.",
-          "background_color": "#777777",
-          "text_color": "#ffffff",
-          "position": "right",
-          "label_width": 155,
-          "scroll_bar_height": 500,
-          "icon_size": 56,
-          "distance_left": 30,
-          "distance_right": 30,
-          "distance_bottom": 30
-        }
-      },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
-      "yoast-seo-metatags": {
-        "type": "shopify://apps/yoast-seo-seo-for-everyone/blocks/metatags/7c777011-bc88-4743-a24e-64336e1e5b46",
-        "disabled": false,
-        "settings": {}
-      },
-      "2567389343055140935": {
-        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      }
-    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
           "background": "#f5efe6",
-          "background_gradient": "#F5EFE6",
-          "text": "#000000",
-          "button": "#000000",
+          "background_gradient": "",
+          "text": "#121212",
+          "button": "#121212",
           "button_label": "#ffffff",
-          "secondary_button_label": "#000000",
-          "shadow": "#000000"
+          "secondary_button_label": "#121212",
+          "shadow": "#121212"
         }
       },
       "scheme-2": {
@@ -229,11 +177,11 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#000000",
+          "background": "#121212",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
-          "button_label": "#000000",
+          "button_label": "#121212",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
         }
@@ -247,17 +195,6 @@
           "button_label": "#334fb4",
           "secondary_button_label": "#ffffff",
           "shadow": "#121212"
-        }
-      },
-      "scheme-9357405a-8f1d-4505-84c2-694ec1e65db9": {
-        "settings": {
-          "background": "#ffffff",
-          "background_gradient": "",
-          "text": "#000000",
-          "button": "#000000",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#000000",
-          "shadow": "#000000"
         }
       }
     }

@@ -50,12 +50,8 @@
           "type": "megamenu_block",
           "settings": {
             "megamenu_id": "2-1",
-            "megamenu_image_desktop": "shopify://shop_images/Rectangle_161125044.jpg",
-            "megamenu_image_mobile": "shopify://shop_images/Rectangle_161125044_1.png",
             "megamenu_text": "Statement",
             "megamenu_url": "shopify://collections/all-rings",
-            "megamenu_image_desktop_2": "shopify://shop_images/Rectangle_161125045.jpg",
-            "megamenu_image_mobile_2": "shopify://shop_images/Rectangle_161125044_1.png",
             "megamenu_text_2": "Cocktail",
             "megamenu_url_2": "shopify://collections/earrings"
           }
@@ -64,8 +60,6 @@
           "type": "megamenu_block",
           "settings": {
             "megamenu_id": "3-1",
-            "megamenu_image_desktop": "shopify://shop_images/CopyofCopyofP1560168.jpg",
-            "megamenu_image_mobile": "shopify://shop_images/CopyofCopyofP1560166.jpg",
             "megamenu_text": "Layering",
             "megamenu_url": "",
             "megamenu_text_2": "",
@@ -78,12 +72,13 @@
         "megamenu_block_86qUyq"
       ],
       "settings": {
+        "header_with_search_layout": true,
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
         "menu": "main-menu-2-0",
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "color_background": "#f5efe6",
         "text_color": "#000000",
         "color_transprent": "#ffffff",

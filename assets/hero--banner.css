@@ -17,7 +17,7 @@
     position: absolute;
     width: fit-content;
     z-index: 2;
-    padding-block: 1.875rem 
+    padding-block: 1.8rem 
 }
 .video-banner .video-content__description i,
 .video-banner .video-content__description em{
@@ -53,16 +53,16 @@
     text-transform: uppercase;
 }
 .video-banner .video-banner-content.content-align-bottom-left{
-    bottom:0;
+    bottom:4.2rem;
     left:0;
 }
 .video-banner .video-banner-content.content-align-bottom-right{
-    bottom:0;
+    bottom:4.2rem;
     right:0;
     text-align: right;
 }
 .video-banner .video-banner-content.content-align-bottom-center{
-    bottom:0;
+    bottom:4.2rem;
     left:50%;
     transform: translateX(-50%);
     text-align: center;

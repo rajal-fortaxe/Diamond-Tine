@@ -16,17 +16,27 @@ window.addEventListener("scroll", updateVisibleHeight);
 window.addEventListener("resize", updateVisibleHeight);
 updateVisibleHeight();
 
-const header_heigt = document.querySelector(".section-header");
-if (header_heigt) { // Safety: don't crash if header doesn't exist
-  const headerHeight = header_heigt.offsetHeight;
-  document.documentElement.style.setProperty('--header-height', headerHeight + "px");
-}
+// const header_heigt = document.querySelector(".section-header");
+// if (header_heigt) { // Safety: don't crash if header doesn't exist
+//   const headerHeight = header_heigt.offsetHeight;
+//   document.documentElement.style.setProperty('--header-height', headerHeight + "px");
+// }
 document.documentElement.style.setProperty('--window-scroll-height', window.scrollY + "px");
 window.addEventListener("scroll", () => {
   document.documentElement.style.setProperty('--window-scroll-height', window.scrollY + "px");
 });
-
-
+window.addEventListener('load', () => {
+  const SearchBarLayout = document.querySelector('.inline-searchbar-header-layout');
+  if (SearchBarLayout) {
+    const height = SearchBarLayout.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--searchbar-header-height', height + 'px');
+  }
+  const header_heigt = document.querySelector(".section-header");
+  if (header_heigt) { // Safety: don't crash if header doesn't exist
+    const headerHeight = header_heigt.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--header-height', headerHeight + "px");
+  }
+});
 class CollectionCarousel extends HTMLElement {
   constructor() {
     super();
@@ -825,3 +835,127 @@ class AccordianHoverAnimate extends HTMLElement {
 }
 
 customElements.define('accordian-hover-animate', AccordianHoverAnimate);
+
+
+
+class BannerCarousel extends HTMLElement {
+  connectedCallback() {
+    const swiperEl = this.querySelector(".js-banner-carousel");
+    const container = this.querySelector('.dynamic-progress-container');
+    const slides = this.querySelectorAll('.swiper-slide');
+
+    // Get attributes from <banner-carousel>
+    const autoPlayAttr = this.getAttribute('data-auto-play') === 'true';
+    const autoSpeedAttr = parseInt(this.getAttribute('data-auto-speed')) || 5000;
+
+    // 1. Only create progress bars if autoplay is enabled
+    if (autoPlayAttr && container) {
+      slides.forEach(() => {
+        const bar = document.createElement('div');
+        bar.className = 'progress-bar-segment';
+        bar.innerHTML = '<div class="progress-bar-fill"></div>';
+        container.appendChild(bar);
+      });
+    }
+
+    const bars = this.querySelectorAll('.progress-bar-segment');
+
+    const swiper = new Swiper(swiperEl, {
+      loop: true,
+      // 2. Dynamic Autoplay Logic
+      autoplay: autoPlayAttr ? {
+        delay: autoSpeedAttr,
+        disableOnInteraction: false,
+      } : false,
+      
+      pagination: {
+        el: this.querySelector(".banner-pagination"),
+        clickable: true,
+      },
+
+      on: {
+        slideChange: function() {
+          if (!autoPlayAttr) return;
+          
+          bars.forEach((bar, index) => {
+            bar.classList.toggle('is-passed', index < this.realIndex);
+            bar.classList.toggle('is-active', index === this.realIndex);
+            
+            if (index !== this.realIndex) {
+              bar.style.setProperty('--progress', 0);
+            }
+          });
+        },
+        autoplayTimeLeft(s, time, progress) {
+          if (!autoPlayAttr) return;
+          
+          const activeBar = bars[this.realIndex];
+          if (activeBar) {
+            activeBar.style.setProperty("--progress", 1 - progress);
+          }
+        }
+      }
+    });
+  }
+}
+
+if (!customElements.get('banner-carousel')) {
+  customElements.define('banner-carousel', BannerCarousel);
+}
+
+class CollectionTab extends HTMLElement {
+  constructor() {
+    super();
+    this.collectionTabCarousel();
+  }
+
+  connectedCallback() {
+    this.buttons = this.querySelectorAll('.collection-tab-btn');
+    this.panels = this.querySelectorAll('.collection-tab-panel');
+
+    if (!this.buttons.length) return;
+
+    this.buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        this.switchTab(button);
+      });
+    });
+  }
+
+  switchTab(button) {
+    const tabId = button.getAttribute('data-tab');
+
+    this.buttons.forEach(btn => btn.classList.remove('active'));
+    this.panels.forEach(panel => panel.classList.remove('active'));
+
+    button.classList.add('active');
+
+    const targetPanel = this.querySelector(`#${tabId}`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+    }
+  }
+
+  collectionTabCarousel(){
+    var swiper = new Swiper(".js-collection-tab-caousel", {
+				slidesPerView: 1.5,
+				spaceBetween:10,
+				slidesOffsetAfter:30,
+        a11y: true,
+				breakpoints: {
+					769: {
+						slidesPerView: 3.5,
+						spaceBetween:  20,
+						slidesOffsetAfter: 0,
+					},
+					1024: {
+						slidesPerView: 4.5,
+						spaceBetween: 20,
+						slidesOffsetAfter:0,
+					}
+				}
+			});
+  }
+}
+
+customElements.define('collection-tab', CollectionTab);

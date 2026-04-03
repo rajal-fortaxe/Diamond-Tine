@@ -8,20 +8,20 @@
 <div class="disclosure">
   <button
     type="button"
-    class="disclosure__button localization-form__select localization-selector link link--text caption-large"
+    class="body-text disclosure__button localization-form__select localization-selector link link--text caption-large"
     aria-expanded="false"
     aria-controls="{{ localPosition }}List"
     aria-describedby="{{ localPosition }}Label"
   >
     <span>{{ localization.language.endonym_name | capitalize }}</span>
-    {{ 'icon-caret.svg' | inline_asset_content }}
+    {% render 'icons', icon:"menu-down-arrow" %}
   </button>
   <div class="disclosure__list-wrapper language-selector" hidden>
     <ul id="{{ localPosition }}List" role="list" class="disclosure__list list-unstyled">
       {%- for language in localization.available_languages -%}
         <li class="disclosure__item" tabindex="-1">
           <a
-            class="link link--text disclosure__link caption-large focus-inset"
+            class="body-text link link--text disclosure__link caption-large focus-inset"
             href="#"
             hreflang="{{ language.iso_code }}"
             lang="{{ language.iso_code }}"
@@ -31,13 +31,13 @@
             data-value="{{ language.iso_code }}"
           >
             <span
-              {% if language.iso_code != localization.language.iso_code %}
-                class="visibility-hidden"
-              {% endif %}
+              
+                class="{% if language.iso_code != localization.language.iso_code %}visibility-hidden{% endif %} check-box-span"
+              
             >
               {{- 'icon-checkmark.svg' | inline_asset_content -}}
             </span>
-            <span>
+            <span class="localization-text">
               {{ language.endonym_name | capitalize }}
             </span>
           </a>

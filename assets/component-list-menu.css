@@ -28,3 +28,28 @@
   width: 10rem;
   padding: 0.5rem;
 }
+
+.localization-selector{
+  display: flex;
+    padding: 0;
+    text-decoration: none;
+    gap: .7rem;
+    align-items: center;
+    width: calc(100% + 3.2rem);
+}
+.localization-selector span{
+  white-space: nowrap;
+}
+.desktop-localization-wrapper{
+  display: flex;
+  gap: 1.5rem;
+}
+.localization-selector svg{
+  height: 1.6rem;
+  width: 1.6rem;
+
+}
+.icon-text{
+  white-space: nowrap;
+
+}

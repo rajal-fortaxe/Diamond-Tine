@@ -37,3 +37,7 @@
   align-items: center;
 }
     
+.scroll-item span{
+  display: flex;
+  align-items: center;
+}

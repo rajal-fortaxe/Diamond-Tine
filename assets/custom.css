@@ -25,6 +25,12 @@
 .color-dark-gray{
   color: #9E9E9E
 }
+.display-block{
+  display: block;
+}
+.text-nowrap{
+  white-space: nowrap;
+}
 /* PRODUCT CARD  */
 .main-product img{
  aspect-ratio: 270/270; 

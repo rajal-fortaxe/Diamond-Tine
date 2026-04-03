@@ -1,8 +1,8 @@
 
 {%  if main_section.settings.media_type_desktop == "video" %}
-    {% if  section.settings.video_desktop != blank %}
+    {% if  main_section.settings.video_desktop != blank %}
         {{
-            section.settings.video_desktop
+            main_section.settings.video_desktop
             | video_tag:
             image_size: '3500x',
             autoplay: true,
@@ -18,9 +18,9 @@
 {%  endif %}
 
 {%  if main_section.settings.media_type_mobile == "video" %}
-    {% if  section.settings.video_desktop != blank or section.settings.video_mobile != blank %}
+    {% if  main_section.settings.video_desktop != blank or main_section.settings.video_mobile != blank %}
         {{
-            section.settings.video_mobile | default: section.settings.video_desktop
+            main_section.settings.video_mobile | default: main_section.settings.video_desktop
             | video_tag:
             image_size: '3000x',
             autoplay: true,
@@ -31,7 +31,7 @@
     {%  endif %}
 
 {% elsif main_section.settings.media_type_mobile == "image" %}
-     {% if  section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+     {% if  main_section.settings.desktop_image != blank or main_section.settings.mobile_image != blank %}
       {{ main_section.settings.mobile_image | default: main_section.settings.desktop_image | image_url: width: 2500 | image_tag: class: "image-banner__image large-up-hide medium-hide" }}
     {%  endif %}
 {%  endif %}

@@ -1,0 +1,65 @@
+.collection-tabs-nav {
+  display: flex;
+  gap: 3rem;
+    justify-content: center;
+}
+
+.collection-tab-btn {
+  padding: .9rem 1.5rem;
+  cursor: pointer;
+  background: var(--color-tab-background);
+  color: var(--color-tab-text-color);
+  border: none;
+  min-width: 12.3rem;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-tab-btn.active {
+   background: var(--color-active-tab-background);
+  color: var(--color-active-tab-text-color);
+}
+.collection-tab-btn .slide-pill{
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    transition: all .3s ease-in-out; 
+}
+
+.collection-tab-btn.active .slide-pill{
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    margin-right: 1rem;
+    transition: all .3s ease-in-out; 
+}
+
+.collection-tabs-content {
+  padding: 15px 0;
+}
+.collection-tab-all-button{
+    margin-top: 3rem;
+}
+.collection-tab-panel {
+  opacity:0;
+  visibility: hidden;
+  height: 0;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+  overflow: hidden;
+}
+
+.collection-tab-panel.active {
+  opacity:1;
+  visibility: visible;
+  height: 100%;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+.collection-tab-panel .swiper-wrapper{
+    padding-inline: 3rem;
+}
+@media screen and (max-width: 768px) {
+    .collection-tab-panel .swiper-wrapper{
+        padding-inline: 1.6rem;
+    }
+}

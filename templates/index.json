@@ -20,62 +20,168 @@
         "button_color": "#ffffff",
         "media_type_desktop": "image",
         "media_type_mobile": "image",
-        "desktop_image": "shopify://shop_images/Rectangle_2_82ac2a14-9ad9-45eb-8cdd-9b53d65f13b6.png",
-        "mobile_image": "shopify://shop_images/Rectangle_2_1.png",
+        "desktop_image": "shopify://shop_images/banner.webp",
         "title": "",
         "subheading": "",
-        "description": "",
+        "description": "<p>Grace that wraps <br/><em>around you.</em></p>",
         "link_text": "",
         "link": "#",
         "button_type": "solid",
-        "text_align": "center-center",
+        "text_align": "bottom-center",
         "section_height": "750px",
         "mobile_height": "750px"
+      }
+    },
+    "banner_carousel_xa8wiF": {
+      "type": "banner-carousel",
+      "blocks": {
+        "slide_kBXfXg": {
+          "type": "slide",
+          "settings": {
+            "media_type_desktop": "image",
+            "media_type_mobile": "image",
+            "desktop_image": "shopify://shop_images/banner.webp",
+            "title": "",
+            "subheading": "",
+            "description": "",
+            "link_text": "",
+            "link": "#",
+            "button_type": "outline",
+            "text_align": "center-left"
+          }
+        }
+      },
+      "block_order": [
+        "slide_kBXfXg"
+      ],
+      "disabled": true,
+      "name": "Banner Carousel",
+      "settings": {
+        "enable_tranprent_header": true,
+        "text_color": "#ffffff",
+        "button_background_color": "#ffffff",
+        "button_color": "#ffffff",
+        "enable_spacing": false,
+        "auto_rotate": false,
+        "rotating_speed": 10,
+        "section_height": "750px",
+        "mobile_height": "750px"
+      }
+    },
+    "scrolling_promotion_RwBDRU": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "scrolling_promotion_NXmtdz": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Designed to shine",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_grqxq9": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Made for your moments",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_promotion_NXmtdz",
+        "scrolling_promotion_grqxq9"
+      ],
+      "name": "Scrolling Promotion",
+      "settings": {
+        "color_background": "#f8f2ea",
+        "color_text": "#721520",
+        "enable_scrooling_seperator": true,
+        "scrooling_speed": 35
+      }
+    },
+    "collection_tab_qy7AkB": {
+      "type": "collection-tab",
+      "blocks": {
+        "collection_Rd8jT7": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "test 1",
+            "collection": "charms"
+          }
+        },
+        "collection_UUTtyq": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "test 2",
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "collection_Rd8jT7",
+        "collection_UUTtyq"
+      ],
+      "name": "Collection Tab",
+      "settings": {
+        "heading_text_color": "#000000",
+        "subheading_text_color": "#777777",
+        "subheading_highlighted_text_color": "#000000",
+        "tab_background_color": "#f5f5f5",
+        "tab_text_color": "#000000",
+        "active_tab_background_color": "#721520",
+        "active_tab_text_color": "#ffffff",
+        "button_color": "#000000",
+        "heading_text": "",
+        "link_text": "view All Products",
+        "subheading": "",
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 25
       }
     },
     "collection_carousel_bdeAJx": {
       "type": "collection-carousel",
       "blocks": {
+        "collection_DDaQt7": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/il_fullxfull.5993306591_9pcm.jpg",
+            "collection_name": "Earrings",
+            "bottom_text": "Grace that wraps <span>around you.</span>",
+            "link": "earrings"
+          }
+        },
         "collection_deeUnG": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_3.png",
+            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
             "collection_name": "Rings",
             "bottom_text": "Crafted to steal the <span>spotlight.</span>",
-            "link": "all-rings"
-          }
-        },
-        "collection_f9Ldhg": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_3_1.png",
-            "collection_name": "Earrings",
-            "bottom_text": "Designed to frame  <span> your charm.</span>",
-            "link": "earrings"
+            "link": "rings"
           }
         },
         "collection_amFJzF": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Image_2.png",
+            "collection_image": "shopify://shop_images/il_fullxfull.7149006016_931t_9df537fb-be9c-44ce-8d57-754fba5e0240.jpg",
             "collection_name": "Bracelets",
             "bottom_text": "Grace that wraps <span>around you.</span>",
-            "link": "diamond-bracelets"
+            "link": "frontpage"
           }
         },
         "collection_NQENgy": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_5_1.png",
+            "collection_image": "shopify://shop_images/il_fullxfull.6517596851_npkf_484e4b5e-0504-4d94-a08b-71a92cf2d84c.jpg",
             "collection_name": "Necklaces",
             "bottom_text": "Adorn your story <span>beautifully.</span>",
-            "link": "charm-necklaces"
+            "link": "charms"
           }
         }
       },
       "block_order": [
+        "collection_DDaQt7",
         "collection_deeUnG",
-        "collection_f9Ldhg",
         "collection_amFJzF",
         "collection_NQENgy"
       ],
@@ -100,25 +206,25 @@
         "collection_f4nagg": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_15.png",
+            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
             "collection_text": "<p>Every Detail <br/><em>Holds a Memory</em></p>",
-            "link": "shopify://collections/diamond-rings"
+            "link": "shopify://collections/charms"
           }
         },
         "collection_UiQGED": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_11.png",
+            "collection_image": "shopify://shop_images/il_fullxfull.7197172105_r9rs.jpg",
             "collection_text": "<p>Every Story Begins<br/><em>With a Initial</em></p>",
-            "link": "shopify://collections/earrings"
+            "link": "shopify://collections/rings"
           }
         },
         "collection_AndM9q": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/Rectangle_13.png",
+            "collection_image": "shopify://shop_images/il_fullxfull.6517596851_npkf_484e4b5e-0504-4d94-a08b-71a92cf2d84c.jpg",
             "collection_text": "<p>Jewels Made to Tell<br/><em>Your Story</em></p>",
-            "link": "shopify://collections/diamond-necklaces"
+            "link": "shopify://collections/frontpage"
           }
         }
       },
@@ -159,47 +265,6 @@
         "padding_bottom_mobile": 30
       }
     },
-    "scrolling_promotion_RwBDRU": {
-      "type": "scrolling-promotion",
-      "blocks": {
-        "scrolling_promotion_NXmtdz": {
-          "type": "scrolling_promotion",
-          "settings": {
-            "text": "Natural Diamonds",
-            "text_icon": "shopify://shop_images/Diamond-2--Streamline-Core.svg",
-            "link": ""
-          }
-        },
-        "scrolling_promotion_grqxq9": {
-          "type": "scrolling_promotion",
-          "settings": {
-            "text": "14K Solid Gold",
-            "text_icon": "shopify://shop_images/Gold--Streamline-Core.svg",
-            "link": ""
-          }
-        },
-        "scrolling_promotion_hicApW": {
-          "type": "scrolling_promotion",
-          "settings": {
-            "text": "Sustainable Manufacturing",
-            "text_icon": "shopify://shop_images/Star-2--Streamline-Core.svg",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "scrolling_promotion_NXmtdz",
-        "scrolling_promotion_grqxq9",
-        "scrolling_promotion_hicApW"
-      ],
-      "name": "Scrolling Promotion",
-      "settings": {
-        "color_background": "#000000",
-        "color_text": "#ffffff",
-        "enable_scrooling_seperator": false,
-        "scrooling_speed": 35
-      }
-    },
     "image_and_text_pDCPK8": {
       "type": "image-and-text",
       "name": "Image And Text",
@@ -210,7 +275,6 @@
         "enable_padding": true,
         "media_position_desktop": "left",
         "media_position_mobile": "top",
-        "desktop_image": "shopify://shop_images/Rectangle_14.png",
         "auto_height": false,
         "media_height_desktop": 500,
         "media_height_mobile": 500,
@@ -287,7 +351,6 @@
         "product_part_svg_color": "#feebcf",
         "heading": "Shop the<em> look!</em>",
         "subheading_heading": "Re create roy solitaire natural diamond ring",
-        "shop_look_image_desktop": "shopify://shop_images/SHUT1641.jpg",
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
         "padding_top_mobile": 15,
@@ -300,35 +363,30 @@
         "product_AdWmgJ": {
           "type": "product",
           "settings": {
-            "shop_look_image_desktop": "shopify://shop_images/il_fullxfull.6925848688_a4iv_9b913705-660a-483c-a1fd-3c0e4ed6aa9f.jpg",
             "shop_product": "lotus-design-earrings-with-white-topaz-gemstone-classy-pearl-drop-earrings-14k-solid-gold-natural-diamonds-gift-for-her"
           }
         },
         "product_TE9BWt": {
           "type": "product",
           "settings": {
-            "shop_look_image_desktop": "shopify://shop_images/il_fullxfull.6754968903_m8yx_9b692ca1-3f79-43af-b418-20178aa294a8.jpg",
             "shop_product": "heart-diamond-kids-stud-earrings-pink-enamel-studs-14k-solid-gold-natural-diamonds-everyday-jewelry-gift-for-toddlers-girls-and-kids"
           }
         },
         "product_L6q4N8": {
           "type": "product",
           "settings": {
-            "shop_look_image_desktop": "shopify://shop_images/il_fullxfull.7024267233_m3rb_ab3f96fc-1724-41ba-a6fe-4884df04d3a8.jpg",
             "shop_product": "kids-minnie-mouse-diamond-stud-earrings-14k-solid-gold-natural-diamonds-kids-jewelry-gift-for-toddlers-girls-and-kids"
           }
         },
         "product_Ta7ryF": {
           "type": "product",
           "settings": {
-            "shop_look_image_desktop": "shopify://shop_images/il_fullxfull.7269338618_4zr1.jpg",
             "shop_product": "emerald-cut-diamond-ring"
           }
         },
         "product_UPWpXa": {
           "type": "product",
           "settings": {
-            "shop_look_image_desktop": "shopify://shop_images/il_fullxfull.6991844573_p02a.jpg",
             "shop_product": "blue-sapphire-diamond-drop-earrings-14k-solid-gold-natural-diamonds-carved-gemstone-dangle-statement-cocktail-jewelry-invisible-setting"
           }
         }
@@ -367,29 +425,6 @@
     },
     "1765363047bb78be23": {
       "type": "apps",
-      "blocks": {
-        "instafeed_app_block_7k9w4f": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "Follow @diamondaffaire for your daily sparkle and shine. #LiveBrilliantly",
-            "title_color": "#000000",
-            "title_size_v2": 0,
-            "alignment": "left",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_7k9w4f"
-      ],
       "settings": {
         "include_margins": true
       }
@@ -454,10 +489,12 @@
   },
   "order": [
     "hero_banner_r77jzQ",
+    "banner_carousel_xa8wiF",
+    "scrolling_promotion_RwBDRU",
+    "collection_tab_qy7AkB",
     "collection_carousel_bdeAJx",
     "collection_grid_hTeEWJ",
     "collection_product_carousel_Wtfp6d",
-    "scrolling_promotion_RwBDRU",
     "image_and_text_pDCPK8",
     "collection_product_carousel_PpNEiT",
     "shop_the_look_di4hUc",

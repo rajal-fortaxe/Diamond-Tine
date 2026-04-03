@@ -1,0 +1,318 @@
+{{ 'hero--banner.css' | asset_url | stylesheet_tag }}
+{{  'banner-carousel.css' | asset_url | stylesheet_tag  }}
+{%- style -%}
+
+  {% if section.settings.mobile_height != "auto" %}
+     {% assign mobile_aspect_ratio = section.settings.mobile_height | remove: "px" | times: 1 %}
+          .video-banner-{{ section.id }} video,
+          .video-banner-{{ section.id }} img{
+                /* height: {{  section.settings.mobile_height }} */
+                overflow: hidden;
+                 aspect-ratio: 375/{{ mobile_aspect_ratio }};
+          }
+    {% endif %}
+  @media only screen and (min-width: 769px) {
+
+    {% if section.settings.section_height != "auto" %}
+      {% assign desktop_aspect_ratio = section.settings.section_height | remove: "px" | times: 1 %}
+          .video-banner-{{ section.id }} video,
+          .video-banner-{{ section.id }} img {
+                /* height: {{  section.settings.section_height }} */
+                aspect-ratio: 1440/{{ desktop_aspect_ratio }};
+                overflow: hidden;
+          }
+    {% endif %}
+  }
+
+  .video-banner-{{ section.id }} {
+    color: {{ section.settings.text_color }};
+  }
+  .video-banner-{{ section.id }} .button {
+   color: {{ section.settings.button_color }};
+   background: {{ section.settings.button_background_color }};
+  }
+  .video-banner-{{ section.id }} .button--secondary{
+    background: transparent;
+    color: {{ section.settings.button_color }};
+    border: 1px solid;
+  }
+{%- endstyle -%}
+
+
+<section class="video-banner video-banner-{{ section.id }} banner-carousel {% if section.settings.enable_spacing == true %} has-spacing{%  endif %}  scroll-trigger animate--slide-in  {%  if section.index == 1 and section.settings.enable_tranprent_header == true %} transprent-header{%  endif %}">
+  <banner-carousel data-auto-play="{{section.settings.auto_rotate}}" {% if section.settings.auto_rotate == true %} data-auto-speed="{{ section.settings.rotating_speed | times: 1000 }}" {% endif %}>
+    <div class="video-banner-wrapper swiper js-banner-carousel">
+      {% render 'banner-carousel-slide' %}
+      {% if section.blocks.size > 1  %}
+        {% if section.settings.auto_rotate == true %}
+          <div class="dynamic-progress-container"></div>
+        {%  else %}
+          <div class="banner-pagination"></div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </banner-carousel>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Carousel",
+  "class": "index-section--hero",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_tranprent_header",
+      "label": "Enable Transprent Header"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color_background",
+      "id": "button_background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color - Solid button",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_spacing",
+      "label": "Enable Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Enable Auto Rotate"
+    },
+    {
+        "type": "range",
+        "id": "rotating_speed",
+        "label": "Rotating Speed",
+        "min": 3,
+        "max": 25,
+        "step": 1,
+        "unit": "sec",
+        "default": 5
+    },
+    {
+      "type": "select",
+      "id": "section_height",
+      "label": "Section Height - Desktop",
+      "default": "auto",
+      "options": [
+        {
+          "label": "Auto",
+          "value": "auto"
+        },
+        {
+          "label": "450px",
+          "value": "450px"
+        },
+        {
+          "label": "550px",
+          "value": "550px"
+        },
+        {
+          "label": "650px",
+          "value": "650px"
+        },
+        {
+          "label": "750px",
+          "value": "750px"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Section Height - Mobile",
+      "default": "auto",
+      "options": [
+        {
+          "label": "Auto",
+          "value": "auto"
+        },
+        {
+          "label": "195px",
+          "value": "195px"
+        },
+        {
+          "label": "250px",
+          "value": "250px"
+        },
+        {
+          "label": "350px",
+          "value": "350px"
+        },
+        {
+          "label": "450px",
+          "value": "450px"
+        },
+        {
+          "label": "550px",
+          "value": "550px"
+        },
+        {
+          "label": "650px",
+          "value": "650px"
+        },
+        {
+          "label": "750px",
+          "value": "750px"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "radio",
+          "id": "media_type_desktop",
+          "label": "Media type - Desktop",
+          "default": "video",
+          "options": [
+            {
+              "value": "image",
+              "label": "Image"
+            },
+            {
+              "value": "video",
+              "label": "Video"
+            }
+          ]
+        },
+        {
+          "type": "radio",
+          "id": "media_type_mobile",
+          "label": "Media type - Mobile",
+          "default": "video",
+          "options": [
+            { 
+                "value": "image",
+                 "label": "Image" 
+            },
+            {
+              "value": "video",
+              "label": "Video"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "video",
+          "id": "video_desktop",
+          "label": "Video - Desktop"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "Video - Mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "This will apply to the banner when the heading, subheading, and link text are all blank."
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "label": "Button Type",
+          "default": "outline",
+          "options": [
+            {
+              "value": "solid",
+              "label": "Solid"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text Align",
+          "default": "bottom-left",
+          "options": [
+            {
+              "value": "center-left",
+              "label": "Center Left"
+            },
+            {
+              "value": "center-center",
+              "label": "Center"
+            },
+            {
+              "value": "center-right",
+              "label": "Center Right"
+            },
+            {
+              "value": "bottom-left",
+              "label": "Bottom Left"
+            },
+            {
+              "value": "bottom-center",
+              "label": "Bottom Center"
+            },
+            {
+              "value": "bottom-right",
+              "label": "Bottom Right"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Carousel"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.popups"]
+  }
+}
+{% endschema %}

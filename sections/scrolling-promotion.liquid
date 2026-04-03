@@ -7,17 +7,17 @@
 {%  endstyle %}
 <div id="scrolling-promotion-{{ section.id }}" class="">
   {% if section.blocks.size > 0 %}
-    <div class="scroll-promotions body-text-small uppercase" style="--scrolling-speed:{{ section.settings.scrooling_speed }}s">
-      <div class="scroll-track body-text-small uppercase">
+    <div class="scroll-promotions heading-extra-medium" style="--scrolling-speed:{{ section.settings.scrooling_speed }}s">
+      <div class="scroll-track heading-extra-medium">
         {% for i in (1..15) %}
           {% for block in section.blocks %}
             {% if block.type == "scrolling_promotion" %}
-              <div class="scroll-item body-text-small uppercase">
-                <div class="scrolling-item-inner-wrappr uppercase body-text-small">
+              <div class="scroll-item heading-extra-medium">
+                <div class="scrolling-item-inner-wrappr uppercase heading-extra-medium">
                     {%- if block.settings.link != blank -%}
                       <a
                         href="{{ block.settings.link }}"
-                        class="announcement-bar__link link link--text focus-inset animate-arrow uppercase body-text-small"
+                        class="announcement-bar__link link link--text focus-inset animate-arrow uppercase heading-extra-medium"
                       >
                     {%- endif -%}
                       {{ block.settings.text }}
