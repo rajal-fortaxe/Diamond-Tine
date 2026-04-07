@@ -5,7 +5,7 @@
 }
 
 .featured-product .product-media-container {
-  margin-bottom: var(--media-shadow-vertical-offset);
+  margin-bottom:0;
   max-width: 100%;
 }
 
@@ -64,7 +64,7 @@
   }
 
   .featured-product:not(.product--no-media) > .product__info-wrapper {
-    padding: 0 7rem;
+    padding: 0 0rem;
   }
 
   .background-secondary .featured-product {

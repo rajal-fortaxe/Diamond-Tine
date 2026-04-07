@@ -137,7 +137,7 @@
 
 .card__information {
   grid-row-start: 2;
-  padding: 1.3rem 1rem;
+  padding-top: 1rem;
 }
 
 .card:not(.ratio) > .card__content {
@@ -267,7 +267,7 @@
 @media screen and (min-width: 769px) {
   .card__information {
     padding-bottom: 0;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
   }
 }
 
@@ -401,10 +401,14 @@
     transition: transform var(--duration-long) ease;
     transform: scale(1.03);
   }
-
+  .underline-links-hover a{
+    transition: opacity .3s ease-in-out;
+  }
   .underline-links-hover:hover a {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
+    /* text-decoration: underline;
+    text-underline-offset: 0.3rem; */
+    opacity: .5;
+    transition: opacity .3s ease-in-out;
   }
 }
 

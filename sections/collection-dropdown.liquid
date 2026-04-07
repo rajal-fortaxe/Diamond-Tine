@@ -1,0 +1,190 @@
+{{ 'collection-dropdown.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #collection-dropdown-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-button: {{ section.settings.button_background_color.red }}, {{ section.settings.button_background_color.green }}, {{ section.settings.button_background_color.blue }};
+    --color-button-text: {{ section.settings.button_text_color.red }} {{ section.settings.button_text_color.green }}, {{ section.settings.button_text_color.blue }};
+  } 
+{%- endstyle -%}
+<section id="collection-dropdown-{{ section.id }}" class="collection-dropdown section-{{ section.id }}-padding">
+<collection-dropdown>
+<div class="collection-dropdown-wrapper flex">
+  <div class="collection-dropdown__content">
+    {% for block in section.blocks %}
+        {% assign collection_name = block.settings.collection.title | downcase | replace: " ", "" %}
+        <acordion-animated>
+          <details data-collection-name="{{ collection_name }}" {% if forloop.index == 1 %} open {% endif %}>
+            <summary>
+              <div class="collection-name-icon-wrapper">
+                <div class="collection-name-icon-wrapper-inner heading-text-large-thin small-heading-text-large-thin-v2">
+                  {{ block.settings.collection_name |default: block.settings.collection.name }}
+                  {% if block.settings.collection_icon_image != blank %}
+                    {{ block.settings.collection_icon_image | image_url: width: 500 | image_tag: class: "collection-dropdown_image", loading:"lazy"  }}
+                  {% endif %}
+                </div>
+              </div>
+            </summary>
+            <div class="details-content">
+              <div class="details-inner">
+              {% if block.settings.collection_description != blank %}
+                <div class="colletion-dropdown-description body-text">
+                  {{  block.settings.collection_description }}
+                </div>
+              {% endif %}
+              <a href="{{ block.settings.collection.url }}" class="button link heading-text-extra-small ">{{ block.settings.button_text }}</a>
+              </div>
+            </div>
+          </details>
+        </acordion-animated>
+      {% endfor %}
+    </div>
+    <div class="collection-dropdown__image">
+      {%  for block in section.blocks %}
+        {% assign collection_name_img = block.settings.collection.title | downcase | replace: " ", "" %}
+        <div class="flex collection-media {% if forloop.index == 1 %} active-img {% endif %}" data-collection-image={{ collection_name_img }}>
+          {{ block.settings.collection_image | image_url: width: 3500 | image_tag: class: "collection-dropdown_image", loading:"lazy"  }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</collection-dropdown>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Collection Dropdown",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#F8F2EA"
+      },
+      {
+        "type": "color",
+        "id": "button_background_color",
+        "label": "Button Background Color",
+        "default": "#161616"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Collection Image",
+          },
+          {
+            "type": "image_picker",
+            "id": "collection_icon_image",
+            "label": "Collection Icon Image",
+          },
+          {
+            "type": "text",
+            "id": "collection_name",
+            "label": "Collection Name",
+          },
+          {
+            "type": "text",
+            "id": "collection_description",
+            "label": "Collection Description",
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Explore Now"
+          },
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Collection Dropdown",
+      }
+    ]
+  }
+{% endschema %}

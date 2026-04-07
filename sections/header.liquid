@@ -147,7 +147,7 @@ header{
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper color-{{ section.settings.color_scheme }} {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -253,7 +253,7 @@ header{
         {%- endif -%}
       {%- endif -%}
       {% if section.settings.header_with_search_layout == true %}
-          {% render 'header-search-bar', input_id: 'Search-In-Modal' %} 
+          {% render 'header-search-bar', input_id: 'Search-In-Modal', class:"medium-hide small-hide" %} 
       {% endif %}
 
       <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
@@ -280,22 +280,25 @@ header{
             </localization-form>
           {%- endif -%}
         </div>
-        {% if section.settings.header_with_search_layout == false %}
-          {% render 'header-search', input_id: 'Search-In-Modal' %} 
+        {% if section.settings.header_with_search_layout == true %}
+          {% assign search_class = "large-up-hide"  %}
         {% endif %}
+
+          {% render 'header-search', input_id: 'Search-In-Modal', class: search_class %} 
+    
 
           <a class="wishlist header__icon header__icon--wishlist link focus-inset" href="/pages/wishlist" data-count-wishlist>
               <span class="svg-wrapper relative">  
                 {% render 'icons', icon: 'wishlist' %}
                 <span class="wishlist-bubble count bubble-text "></span> 
                 </span>
-                <div class="body-text flex icon-text">Fav</div>
+                <div class="body-text flex icon-text medium-hide small-hide">Fav</div>
           </a>
           
           {%- if shop.customer_accounts_enabled -%}
             <a
               href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-              class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+              class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} medium-hide small-hide{% endif %}"
               rel="nofollow"
             >
               {%- if section.settings.enable_customer_avatar -%}
@@ -318,7 +321,7 @@ header{
                   endif
                 -%}
               </span>
-              <div class="body-text flex icon-text">Log In</div>
+              <div class="body-text flex icon-text medium-hide small-hide">Log In</div>
             </a>
           {%- endif -%}
           <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
@@ -335,7 +338,7 @@ header{
               {%- endif -%}
               <span class="visually-hidden hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
             </div>
-            <div class="body-text flex icon-text">Cart</div>
+            <div class="body-text flex icon-text medium-hide small-hide">Cart</div>
         </a>
       
 
@@ -352,7 +355,7 @@ header{
       </div>
     {% endif %}
     {% if section.settings.header_with_search_layout == true %}
-      <div class="inline-searchbar-menu-layout">
+      <div class="inline-searchbar-menu-layout medium-hide small-hide">
         {%- liquid
           if section.settings.menu != blank
             if section.settings.menu_type_desktop == 'dropdown'
@@ -655,7 +658,7 @@ header{
       "type": "color",
       "id": "logo_text_color",
       "label": "Logo Text Color",
-      "default": "#721520",
+      "default": "#161616",
       "info": "It will be work when header is not transprent"
     },
     {
@@ -680,7 +683,7 @@ header{
       "type": "color",
       "id": "color_background_bottom_menu",
       "label": "Bottom Background color - Menu",
-      "default": "#721520"
+      "default": "#161616"
     },
     {
       "type": "color",
@@ -692,7 +695,7 @@ header{
       "type": "color",
       "id": "header_text_color_mobile",
       "label": "Header text color - Mobile",
-      "default": "#721520",
+      "default": "#161616",
       "info": "It will be work when header is not transprent"
     },
     {

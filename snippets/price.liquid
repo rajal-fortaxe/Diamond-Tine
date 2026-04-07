@@ -113,9 +113,17 @@
       {%- endif -%}
     </div>
     {%- if show_badges -%}
-      <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-        {{ 'products.product.on_sale' | t }}
-      </span>
+      {% if display_discount == true %}
+        <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+       {% assign discount = product.compare_at_price | minus: product.price %}
+        {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price %}
+         {{ discount_percent | round }}% OFF
+        </span>
+      {% else %}
+        <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+          {{ 'products.product.on_sale' | t }}
+        </span>
+      {% endif %}
 
       <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
         {{ 'products.product.sold_out' | t }}

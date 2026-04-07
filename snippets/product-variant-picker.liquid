@@ -43,21 +43,43 @@
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
-        <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label heading-text-small-thin">{{ option.name }}</legend>
+        {%  assign option_name  = option.name | handleize %}
+          {% if option_name contains 'color' or option_name contains 'colour' %}
+            <fieldset class="js product-form__input product-form__input--swatch">
+              <div class="form__label heading-text-small-thin">
+               {{ option.name }}:
+                <span data-selected-value class="hidden">
+                  {{- option.selected_value -}}
+                </span>
+              </div>
+              <div class="product-swatch">
+                {% render 'product-variant-options',
+                  product: product,
+                  option: option,
+                  block: block,
+                  picker_type: 'swatch'
+                %}
+            </div>
+            </fieldset>
+          {% else %}
+        <fieldset class="js product-form__input product-form__input--pill flex">
+          <div class="form__label heading-text-small-thin">{{ option.name }}:</div>
+          <div class="varinats-pill-wrapper flex">
           {% render 'product-variant-options',
             product: product,
             option: option,
             block: block,
-            picker_type: 'picker_type'
+            picker_type: picker_type
           %}
+        </div>
         </fieldset>
+      {% endif %}
       {%- else -%}
         {%  assign option_name  = option.name | handleize %}
           {% if option_name contains 'color' or option_name contains 'colour' %}
             <fieldset class="js product-form__input product-form__input--swatch">
               <div class="form__label heading-text-small-thin">
-               {{ option.name }}
+               {{ option.name }}:
                 <span data-selected-value class="hidden">
                   {{- option.selected_value -}}
                 </span>

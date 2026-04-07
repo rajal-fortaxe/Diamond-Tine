@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
-  padding-top: 1rem;
+  padding-top: 0;
 }
 
 .active-facets-mobile {
@@ -38,7 +38,11 @@
   grid-row: 1;
   padding-left: 2.5rem;
 }
-
+@media screen and (max-width: 768px) {
+    .facet-filters {
+         grid-column: 1;
+    }
+}
 @media screen and (min-width: 990px) {
   .facet-filters {
     padding-left: 3rem;
@@ -594,7 +598,7 @@ button.facets__button {
 span.active-facets__button-inner {
   color: rgb(var(--color-foreground));
   box-shadow: none;
-  background: #FFF8EE;
+  /* background: #FFF8EE; */
   border-radius: 9.9rem;
   font-size: 1rem;
   min-height: 0;
@@ -839,11 +843,31 @@ body:not(:has(details[open])){
   padding-top: 0;
   padding-bottom: 0;
   display: flex;
-  gap: 1rem;
+  gap: 1em;
   align-items: center;
   color: rgba(var(--color-link), var(--alpha-link));
 }
-
+.filter-name-svg-wrapper{
+  gap:.5rem;
+  align-items: center;
+  padding: .8rem 1.4rem;
+  border-radius: 9.9rem;
+  border: .1rem solid #E7e7e7;
+}
+.filter-name-svg-wrapper .mobile-facets__open-label{
+  white-space: nowrap;
+}
+.filter-name-svg-wrapper .filter-count{
+  border: 1px solid;
+  border-radius: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+}
 .mobile-facets__open:hover {
   color: rgb(var(--color-link));
 }
@@ -1352,7 +1376,16 @@ sort-by-drawer:has(.sort-by-wrappper.active)::after{
   cursor: pointer;
 }
 
-
+.sort-by-active-value{
+  gap: .5rem;
+  align-items: center;
+}
+.sort-by-button{
+  padding: .8rem 1.4rem;
+  border-radius: 9.9rem;
+  border: .1rem solid #E7e7e7;
+  display: flex;
+}
 /* Price Range Wrapper */
 .price-range {
   display: block;

@@ -1,24 +1,36 @@
 .product-badge{
   padding: .7rem 1rem;
-  color: var(--badge-color, #ffffff);
+  color: var(--badge-color, #E7E7E7);
   backdrop-filter: blur(1rem);
-  background: var(--badge-background-color, #00000080);
-  border-radius: 9rem;
+  background: var(--badge-background-color, #161616);
+  /* border-radius: 9rem; */
+}
+.product-badge:nth-child(even) {
+  background: var(--badge-color, #E7E7E7);
+  color: var(--badge-background-color, #161616);
 }
 .product-card__badge{
-  position: absolute;
+  /* position: absolute; */
   display: flex;
-  gap: .2rem;
-  justify-content: space-between;
+  gap: .4rem;
+  /* justify-content: space-between; */
   align-items: center;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   /* top: 1rem; */
   left: 1rem;
   bottom: 1rem;
   z-index: 1;
   width: calc(100% - 2rem);
 }
-
+.wish-badge-wrapper{
+  justify-content: space-between;
+  gap: .5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.wish-badge-wrapper:not(:has(.product-card__badge)){
+  justify-content: flex-end
+}
 .color-gray{
   color: #777777;
 }
@@ -37,15 +49,18 @@
  height: 100%;
  width: 100%;
 }
+em, i{
+   font-family: var(--font-heading-family-thin-italic);
+}
 .main-product .product-title,.card__heading{
     margin-bottom: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
      display: -webkit-box;
     -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 4rem;
+    min-height: 3.7rem;
 }
 .main-product .product-secondary-image{
     position: absolute;
@@ -58,6 +73,7 @@
 }
 .product-media {
   overflow: hidden;
+  flex-direction: column-reverse;
 }
 .product-media .product-media-inner{
   overflow: hidden;
@@ -294,20 +310,23 @@
 /* WISHLIST */
 
 .button-wishlist{
-  position: absolute;
+  /* position: absolute; */
   right: 1rem;
   top: 1rem;
   z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
 .button-wishlist button,
 .product-button-wishlist button{
   background: transparent;
   padding: 0;
-  height: auto;
-  width: 3rem;
+  height: 2.4rem;
+  width: 2.4rem;
   border: 0;
   cursor: pointer;
+  color: var(--badge-background-color, #161616);
 }
 .product-button-wishlist{
   position: relative;
@@ -367,6 +386,7 @@ load-more-products .load-more-button,
 load-more-products-search .load-more-button{
  text-decoration: underline;
  text-underline-offset: .3rem;
+ text-decoration-thickness: .1rem;
 }
 
 @media screen and (max-width: 768px) {

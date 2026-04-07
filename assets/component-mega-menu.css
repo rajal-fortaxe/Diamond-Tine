@@ -25,7 +25,13 @@
     scrollbar-width: none;     
   -ms-overflow-style: none; 
 }
-
+.mega-menu summary a svg{
+  transition: rotate .3s ease-in-out
+}
+.mega-menu[open] summary a svg{
+  rotate: 180deg;
+  transition: rotate .3s ease-in-out
+}
 .shopify-section-header-sticky .mega-menu__content {
   max-height: calc(100vh - var(--header-bottom-position-desktop, 20rem) - 4rem);
 }

@@ -20,7 +20,8 @@
         "button_color": "#ffffff",
         "media_type_desktop": "image",
         "media_type_mobile": "image",
-        "desktop_image": "shopify://shop_images/banner.webp",
+        "desktop_image": "shopify://shop_images/Rectangle_1.png",
+        "mobile_image": "shopify://shop_images/Rectangle_2_1.webp",
         "title": "",
         "subheading": "",
         "description": "<p>Grace that wraps <br/><em>around you.</em></p>",
@@ -28,42 +29,6 @@
         "link": "#",
         "button_type": "solid",
         "text_align": "bottom-center",
-        "section_height": "750px",
-        "mobile_height": "750px"
-      }
-    },
-    "banner_carousel_xa8wiF": {
-      "type": "banner-carousel",
-      "blocks": {
-        "slide_kBXfXg": {
-          "type": "slide",
-          "settings": {
-            "media_type_desktop": "image",
-            "media_type_mobile": "image",
-            "desktop_image": "shopify://shop_images/banner.webp",
-            "title": "",
-            "subheading": "",
-            "description": "",
-            "link_text": "",
-            "link": "#",
-            "button_type": "outline",
-            "text_align": "center-left"
-          }
-        }
-      },
-      "block_order": [
-        "slide_kBXfXg"
-      ],
-      "disabled": true,
-      "name": "Banner Carousel",
-      "settings": {
-        "enable_tranprent_header": true,
-        "text_color": "#ffffff",
-        "button_background_color": "#ffffff",
-        "button_color": "#ffffff",
-        "enable_spacing": false,
-        "auto_rotate": false,
-        "rotating_speed": 10,
         "section_height": "750px",
         "mobile_height": "750px"
       }
@@ -93,7 +58,7 @@
       "name": "Scrolling Promotion",
       "settings": {
         "color_background": "#f8f2ea",
-        "color_text": "#721520",
+        "color_text": "#161616",
         "enable_scrooling_seperator": true,
         "scrooling_speed": 35
       }
@@ -127,77 +92,18 @@
         "subheading_highlighted_text_color": "#000000",
         "tab_background_color": "#f5f5f5",
         "tab_text_color": "#000000",
-        "active_tab_background_color": "#721520",
+        "active_tab_background_color": "#161616",
         "active_tab_text_color": "#ffffff",
         "button_color": "#000000",
-        "heading_text": "",
+        "badge_background_color": "#161616",
+        "badge_text_color": "#ffffff",
+        "heading_text": "<p>Timeless pieces <br/>for <em>every moment</em></p>",
+        "subheading": "<p>Elevate your style with the Everyday wear look, a bold collection  <strong>designed to make a statement.</strong></p>",
         "link_text": "view All Products",
-        "subheading": "",
         "padding_top_desktop": 30,
         "padding_bottom_desktop": 35,
-        "padding_top_mobile": 25,
-        "padding_bottom_mobile": 25
-      }
-    },
-    "collection_carousel_bdeAJx": {
-      "type": "collection-carousel",
-      "blocks": {
-        "collection_DDaQt7": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/il_fullxfull.5993306591_9pcm.jpg",
-            "collection_name": "Earrings",
-            "bottom_text": "Grace that wraps <span>around you.</span>",
-            "link": "earrings"
-          }
-        },
-        "collection_deeUnG": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
-            "collection_name": "Rings",
-            "bottom_text": "Crafted to steal the <span>spotlight.</span>",
-            "link": "rings"
-          }
-        },
-        "collection_amFJzF": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/il_fullxfull.7149006016_931t_9df537fb-be9c-44ce-8d57-754fba5e0240.jpg",
-            "collection_name": "Bracelets",
-            "bottom_text": "Grace that wraps <span>around you.</span>",
-            "link": "frontpage"
-          }
-        },
-        "collection_NQENgy": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/il_fullxfull.6517596851_npkf_484e4b5e-0504-4d94-a08b-71a92cf2d84c.jpg",
-            "collection_name": "Necklaces",
-            "bottom_text": "Adorn your story <span>beautifully.</span>",
-            "link": "charms"
-          }
-        }
-      },
-      "block_order": [
-        "collection_DDaQt7",
-        "collection_deeUnG",
-        "collection_amFJzF",
-        "collection_NQENgy"
-      ],
-      "name": "Collection Carousel",
-      "settings": {
-        "heading_text_color": "#000000",
-        "text_color": "#000000",
-        "collection_text_color": "#ffffff",
-        "button_color": "#000000",
-        "heading_text": "collections",
-        "link_text": "View All",
-        "link": "shopify://collections",
-        "padding_top_desktop": 70,
-        "padding_bottom_desktop": 35,
         "padding_top_mobile": 30,
-        "padding_bottom_mobile": 15
+        "padding_bottom_mobile": 25
       }
     },
     "collection_grid_hTeEWJ": {
@@ -206,32 +112,41 @@
         "collection_f4nagg": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
-            "collection_text": "<p>Every Detail <br/><em>Holds a Memory</em></p>",
+            "collection_image": "shopify://shop_images/Rectangle_4.png",
+            "collection_text": "<p>Delicate Details, <br/><em>Lasting Beauty</em></p>",
             "link": "shopify://collections/charms"
           }
         },
         "collection_UiQGED": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/il_fullxfull.7197172105_r9rs.jpg",
-            "collection_text": "<p>Every Story Begins<br/><em>With a Initial</em></p>",
+            "collection_image": "shopify://shop_images/Image_4.png",
+            "collection_text": "<p>Refined Pieces for <br/><em>Every Occasion</em></p>",
             "link": "shopify://collections/rings"
           }
         },
         "collection_AndM9q": {
           "type": "collection",
           "settings": {
-            "collection_image": "shopify://shop_images/il_fullxfull.6517596851_npkf_484e4b5e-0504-4d94-a08b-71a92cf2d84c.jpg",
-            "collection_text": "<p>Jewels Made to Tell<br/><em>Your Story</em></p>",
+            "collection_image": "shopify://shop_images/Rectangle_4_1.png",
+            "collection_text": "<p>Made for Your <br/><em>Special Moments</em></p>",
             "link": "shopify://collections/frontpage"
+          }
+        },
+        "collection_6j9k3q": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/Image_5.png",
+            "collection_text": "<p>Designed with <br/><em>Purpose and Grace</em></p>",
+            "link": "shopify://collections"
           }
         }
       },
       "block_order": [
         "collection_f4nagg",
         "collection_UiQGED",
-        "collection_AndM9q"
+        "collection_AndM9q",
+        "collection_6j9k3q"
       ],
       "name": "Collection Grid",
       "settings": {
@@ -242,9 +157,55 @@
         "link_text": "",
         "link": "",
         "padding_top_desktop": 35,
-        "padding_bottom_desktop": 35,
-        "padding_top_mobile": 15,
-        "padding_bottom_mobile": 15
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "scrolling_promotion_RcrqHm": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "scrolling_promotion_pWGWTb": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Earrings",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_kbi6QE": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Necklaces",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_cVRNcV": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Bracelets",
+            "link": ""
+          }
+        },
+        "scrolling_promotion_ttFJEx": {
+          "type": "scrolling_promotion",
+          "settings": {
+            "text": "Rings",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_promotion_pWGWTb",
+        "scrolling_promotion_kbi6QE",
+        "scrolling_promotion_cVRNcV",
+        "scrolling_promotion_ttFJEx"
+      ],
+      "name": "Scrolling Promotion",
+      "settings": {
+        "color_background": "#f8f2ea",
+        "color_text": "#161616",
+        "enable_scrooling_seperator": true,
+        "scrooling_speed": 35
       }
     },
     "collection_product_carousel_Wtfp6d": {
@@ -254,39 +215,197 @@
         "heading_text_color": "#000000",
         "text_color": "#000000",
         "button_color": "#000000",
-        "badge_background_color": "#00000080",
-        "badge_text_color": "#ffffff",
-        "heading_text": "Trending",
-        "link_text": "view All",
-        "collection": "trending-home",
+        "badge_background_color": "#161616",
+        "badge_text_color": "#e7e7e7",
+        "heading_text": "Our New Arrivals",
+        "link_text": "View All",
+        "collection": "charms",
+        "padding_top_desktop": 70,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 15
+      }
+    },
+    "shop_the_look_v3_kkTGK4": {
+      "type": "shop-the-look-v3",
+      "blocks": {
+        "product_YVQhga": {
+          "type": "product",
+          "settings": {
+            "shop_product": "14k-gold-diamond-airplane-charm-pendant",
+            "dot_position_x": 20,
+            "dot_position_y": 30
+          }
+        },
+        "product_7tGHNj": {
+          "type": "product",
+          "settings": {
+            "shop_product": "14k-solid-gold-starfish-diamond-pendant-necklace-natural-diamond-charm",
+            "dot_position_x": 33,
+            "dot_position_y": 37
+          }
+        },
+        "product_MBNGgK": {
+          "type": "product",
+          "settings": {
+            "shop_product": "14k-gold-initial-diamond-charm-pendant-personalized-letter-necklace",
+            "dot_position_x": 30,
+            "dot_position_y": 50
+          }
+        },
+        "product_GpM38h": {
+          "type": "product",
+          "settings": {
+            "shop_product": "14k-gold-diamond-elephant-charm-pendant-natural-diamond-animal-necklace",
+            "dot_position_x": 20,
+            "dot_position_y": 60
+          }
+        },
+        "product_g6HmL7": {
+          "type": "product",
+          "settings": {
+            "shop_product": "14k-solid-gold-diamond-flower-charm-pendant-two-tone-minimalist-necklace",
+            "dot_position_x": 23,
+            "dot_position_y": 73
+          }
+        }
+      },
+      "block_order": [
+        "product_YVQhga",
+        "product_7tGHNj",
+        "product_MBNGgK",
+        "product_GpM38h",
+        "product_g6HmL7"
+      ],
+      "name": "Shop The Look - V3",
+      "settings": {
+        "text_color": "#000000",
+        "section_text_color": "#000000",
+        "dots_color": "#ffffff",
+        "active_dot_color": "#352e2e",
+        "product_part_background": "#fff8ee",
+        "enable_dots": true,
+        "section_heading": "Shop The Look!",
+        "preheading": "Dine Tine",
+        "heading": "Shop The <em>Look</em>",
+        "subheading": "Re create roy solitaire natural diamond ring",
+        "shop_look_image_desktop": "shopify://shop_images/Rectangle_1.png",
+        "shop_look_image_mobile": "shopify://shop_images/Rectangle_4_1.png",
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
         "padding_top_mobile": 15,
-        "padding_bottom_mobile": 30
+        "padding_bottom_mobile": 15
       }
     },
-    "image_and_text_pDCPK8": {
-      "type": "image-and-text",
-      "name": "Image And Text",
+    "trending_product_PRTP4h": {
+      "type": "trending-product",
+      "blocks": {
+        "text_FK3JkY": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Heart--Streamline-Core_1.svg",
+            "text": "Over 500+ women love this necklace!!",
+            "enable_secondary_color": false,
+            "text_style": "heading"
+          }
+        },
+        "title_akJKPJ": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "text_TGbRHB": {
+          "type": "text",
+          "settings": {
+            "text": "A timeless piece crafted with elegance and grace.",
+            "enable_secondary_color": true,
+            "text_style": "body"
+          }
+        },
+        "line_nkpHjC": {
+          "type": "line",
+          "settings": {}
+        },
+        "price_RTj84k": {
+          "type": "price",
+          "settings": {}
+        },
+        "line_4YdjN9": {
+          "type": "line",
+          "settings": {}
+        },
+        "detail_text_DyMV3R": {
+          "type": "detail_text",
+          "settings": {
+            "text_1": "Premium 18K Gold-Plated / Sterling Silver",
+            "text_2": "Adjustable Chain (16\"–18\")",
+            "text_3": "Hypoallergenic & Skin-Friendly",
+            "text_4": "Handcrafted with Love",
+            "text_5": ""
+          }
+        },
+        "line_7YNpCR": {
+          "type": "line",
+          "settings": {}
+        },
+        "variant_picker_rKHRkR": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "quantity_selector_kgKJ4R": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_q99z6a": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "text_FK3JkY",
+        "title_akJKPJ",
+        "text_TGbRHB",
+        "line_nkpHjC",
+        "price_RTj84k",
+        "line_4YdjN9",
+        "detail_text_DyMV3R",
+        "line_7YNpCR",
+        "variant_picker_rKHRkR",
+        "quantity_selector_kgKJ4R",
+        "buy_buttons_q99z6a"
+      ],
+      "name": "Trending Product",
       "settings": {
-        "content_background_color": "",
+        "product": "14k-solid-gold-starfish-diamond-pendant-necklace-natural-diamond-charm",
         "text_color": "#000000",
-        "button_color": "#000000",
-        "enable_padding": true,
-        "media_position_desktop": "left",
-        "media_position_mobile": "top",
-        "auto_height": false,
-        "media_height_desktop": 500,
-        "media_height_mobile": 500,
-        "text_align": "center",
-        "text_align_mobile": "left",
-        "heading_text": "It started <em>with love</em>",
-        "description": "<p>It began with a spark—a passion for creating something timeless and meaningful. What started as a dream soon became a journey of crafting jewelry that celebrates cherished emotions. Each piece is a testament to the beauty of connection, the power of memories, and the elegance of love itself. With a background in diamonds and an eye for design, we saw the potential in natural diamonds and solid gold to tell stories, connect people, and symbolize the love we hold dear.</p>",
-        "link_text": "About Us",
-        "link": "shopify://collections/diamond-bracelets",
+        "secondry_text_color": "#777777",
+        "button_color": "#161616",
+        "button_text_color": "#ffffff",
+        "buy_button_color": "#f5f5f5",
+        "buy_button_text_color": "#000000",
+        "badge_background": "#161616",
+        "badge_text_color": "#ffffff",
+        "heading": "Trending Now",
+        "enbale_product_details_Cta": false,
+        "collection_text": "Browse More Trending Products",
+        "collection_url": "#",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
-        "padding_top_mobile": 30,
+        "padding_top_mobile": 15,
         "padding_bottom_mobile": 15
       }
     },
@@ -297,210 +416,127 @@
         "heading_text_color": "#000000",
         "text_color": "#000000",
         "button_color": "#000000",
-        "badge_background_color": "#00000080",
-        "badge_text_color": "#ffffff",
+        "badge_background_color": "#161616",
+        "badge_text_color": "#e7e7e7",
         "heading_text": "Best sellers",
         "link_text": "view All",
-        "collection": "all-charms",
+        "collection": "charms",
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
         "padding_top_mobile": 15,
-        "padding_bottom_mobile": 15
+        "padding_bottom_mobile": 35
       }
     },
-    "shop_the_look_di4hUc": {
-      "type": "shop-the-look",
+    "our_thought_Npemqe": {
+      "type": "our-thought",
+      "name": "Our Thought",
+      "settings": {
+        "text_color": "#000000",
+        "country_text_color": "#777777",
+        "icon": "shopify://shop_images/Group_1171276328.svg",
+        "description": "<p>The brand offers ostentatious designs. \"Jewelry shouldbe seen, not hidden,\" proclaims the designer. And so the large links are unleashed around the wrists and neck.</p>",
+        "name": "Anjali Varma",
+        "country": "India",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35
+      }
+    },
+    "collection_dropdown_6XzxnL": {
+      "type": "collection-dropdown",
       "blocks": {
-        "product_DgiNxU": {
-          "type": "product",
+        "collection_aNgcRW": {
+          "type": "collection",
           "settings": {
-            "shop_product": "love-diamond-necklace-14kt-solid-gold-pendant-necklace-with-script-inspirational-jewelry-handcrafted-jewelry-gift-for-her-word-necklace",
-            "dot_position_x": 46,
-            "dot_position_y": 24
+            "collection_image": "shopify://shop_images/Rectangle_10.png",
+            "collection_icon_image": "shopify://shop_images/image_2_2.png",
+            "collection_name": "Most Wanted",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "rings",
+            "button_text": "Explore Now"
           }
         },
-        "product_DHMaWb": {
-          "type": "product",
+        "collection_edDypN": {
+          "type": "collection",
           "settings": {
-            "shop_product": "evil-eye-medallion-diamond-charm-14k-solid-gold-natural-diamond-layering-pendant-protection-necklace-ready-to-ship-certified-jewelry",
-            "dot_position_x": 54,
-            "dot_position_y": 43
+            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
+            "collection_icon_image": "shopify://shop_images/image_3.png",
+            "collection_name": "Birthday Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "earrings",
+            "button_text": "Explore Now"
           }
         },
-        "product_n6T3Bq": {
-          "type": "product",
+        "collection_UTgtPA": {
+          "type": "collection",
           "settings": {
-            "shop_product": "heart-initial-medallion-diamond-necklace-14k-solid-gold-natural-diamonds-everyday-halo-pendant-personalised-letter-charm-ready-to-ship",
-            "dot_position_x": 48,
-            "dot_position_y": 82
+            "collection_image": "shopify://shop_images/Rectangle_4.png",
+            "collection_icon_image": "shopify://shop_images/image_4_1d325a5e-621d-4334-b352-7682ce38f65e.png",
+            "collection_name": "Wedding Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "charms",
+            "button_text": "Explore Now"
+          }
+        },
+        "collection_bCyy74": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/Rectangle_4_1.png",
+            "collection_icon_image": "shopify://shop_images/image_5_e7bd20ae-0637-4295-88c1-36722bc0d6e2.png",
+            "collection_name": "Personalized Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "frontpage",
+            "button_text": "Explore Now"
           }
         }
       },
       "block_order": [
-        "product_DgiNxU",
-        "product_DHMaWb",
-        "product_n6T3Bq"
+        "collection_aNgcRW",
+        "collection_edDypN",
+        "collection_UTgtPA",
+        "collection_bCyy74"
       ],
-      "name": "Shop The Look",
+      "name": "Collection Dropdown",
       "settings": {
         "text_color": "#000000",
-        "badge_background_color": "#00000080",
-        "badge_text_color": "#ffffff",
-        "inner_background": "#f5efe6",
-        "product_part_background": "#fff8ee",
-        "product_part_svg_color": "#feebcf",
-        "heading": "Shop the<em> look!</em>",
-        "subheading_heading": "Re create roy solitaire natural diamond ring",
-        "padding_top_desktop": 35,
-        "padding_bottom_desktop": 35,
-        "padding_top_mobile": 15,
-        "padding_bottom_mobile": 30
+        "background_color": "#f8f2ea",
+        "button_background_color": "#161616",
+        "button_text_color": "#ffffff",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35
       }
     },
-    "shop_the_look_v2_N37QWB": {
-      "type": "shop-the-look-v2",
-      "blocks": {
-        "product_AdWmgJ": {
-          "type": "product",
-          "settings": {
-            "shop_product": "lotus-design-earrings-with-white-topaz-gemstone-classy-pearl-drop-earrings-14k-solid-gold-natural-diamonds-gift-for-her"
-          }
-        },
-        "product_TE9BWt": {
-          "type": "product",
-          "settings": {
-            "shop_product": "heart-diamond-kids-stud-earrings-pink-enamel-studs-14k-solid-gold-natural-diamonds-everyday-jewelry-gift-for-toddlers-girls-and-kids"
-          }
-        },
-        "product_L6q4N8": {
-          "type": "product",
-          "settings": {
-            "shop_product": "kids-minnie-mouse-diamond-stud-earrings-14k-solid-gold-natural-diamonds-kids-jewelry-gift-for-toddlers-girls-and-kids"
-          }
-        },
-        "product_Ta7ryF": {
-          "type": "product",
-          "settings": {
-            "shop_product": "emerald-cut-diamond-ring"
-          }
-        },
-        "product_UPWpXa": {
-          "type": "product",
-          "settings": {
-            "shop_product": "blue-sapphire-diamond-drop-earrings-14k-solid-gold-natural-diamonds-carved-gemstone-dangle-statement-cocktail-jewelry-invisible-setting"
-          }
-        }
-      },
-      "block_order": [
-        "product_AdWmgJ",
-        "product_TE9BWt",
-        "product_L6q4N8",
-        "product_Ta7ryF",
-        "product_UPWpXa"
-      ],
-      "disabled": true,
-      "name": "Shop The Look - V2",
+    "our_thought_w8FAwr": {
+      "type": "our-thought",
+      "name": "Our Thought",
       "settings": {
         "text_color": "#000000",
-        "badge_background_color": "#5a0117",
-        "badge_text_color": "#ffffff",
-        "inner_background": "#f5efe6",
-        "product_part_background": "#fff8ee",
-        "product_part_svg_color": "#feebcf",
-        "heading": "Shop the <em>look!</em>",
-        "subheading_heading": "Re create roy solitaire natural diamond ring",
-        "popup_button_text": "Shop the look",
-        "padding_top_desktop": 35,
-        "padding_bottom_desktop": 35,
-        "padding_top_mobile": 25,
-        "padding_bottom_mobile": 25
-      }
-    },
-    "1765361923533d851e": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "1765363047bb78be23": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "faq_rDEz3g": {
-      "type": "faq",
-      "blocks": {
-        "faq_XyJ6Xn": {
-          "type": "faq",
-          "settings": {
-            "question": "Are all diamonds used by Diamond Affaire natural?",
-            "answer": "<p>Yes, we use only 100% natural, ethically sourced diamonds in all our jewelry. Lab-grown diamond options are also available upon request.</p>"
-          }
-        },
-        "faq_LJPzzk": {
-          "type": "faq",
-          "settings": {
-            "question": "Do you provide certificates for your diamond jewelry?",
-            "answer": "<p>Yes, every diamond piece comes with a third-party certification, we provide HRD, IGI, SGL, or GIN certificates, depending on the item.</p>"
-          }
-        },
-        "faq_Vxxqe3": {
-          "type": "faq",
-          "settings": {
-            "question": "Can I customize a piece of jewelry on Diamond Affaire?",
-            "answer": "<p>Absolutely. We do offer made-to-order and personalized  diamond jewelry Service at Diamondtine. Share your design idea or choose from our catalog to create your unique piece. You can mail us contact@diamondtine.com also can fill the create your own jewellery from at your account.</p>"
-          }
-        },
-        "faq_enHzEw": {
-          "type": "faq",
-          "settings": {
-            "question": "How long does it take to receive a custom-made order?",
-            "answer": "<p>Custom jewelry typically takes 2–3 weeks for production. Ready-to-ship items are dispatched within 2 business days.</p>"
-          }
-        },
-        "faq_aAyhf8": {
-          "type": "faq",
-          "settings": {
-            "question": "Does Diamond Affaire ship internationally?",
-            "answer": "<p>We ship worldwide. All orders are securely packaged and insured, with tracking provided for every shipment.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_XyJ6Xn",
-        "faq_LJPzzk",
-        "faq_Vxxqe3",
-        "faq_enHzEw",
-        "faq_aAyhf8"
-      ],
-      "name": "FAQ",
-      "settings": {
-        "heading_text_color": "#000000",
-        "text_color": "#000000",
-        "heading_text": "Frequently asked questions",
-        "padding_top_desktop": 35,
-        "padding_bottom_desktop": 35,
-        "padding_top_mobile": 15,
-        "padding_bottom_mobile": 15
+        "country_text_color": "#777777",
+        "description": "<p>“Because you deserve to shine every day”</p>",
+        "name": "#diamondtine",
+        "country": "",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 100,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 55
       }
     }
   },
   "order": [
     "hero_banner_r77jzQ",
-    "banner_carousel_xa8wiF",
     "scrolling_promotion_RwBDRU",
     "collection_tab_qy7AkB",
-    "collection_carousel_bdeAJx",
     "collection_grid_hTeEWJ",
+    "scrolling_promotion_RcrqHm",
     "collection_product_carousel_Wtfp6d",
-    "image_and_text_pDCPK8",
+    "shop_the_look_v3_kkTGK4",
+    "trending_product_PRTP4h",
     "collection_product_carousel_PpNEiT",
-    "shop_the_look_di4hUc",
-    "shop_the_look_v2_N37QWB",
-    "1765361923533d851e",
-    "1765363047bb78be23",
-    "faq_rDEz3g"
+    "our_thought_Npemqe",
+    "collection_dropdown_6XzxnL",
+    "our_thought_w8FAwr"
   ]
 }

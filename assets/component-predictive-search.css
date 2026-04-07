@@ -1,7 +1,7 @@
 .predictive-search {
   display: none;
   position: absolute;
-  top: calc(100% + 1.6rem);
+  top: calc(100% + 1rem);
   left: -1.6rem;
   border-width: var(--popup-border-width);
   border-style: solid;
@@ -27,6 +27,13 @@
   justify-content: center;
   align-items: center;
 
+}
+.predictive-search{
+  scrollbar-width: none;  
+}
+
+.predictive-search::-webkit-scrollbar {
+  display: none;            
 }
 
 .predictive-search--search-template {
@@ -82,7 +89,9 @@
     position: relative;
   }
 }
-
+predictive-search .link{
+ color: rgb(var(--color-link));
+}
 predictive-search[open] .predictive-search,
 predictive-search[loading] .predictive-search {
   display: block;

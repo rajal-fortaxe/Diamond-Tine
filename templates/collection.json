@@ -13,20 +13,20 @@
       "type": "main-collection-banner",
       "settings": {
         "show_collection_description": false,
-        "padding_top_desktop": 50,
-        "padding_bottom_desktop": 25,
-        "padding_top_mobile": 30,
-        "padding_bottom_mobile": 15
+        "padding_top_desktop": 30,
+        "padding_bottom_desktop": 15,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 8
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "badge_background_color": "#00000080",
+        "badge_background_color": "#161616",
         "badge_text_color": "#ffffff",
-        "padding_top_desktop": 25,
+        "padding_top_desktop": 15,
         "padding_bottom_desktop": 70,
-        "padding_top_mobile": 15,
+        "padding_top_mobile": 8,
         "padding_bottom_mobile": 50
       }
     }

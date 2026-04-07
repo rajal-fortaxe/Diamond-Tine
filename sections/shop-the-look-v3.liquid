@@ -1,0 +1,250 @@
+{{ 'shop-the-look-v3.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #shop-the-look-v3-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --dots-color: {{ section.settings.dots_color }};
+    --active-dot-color: {{section.settings.active_dot_color }};
+    --product-part-backgrpound: {{  section.settings.product_part_background }};
+
+  }
+{%- endstyle -%}
+{%- if section.settings.shop_look_image_desktop != blank -%}
+    <section id="shop-the-look-v3-{{ section.id }}" class="shop-the-look-v3 isolate section-{{ section.id }}-padding">
+      {% if section.settings.section_heading != blank %}
+        <div class="page-width look-v3-main-heading heading-extra-large-v2 small-heading-extra-large-v2" style="color: {{ section.settings.section_text_color }};">
+          {{ section.settings.section_heading }}
+        </div>
+      {% endif %}
+        <shop-the-look-v3 class="relative">
+            <div class="shop-the-look-banner-wrapper relative">
+                <div class="shop-the-look-banner-media relative flex">  
+                        {{ section.settings.shop_look_image_desktop | image_url: width: 3500 | image_tag: class: "image-banner__image small-hide ", loading:"lazy"  }}
+                        {{ section.settings.shop_look_image_mobile | default: section.settings.shop_look_image_desktop | image_url: width: 3000 | image_tag: class: "image-banner__image large-up-hide medium-hide", loading:"lazy"  }}
+                    {% if section.settings.preheading != blank or section.settings.subheading != blank or section.settings.heading != blank %}
+                        <div class="shop-the-look-headings">
+                            {% if section.settings.preheading != blank %}
+                                <div class="shop-the-look-preheading body-text uppercase">
+                                    {{ section.settings.preheading }}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.heading != blank %}
+                                <div class="shop-the-look-heading heading-extra-large-v2 small-heading-extra-large-v2">
+                                    {{ section.settings.heading }}
+                                </div>
+                            {% endif %}
+                            {% if section.settings.subheading != blank %}
+                                <div class="shop-the-look-subheading body-text">
+                                    {{ section.settings.subheading }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if section.settings.enable_dots == true %}
+                        <div class="shop-look-v3-dots">
+                        {% for block in section.blocks %}
+                                <div class="dot look-dot" tabindex="0" role="button"  data-dot-index='{{ forloop.index }}' style="top: {{ block.settings.dot_position_y }}%; left: {{ block.settings.dot_position_x }}%;">
+                                    <span class="sonar-ring"></span>
+                                    <span class="sonar-ring"></span>
+                                    <span class="sonar-ring"></span>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                </div>
+                {% if section.blocks.size > 1 %}
+                    <div class="shop-the-look-products-wrapper swiper js-shop-the-look-v3-carousel">
+                        <div class="look-product-buttons-wrapper small-hide">
+                            <div class="swiper-button-prev look-product-prev look-nav-buttons">
+                                {% render 'icons', icon: 'accordian-down-arrow' %}
+                            </div>
+                            <div class="swiper-button-next look-product-next look-nav-buttons">
+                                {% render 'icons', icon: 'accordian-down-arrow' %}
+                            </div>
+                        </div>
+                        <div class="swiper-wrapper">
+                            {% for block in section.blocks %}
+                                <div class="swiper-slide main-product look-product">
+                                    {%  render 'custom-product-card', product: block.settings.shop_product %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </shop-the-look-v3>
+    </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Shop The Look - V3",
+  "tag": "section",
+  "class": "shop-the-look-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_text_color",
+      "label": "Section Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "dots_color",
+      "label": "Dots Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "active_dot_color",
+      "label": "Active Dot Color",
+      "default": "#161616"
+    },
+    {
+      "type": "color",
+      "id": "product_part_background",
+      "label": "Product Part background",
+      "default": "#FFF8EE"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_dots",
+        "label": "Enable Dots"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Shop The Look!"
+    },
+    {
+      "type": "text",
+      "id": "preheading",
+      "label": "PreHeading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "shop_look_image_desktop",
+      "label": "Shop The Look Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "shop_look_image_mobile",
+      "label": "Shop The Look Mobile Image"
+    },
+    {
+      "type": "header",
+      "content": "Padding - Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top - Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom - Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Padding - Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top - Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom - Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "shop_product",
+          "label": "Product"
+        },
+        {
+            "type": "range",
+            "min": 10,
+            "max": 90,
+            "default": 20,
+            "unit": "%",
+            "id": "dot_position_x",
+            "label": "Dot Position - Horizontal",
+            "visible_if": "{{section.settings.enable_dots == true }}",
+          },
+          {
+            "type": "range",
+            "min": 10,
+            "max": 90,
+            "default": 30,
+            "unit": "%",
+            "id": "dot_position_y",
+            "label": "Dot Position - Vertical",
+            "visible_if": "{{section.settings.enable_dots == true }}",
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop The Look - V3"
+    }
+  ]
+}
+{% endschema %}

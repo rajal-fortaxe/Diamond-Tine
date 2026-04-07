@@ -16,7 +16,9 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "{{ product.vendor }}"
+            "text": "{{ product.vendor }}",
+            "enable_secondary_color": false,
+            "text_style": "body"
           }
         },
         "title": {
@@ -54,8 +56,9 @@
         "text_fEmnze": {
           "type": "text",
           "settings": {
-            "text_iamge": "shopify://shop_images/Frame_52.svg",
-            "text": "Order in the next 10 hours 57 minutes to get it between Tuesday, Dec 9 and Monday, Dec 15"
+            "text": "Order in the next 10 hours 57 minutes to get it between Tuesday, Dec 9 and Monday, Dec 15",
+            "enable_secondary_color": false,
+            "text_style": "body"
           }
         },
         "share": {
@@ -69,13 +72,10 @@
           "settings": {
             "layout": "horizontal",
             "icon_1": "heart",
-            "image_1": "shopify://shop_images/Group_1171275988.svg",
             "heading_1": "Certified Diamonds",
             "icon_2": "return",
-            "image_2": "shopify://shop_images/Multiple-Stars--Streamline-Plump.svg",
             "heading_2": "Always 14k Solid Gold",
             "icon_3": "truck",
-            "image_3": "shopify://shop_images/Layer_1.svg",
             "heading_3": "Hand Crafted"
           }
         },
@@ -121,13 +121,78 @@
         "padding_bottom_mobile": 25
       }
     },
+    "collection_dropdown_eyi4m8": {
+      "type": "collection-dropdown",
+      "blocks": {
+        "collection_rbaatD": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/Rectangle_10.png",
+            "collection_icon_image": "shopify://shop_images/image_2_2.png",
+            "collection_name": "Most Wanted",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "rings",
+            "button_text": "Explore Now"
+          }
+        },
+        "collection_bNDjmV": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/72acecfba2ac5f16d00be879f9b85638a77e50b4.jpg",
+            "collection_icon_image": "shopify://shop_images/image_3.png",
+            "collection_name": "Birthday Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "earrings",
+            "button_text": "Explore Now"
+          }
+        },
+        "collection_TNqY8a": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/Rectangle_4.png",
+            "collection_icon_image": "shopify://shop_images/image_4_1d325a5e-621d-4334-b352-7682ce38f65e.png",
+            "collection_name": "Wedding Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "charms",
+            "button_text": "Explore Now"
+          }
+        },
+        "collection_zkRBkK": {
+          "type": "collection",
+          "settings": {
+            "collection_image": "shopify://shop_images/Rectangle_4_1.png",
+            "collection_icon_image": "shopify://shop_images/image_5_e7bd20ae-0637-4295-88c1-36722bc0d6e2.png",
+            "collection_name": "Personalized Gifts",
+            "collection_description": "Inspired by hardware on yachts in the most glamorous marinas in the world. With options in solid gold and pave diamonds.",
+            "collection": "frontpage",
+            "button_text": "Explore Now"
+          }
+        }
+      },
+      "block_order": [
+        "collection_rbaatD",
+        "collection_bNDjmV",
+        "collection_TNqY8a",
+        "collection_zkRBkK"
+      ],
+      "name": "Collection Dropdown",
+      "settings": {
+        "text_color": "#000000",
+        "background_color": "#f8f2ea",
+        "button_background_color": "#161616",
+        "button_text_color": "#ffffff",
+        "padding_top_desktop": 50,
+        "padding_bottom_desktop": 50,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35
+      }
+    },
     "image_and_text_carousel_xJCmpq": {
       "type": "image-and-text-carousel",
       "blocks": {
         "iamge_slide_aWgAmp": {
           "type": "iamge_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
             "heading_text": "Gift Ready <em>Packaging</em>",
             "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
             "link_text": "",
@@ -137,7 +202,6 @@
         "iamge_slide_MJraEf": {
           "type": "iamge_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/il_fullxfull.6966156516_nop2.jpg",
             "heading_text": "Size Chart",
             "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
             "link_text": "",
@@ -147,7 +211,6 @@
         "iamge_slide_XzPa6Y": {
           "type": "iamge_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
             "heading_text": "Gift Ready Packaging",
             "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
             "link_text": "",
@@ -157,7 +220,6 @@
         "iamge_slide_wLzwMB": {
           "type": "iamge_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/il_fullxfull.6966156516_nop2.jpg",
             "heading_text": "Size Chart",
             "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
             "link_text": "",
@@ -167,7 +229,6 @@
         "iamge_slide_NfB67i": {
           "type": "iamge_slide",
           "settings": {
-            "desktop_image": "shopify://shop_images/il_fullxfull.6808511157_dhet.jpg",
             "heading_text": "Gift Ready Packaging",
             "description": "<p>Each diamond is thoughtfully presented in our signature gift-ready packaging, designed to reflect the elegance and craftsmanship of the piece inside. From the moment it’s opened, the experience feels refined, meaningful, and truly special.</p>",
             "link_text": "",
@@ -182,6 +243,7 @@
         "iamge_slide_wLzwMB",
         "iamge_slide_NfB67i"
       ],
+      "disabled": true,
       "name": "Image And Text Carousel",
       "settings": {
         "content_background_color": "#fff8ee",
@@ -206,7 +268,6 @@
         "enable_padding": true,
         "media_position_desktop": "left",
         "media_position_mobile": "top",
-        "desktop_image": "shopify://shop_images/Rectangle_14_59eb1ed8-2bf3-4766-8388-b5282ead32e1.png",
         "auto_height": true,
         "media_height_desktop": 500,
         "media_height_mobile": 500,
@@ -256,6 +317,7 @@
   },
   "order": [
     "main",
+    "collection_dropdown_eyi4m8",
     "image_and_text_carousel_xJCmpq",
     "image_and_text_Qfhx8T",
     "related-products",

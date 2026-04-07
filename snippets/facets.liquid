@@ -30,7 +30,7 @@
 
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
-    <facet-filters-form class="facets small-hide">
+    <facet-filters-form class="facets small-hide" style="--color-background: 248, 242, 234">
       <form
         id="FacetFiltersForm"
         class="{% if filter_type == 'horizontal' %}facets__form{% else %}facets__form-vertical{% endif %}"
@@ -459,20 +459,22 @@
                 {% endif %}
               {% endfor %}
 
-
-          <span class="mobile-facets__open-label body-text button-label ">
-            {%- if enable_filtering -%}
-              {{ 'products.facets.filter_button' | t }}
-            {%- endif -%}
-          </span>
-           <span class="svg flex">
-           {% render "icons", icon: "filter-icon" %}
-          </span>
-          {% if active_count > 0 %}
-           <span class="filter-count large-up-hide medium-hide body-text">({{ active_count }})</span>
-          {% endif %}
+            <span class="flex filter-name-svg-wrapper">
+              <span class="mobile-facets__open-label body-text button-label ">
+                {%- if enable_filtering -%}
+                  {{ 'products.facets.filter_button' | t }}
+                {%- endif -%}
+              </span>
+              <span class="svg flex">
+              {% render "icons", icon: "filter-icon" %}
+              </span>
+               {% if active_count > 0 %}
+                <span class="filter-count large-up-hide medium-hide body-text">{{ active_count }}</span>
+                {% endif %}
+            </span>
+         
             {%- if filter_type == 'drawer' -%}
-              <facet-filters-form class="facets facets-pill">
+              <facet-filters-form class="facets facets-pill" style="--color-background: 248, 242, 234">
                 <form id="FacetFiltersPillsForm" class="facets__form">
                   <div class="active-facets active-facets-desktop small-hide">
                       
@@ -522,9 +524,9 @@
         </span>
         
       </summary>
-      <facet-filters-form>
+      <facet-filters-form style="--color-background: 248, 242, 234">
         <form id="FacetFiltersFormMobile" class="mobile-facets">
-          <div class="mobile-facets__inner gradient">
+          <div class="mobile-facets__inner">
             <div class="mobile-facets__header">
               <div class="mobile-facets__header-inner">
                 <h2 class="mobile-facets__heading medium-hide large-up-hide small-hide heading-text-large-thin">
@@ -562,7 +564,7 @@
             </div>
             <div
               id="FacetsWrapperMobile"
-              class="mobile-facets__main has-submenu gradient"
+              class="mobile-facets__main has-submenu"
             >
               {%- if enable_filtering -%}
                 {%- for filter in results.filters -%}
@@ -692,7 +694,7 @@
   </div>
   {% comment %} Sort, product count and filter pills at the end when filter is type of Drawer for the correct tabbing order {% endcomment %}
   {%- if enable_sorting and filter_type == 'drawer' -%}
-    <facet-filters-form class="facets">
+    <facet-filters-form class="facets" style="--color-background: 248, 242, 234">
       <form id="FacetSortDrawerForm" class="facets__form">
         <div class="facet-filters sorting caption ">
           <div class="facet-filters__field">

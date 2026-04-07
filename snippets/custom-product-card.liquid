@@ -1,11 +1,13 @@
   <a class="link text-decoration-none w-100" href="{{ product.url }}">
     <div class="product-media relative flex">
+      <div class="flex wish-badge-wrapper">
          {% render 'product-badge', block: block, product: product %}
           <div class="button-wishlist mobile" data-title="wishlist">
             <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="{{ product.handle }}">
               {% render 'icons', icon: 'wishlist' %}
             </button>
           </div>
+        </div>
       <div class="product-media-inner flex relative w-100">
           {% if product.featured_image != blank %}
               {{ product.featured_image | image_url: width: 2500, height: 2500 | image_tag: class: "product-image product-main-image" , loading:"lazy"  }}
@@ -17,11 +19,11 @@
     </div>
     <div class="product-content">
         <div class="product-title body-text">
-          {{ product.title }}
+          {{ product.title | split: '-' | first | strip }}
         </div>
 
         <div class="product-price">
-        {%- render 'price', product: product, block: block, enable_policy: false, font_class: "body-text-v3 color-gray", use_variant: true -%}
+        {%- render 'price', product: product, block: block, enable_policy: false, font_class: "body-text color-gray", use_variant: true -%}
         </div>
     </div>
   </a>

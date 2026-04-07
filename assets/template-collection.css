@@ -22,11 +22,17 @@
     top: 0;
     right: 0;
   }
+  .product-grid {
+    margin-top: 1.8rem;
+  }
 }
 
 @media screen and (min-width: 769px) {
   .collection .loading-overlay {
     left: 0;
+  }
+  .product-grid {
+    margin-top: 2rem;
   }
 }
 
@@ -108,4 +114,17 @@
   .collection-banner img{
     aspect-ratio: 167/167;
   }
+}
+
+.collection-badgfe-wish-wrappper{
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 1rem;
+ gap: 1rem;
+}
+.collection-badgfe-wish-wrappper .product-card__badge{
+  width: fit-content;
+}
+.collection-badgfe-wish-wrappper:not(:has(.product-card__badge)){
+  justify-content: flex-end;
 }

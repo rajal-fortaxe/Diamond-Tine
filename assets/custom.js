@@ -81,7 +81,7 @@ class CollectionGridCarousel extends HTMLElement {
 						slidesPerView:  3,
 					},
 					1024: {
-						slidesPerView: 3,
+						slidesPerView: 4,
 					}
 				}
 			});
@@ -207,9 +207,9 @@ class AnimateAccordion extends HTMLElement {
   }
 
   closeOtherAccordions() {
-    document.querySelectorAll('acordion-animated details[open]').forEach((openDetail) => {
-      if (openDetail !== this.details) {
-        openDetail.removeAttribute('open');
+    document.querySelectorAll('acordion-animated').forEach((accordion) => {
+      if (accordion !== this && accordion.details.open) {
+        accordion.shrink();
       }
     });
   }
@@ -959,3 +959,103 @@ class CollectionTab extends HTMLElement {
 }
 
 customElements.define('collection-tab', CollectionTab);
+
+class ShopTheLookCards extends HTMLElement {
+  connectedCallback() {
+    const isMobile = window.innerWidth < 769;
+    const dots = this.querySelectorAll(".look-dot");
+    dots.forEach((dot) => {
+      const raw = dot.getAttribute("data-dot-index");
+    });
+
+    this.swiper = new Swiper(".js-shop-the-look-v3-carousel", {
+      effect: isMobile ? "slide" : "cards",
+      slidesPerView: isMobile ? 2 : 1,
+      a11y: true,
+      loop: true,
+      spaceBetween: isMobile ? 10 : 0,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next.look-product-next",
+        prevEl: ".swiper-button-prev.look-product-prev",
+      },
+      on: {
+        init: (swiper) => {
+          this.setActiveDot(swiper.realIndex);
+        },
+        slideChange: (swiper) => {
+          this.setActiveDot(swiper.realIndex);
+        }
+      }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const raw = dot.getAttribute("data-dot-index");
+        const clickedIndex = parseInt(raw.trim()) - 1;
+        this.swiper.slideToLoop(clickedIndex);
+        this.setActiveDot(clickedIndex);
+      });
+    });
+  }
+
+  setActiveDot(index) {
+    const dots = this.querySelectorAll(".look-dot"); 
+    const targetVal = index + 1;
+
+    dots.forEach((dot) => {
+      dot.classList.remove("active");
+
+      const dotVal = parseInt(dot.getAttribute("data-dot-index")?.trim());
+
+      if (dotVal === targetVal) {
+        dot.classList.add("active");
+      }
+    });
+  }
+}
+
+customElements.define('shop-the-look-v3', ShopTheLookCards);
+
+
+
+class CollectionDropdown extends HTMLElement {
+  constructor() {
+    super();
+    this.collectionActiveImg();
+  }
+
+  collectionActiveImg(){
+    const imgs = this.querySelectorAll(".collection-media");
+    const details = this.querySelectorAll("details");
+
+    details.forEach((detail) => {
+      detail.addEventListener("toggle", () => {
+        // We only care when the details element is being OPENED
+        if (detail.open) {
+          const contentAttr = detail.getAttribute("data-collection-name");
+
+          // 1. Remove active class from all images first (reset state)
+          imgs.forEach((img) => img.classList.remove("active-img"));
+
+          // 2. Find and activate the matching image
+          imgs.forEach((img) => {
+            const imgAttr = img.getAttribute("data-collection-image");
+            
+            if (contentAttr === imgAttr) {
+              img.classList.add("active-img");
+              console.log("📸 Image activated for:", contentAttr);
+            }
+          });
+        }
+      });
+    });
+  }
+
+}
+
+customElements.define('collection-dropdown', CollectionDropdown);

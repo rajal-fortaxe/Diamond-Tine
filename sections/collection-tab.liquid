@@ -18,19 +18,23 @@
     --color-tab-text-color: {{ section.settings.tab_text_color }};
     --color-active-tab-background: {{ section.settings.active_tab_background_color }};
     --color-active-tab-text-color: {{ section.settings.active_tab_text_color }};
+    --badge-color: {{ section.settings.badge_text_color }};
+    --badge-background-color: {{ section.settings.badge_background_color }};
   } 
    #collection-tab-{{ section.id }} .subhedaing{
     color: {{ section.settings.subheading_text_color }};
    }
-   #collection-tab-{{ section.id }} .subhedaing span{
+   #collection-tab-{{ section.id }} .subhedaing b,
+   #collection-tab-{{ section.id }} .subhedaing strong{
         color: {{ section.settings.subheading_highlighted_text_color }};
+        font-weight: 400 !important;
    }
 {%- endstyle -%}
 <section id="collection-tab-{{ section.id }}" class="collection-tab section-{{ section.id }}-padding">
   {% if section.settings.heading_text != blank or section.settings.link != blank and section.settings.link_text != blank  %}
     <div class="heading-wrapper page-width flex page-width">
         {%  if section.settings.heading_text != blank %}
-          <div class="section-heading heading-extra-large uppercase body-text-large small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+          <div class="section-heading heading-extra-large small-heading-extra-large" style="color: {{ section.settings.heading_text_color  }}">
             {{ section.settings.heading_text }}
           </div>
         {%  endif %}
@@ -42,16 +46,21 @@
         <!-- Tabs -->
         <div class="collection-tabs-nav page-width">
             {% for block in section.blocks %}
-                <button class="collection-tab-btn {% if forloop.index == 1 %}active {%  endif %}" data-tab="tab{{ forloop.index }}">
+              <div class="flex">
+                <button class="collection-tab-btn heading-text-extra-small {% if forloop.index == 1 %}active {%  endif %}" data-tab="tab{{ forloop.index }}">
                     <div class="slide-pill">
                         {% render 'icons', icon:"animataed-header-logo" %}
                     </div>
                     {{ block.settings.collection_name }}
                 </button>
+                {% unless forloop.last %}
+                      <div class="seperator div"></div>
+                    {% endunless %}
+              </div>
             {% endfor %}
         </div>
         {%  if section.settings.subheading %}
-            <div class="subhedaing body-text-v6">
+            <div class="subhedaing body-text-v6 page-width flex">
                 {{ section.settings.subheading }}
             </div>
         {% endif %}
@@ -69,7 +78,7 @@
                         </div>
                     </div>
                    
-                    {%  if block.settings.collection.products.size > 5 %}
+                    {%  if block.settings.collection.products.size > 10 %}
                         <div class="collection-tab-all-button center">
                             <a class="link uppercase center heading-text-small-thin-v2 collection-tab-all-button" href="{{ block.settings.collection.url  }}" style="color: {{  section.settings.button_color }}"> {{ section.settings.link_text }}</a>
                         </div>
@@ -124,7 +133,7 @@
         "type": "color",
         "id": "active_tab_background_color",
         "label": "Active Tab Background Color",
-        "default": "#721520"
+        "default": "#161616"
       },
       {
         "type": "color",
@@ -139,21 +148,35 @@
         "default": "#000000"
       },
       {
-        "type": "text",
+        "type": "color",
+        "alpha": true,
+        "id": "badge_background_color",
+        "label": "Badge Background Color",
+        "default": "#161616"
+      },
+      {
+        "type": "color",
+        "id": "badge_text_color",
+        "label": "Badge Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "richtext",
         "id": "heading_text",
         "label": "Heading"
       },
-     {
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading",
+        "info": "Add span tag for heighlighte EX: <span> text </span>"
+      },
+      {
         "type": "text",
         "id": "link_text",
         "label": "Link text",
-        "default": "view All"
-      },
-      {
-        "type": "html",
-        "id": "subheading",
-        "label": "Subheading",
-        "info": "add span tag for highight EX: <span> </span>"
+        "default": "view All",
+        "info": "Thisbutton will show when colection products are moore then 10"
       },
       {
         "type": "header",

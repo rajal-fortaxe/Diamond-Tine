@@ -1,0 +1,130 @@
+{{ 'our-thought.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #our-thought-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+  } 
+{%- endstyle -%}
+<section id="our-thought-{{ section.id }}" class="our-thought section-{{ section.id }}-padding">
+  <div class="our-thought-main-wrapper page-width center">
+    {% if section.settings.icon != blank %}
+      {{ section.settings.icon | image_url: width: 500 | image_tag: class: "our-thought_image", loading:"lazy"  }}
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="our-thought-descriotion heading-extra-large small-heading-extra-large-v3"> {{ section.settings.description }}</div>
+    {%  endif %}
+
+    {% if section.settings.name != blank %}
+      <div class="our-thought-name body-text"> {{ section.settings.name }}</div>
+    {%  endif %}
+
+    {% if section.settings.country != blank %}
+      <div class="our-thought-country body-text" style="color: {{ section.settings.country_text_color }}"> {{ section.settings.country }}</div>
+    {%  endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Our Thought",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "country_text_color",
+        "label": "Country Color",
+        "default": "#777777"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon Image",
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Collection Description",
+      },
+      {
+        "type": "text",
+        "id": "name",
+        "label": "Name",
+      },
+      {
+        "type": "text",
+        "id": "country",
+        "label": "Country",
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 30
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "presets": [
+      {
+        "name": "Our Thought",
+      }
+    ]
+  }
+{% endschema %}

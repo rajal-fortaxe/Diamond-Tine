@@ -37,6 +37,43 @@
         padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
       }
     }
+    .main-poroduct-{{ section.id }}.color-scheme-1,
+    .main-poroduct-{{ section.id }} .featured-product.color-scheme-1,
+    .main-poroduct-{{ section.id }}{
+      --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+      --color-button: {{ section.settings.button_color.red }},{{ section.settings.button_color.green }}, {{ section.settings.button_color.blue }};
+      --color-button-text:{{ section.settings.button_text_color.red }},{{ section.settings.button_text_color.green }}, {{ section.settings.button_text_color.blue }};
+      --color-secondary: {{ section.settings.secondry_text_color.red }}, {{ section.settings.secondry_text_color.green }},{{ section.settings.secondry_text_color.blue }};
+    } 
+    .main-poroduct-{{ section.id }} .shopify-payment-button__button--unbranded{
+      --color-button: {{ section.settings.buy_button_color.red }},{{ section.settings.buy_button_color.green }}, {{ section.settings.buy_button_color.blue }};
+      --color-button-text:{{ section.settings.buy_button_text_color.red }},{{ section.settings.buy_button_text_color.green }}, {{ section.settings.buy_button_text_color.blue }};
+      border-color: transparent;
+    }
+    .main-poroduct-{{ section.id }} .shopify-payment-button__button--unbranded:hover{
+      --color-button: {{ section.settings.buy_button_text_color.red }},{{ section.settings.buy_button_text_color.green }}, {{ section.settings.buy_button_text_color.blue }};
+      --color-button-text: {{ section.settings.buy_button_color.red }},{{ section.settings.buy_button_color.green }}, {{ section.settings.buy_button_color.blue }};
+      color: rgb(var(--color-button-text));
+      background: rgb(var(--color-button));
+    }
+    .main-poroduct-{{ section.id }} .product-form__input--pill input[type=radio]:checked+label{
+      --color-foreground: var(--color-button);
+      --color-background: var(--color-button-text);
+    }
+    .main-poroduct-{{ section.id }} .product-form__input--pill input[type=radio]+label,
+    .main-poroduct-{{ section.id }} .quantity{
+      --color-foreground: var(--color-button);
+    }
+    .main-poroduct-{{ section.id }} .swatch-input__input:active+.swatch-input__label, .swatch-input__input:checked+.swatch-input__label{
+      outline-color: {{ section.settings.button_color }};
+    }
+    .main-poroduct-{{ section.id }} .price--on-sale .price-item--regular{
+      --color-foreground: var(--color-secondary);
+    }
+    .main-poroduct-{{ section.id }} .badge{
+      --color-badge-background: {{ section.settings.badge_background.red }}, {{ section.settings.badge_background.green }},{{ section.settings.badge_background.blue }};
+      --color-badge-foreground: {{ section.settings.badge_text_color.red }}, {{ section.settings.badge_text_color.green }},{{ section.settings.badge_text_color.blue }};
+    }
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -74,7 +111,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--medium product--left product--thumbnail product--mobile-show grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}"  style="--highlated-background: {{ section.settings.highlighated_background }}">
+    <div class="product main-poroduct-{{ section.id }} product--medium product--left product--thumbnail product--mobile-show grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}"  style="--highlated-background: {{ section.settings.highlighated_background }}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -95,25 +132,43 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+              {% comment %} {%- when 'line' -%}
+                  <div class="line"></div> {% endcomment %}
+              {%- when 'detail_text' -%}
+                  <div class="details-products-wrapper">
+                      {% for i in (1..5) %}
+                        {% capture text_id %}text_{{ i }}{% endcapture %}
+                        {% assign dynamic_text = block.settings[text_id] %}
+                        
+                        {% if dynamic_text != blank %}
+                          <div class="details-text-wrapper body-text" style="color: {{ section.settings.secondry_text_color }}">
+                            <div class="flex " style="color: {{ section.settings.button_color }}">{% render 'icons', icon:"product-check-mark" %} </div>
+                            {{ dynamic_text }}
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                  </div>
+                  <div class="separator-div"></div>
               {%- when 'text' -%}
-                <div
-                  class="product__text inline-richtext body-text"
-                  {{ block.shopify_attributes }}
-                >
-                  {% if block.settings.text_iamge != blank %}
-                    <span class="produt__text-media"> 
-                      {{ block.settings.text_iamge | image_url: width: 24 | image_tag }}
-                    </span>
-                  {% endif %}
-                  {{- block.settings.text -}}
-                </div>
+                  <p
+                    class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} 
+                    caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle 
+                    {% elsif block.settings.text_style == 'heading' %} heading-text-small-thin-v2 {% else %} body-text {% endif %}
+                    "{% if block.settings.enable_secondary_color == true %}style="color: {{ section.settings.secondry_text_color }}" {% endif %}
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if block.settings.icon != blank %}
+                      {{ block.settings.icon | image_url: width: 500 | image_tag: class: "product-text-image", loading:"lazy"  }}
+                    {% endif %}
+                    {{- block.settings.text -}}
+                  </p>
                  <div class="separator-div"></div>
               {%- when 'title' -%}
-                <div class="product__title body-text-v4" {{ block.shopify_attributes }}>
-                  <h1 class="body-text-v4">{{ product.title | escape }}</h1>
+                <div class="product__title body-text-medium-large" {{ block.shopify_attributes }}>
+                  <h1 class="body-text-medium-large">{{ product.title | split: '-' | first | strip }}</h1>
                   <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1 body-text-v4">
-                      {{ product.title | escape }}
+                    <h2 class="h1 body-text-medium-large">
+                      {{ product.title | split: '-' | first | strip }}
                     </h2>
                   </a>
                 </div>
@@ -124,7 +179,8 @@
                     use_variant: true,
                     show_badges: true,
                     price_class: 'body-text-v5',
-                    font_class: "body-text-v5",
+                     font_class: "body-text-medium-large small-body-text-large-v2",
+                      display_discount: true,
                   -%}
                 </div>
 
@@ -512,7 +568,7 @@
                   product_form_id: product_form_id,
                   section_id: section.id,
                   show_pickup_availability: true,
-                  font_class: "body-text"
+                  font_class: "heading-text-extra-small"
                 -%}
                 <div class="product-button-wishlist button-wishlist mobile relative body-text" data-title="wishlist">
                   <button type="button" aria-label="wishlist" class="body-text" button-wishlist data-product-handle="{{ product.handle }}">
@@ -784,19 +840,79 @@
       "type": "@app"
     },
     {
+      "type": "detail_text",
+      "name": "Details Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text_1",
+          "label": "Text 1"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_2",
+          "label": "Text 2"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_3",
+          "label": "Text 3"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_4",
+          "label": "Text 4"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text_5",
+          "label": "Text 5"
+        },
+      ]
+    },
+    {
       "type": "text",
-      "name": "t:sections.main-product.blocks.text.name",
+      "name": "t:sections.featured-product.blocks.text.name",
       "settings": [
         {
           "type": "image_picker",
-          "id": "text_iamge",
-          "label": "Text Image"
+          "id": "icon",
+          "label": "Icon"
         },
         {
           "type": "inline_richtext",
           "id": "text",
-          "default": "t:sections.main-product.blocks.text.settings.text.default",
-          "label": "t:sections.main-product.blocks.text.settings.text.label"
+          "default": "t:sections.featured-product.blocks.text.settings.text.default",
+          "label": "t:sections.featured-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_secondary_color",
+          "label": "Enable Secondary Text Color"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__3.label"
+            },
+            {
+              "value": "heading",
+              "label": "Heading"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.featured-product.blocks.text.settings.text_style.label"
         }
       ]
     },
@@ -1972,6 +2088,54 @@
       "id": "highlighated_background",
       "label": "Highlighated Background",
       "default": "#FFF8EE"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+     {
+      "type": "color",
+      "id": "secondry_text_color",
+      "label": "Secondary Text Color",
+      "default": "#777777"
+    },
+     {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#161616"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "buy_button_color",
+      "label": "Buy Button Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "buy_button_text_color",
+      "label": "Buy Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Badge background Color",
+      "default": "#161616"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#ffffff"
     },
     {
       "type": "checkbox",

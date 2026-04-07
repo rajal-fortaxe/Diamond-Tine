@@ -5,7 +5,7 @@
      {% assign mobile_aspect_ratio = section.settings.mobile_height | remove: "px" | times: 1 %}
           .video-banner-{{ section.id }} video,
           .video-banner-{{ section.id }} img{
-                /* height: {{  section.settings.mobile_height }} */
+                height: {{  section.settings.mobile_height }} !important;
                 overflow: hidden;
                  aspect-ratio: 375/{{ mobile_aspect_ratio }};
           }
@@ -82,7 +82,7 @@
                       <div class="video-content__subheading heading-text-small-thin">{{ section.settings.subheading }}</div>
                   {%  endif %}
                   {%- if section.settings.description != blank -%}
-                      <div class="video-content__description heading-extra-large">{{ section.settings.description }}</div>
+                      <div class="video-content__description heading-extra-large small-heading-extra-large">{{ section.settings.description }}</div>
                   {%  endif %}
                   {%- if section.settings.link != blank and section.settings.link_text != blank -%}
                       <a href='{{ section.settings.link }}' class="video-content__button button {%if section.settings.button_type == "outline" %} button--secondary {% endif %} body-text-small small-body-text-small">{{ section.settings.link_text }}</a>

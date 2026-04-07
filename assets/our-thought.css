@@ -1,0 +1,20 @@
+.our-thought .our-thought-main-wrapper{
+  max-width: 82.3rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.our-thought .our-thought-main-wrapper img{
+  width: 5.4rem;
+    height: 5.4rem;
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.our-thought .our-thought-descriotion{
+  margin-bottom: 3rem;
+}
+.our-thought .our-thought-name{
+  margin-bottom: .5rem;
+}

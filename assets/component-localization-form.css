@@ -360,6 +360,15 @@
   background: transparent;
 }
 
+header-drawer .header-localization .disclosure .localization-form__select,
+header-drawer localization-form{
+  width: 100%;
+}
+header-drawer .header-localization .disclosure .localization-form__select{
+  justify-content: space-between;
+  padding-left: 1.6rem;
+}
+
 .header-localization .disclosure .localization-form__select:hover {
   /* text-decoration: underline; */
   opacity: .5;
@@ -442,9 +451,11 @@
 .menu-drawer__localization .localization-form__select {
   background-color: initial;
   margin-top: 0;
-  padding: 1rem 3.6rem 1rem 0rem;
+  padding: 1rem 1.6rem 1rem 0rem;
 }
-
+.menu-drawer__localization .localization-form{
+  width: 100% !important;
+}
 .menu-drawer__localization .localization-form {
   padding: 0;
 }

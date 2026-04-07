@@ -1,9 +1,24 @@
 .collection-tabs-nav {
   display: flex;
   gap: 3rem;
-    justify-content: center;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+    -ms-overflow-style: none;
 }
-
+.collection-tabs-nav::-webkit-scrollbar{
+  display: none;
+}
+.collection-tab .heading-wrapper{
+  justify-content: center;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+.collection-tab .subhedaing {
+  padding-top:2rem;
+  justify-content: center;
+  text-align: center;
+}
 .collection-tab-btn {
   padding: .9rem 1.5rem;
   cursor: pointer;

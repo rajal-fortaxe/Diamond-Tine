@@ -7,7 +7,7 @@
       <div class=" body-text inline-richtext">{{ main_section.settings.also_available_title }}</div>
       <div class="also-available-icons flex">
         <div class="avail-logo">
-          <a href="{{ section.settings.walmart_link | default: '#' }}" class="flex">
+          <a href="{{ section.settings.walmart_link | default: '#' }}" class="flex" style="color: {{ section.settings.text_color }}">
             {% render 'icons', icon: 'walmart' %}
           </a>
         </div>
@@ -53,7 +53,7 @@
         </label>
         <button
           type="submit"
-          class="newsletter-form__button field__button underline uppercase"
+          class="newsletter-form__button field__button underline heading-text-extra-small-v3"
           name="commit"
           id="Subscribe"
           aria-label="{{ 'newsletter.button_label' | t }}"

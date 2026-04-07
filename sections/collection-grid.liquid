@@ -43,7 +43,7 @@
                     <div class="collection-media relative flex">
                         {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
                         {% if block.settings.collection_text != blank %}
-                          <div class="collection-text heading-text-large-thin small-heading-text-large-thin flex"> 
+                          <div class="collection-text heading-text-large-thin small-heading-text-large-thin-v2 flex"> 
                             {{ block.settings.collection_text }} 
                           </div>
                         {% endif %}
@@ -66,7 +66,7 @@
   {
     "name": "Collection Grid",
     "tag": "section",
-    "max_blocks": 3,
+    "max_blocks": 4,
     "settings": [
       //{
       //  "type": "color",
@@ -160,7 +160,7 @@
       {
         "type": "collection",
         "name": "Collection Item",
-        "limit": 3,
+        "limit": 4,
         "settings": [
           {
             "type": "image_picker",

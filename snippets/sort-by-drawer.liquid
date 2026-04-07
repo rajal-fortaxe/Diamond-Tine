@@ -2,10 +2,11 @@
 {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
 
 <div class="sort-by-button">
-  <span class="sort-by-active-value body-text">
+  <span class="sort-by-active-value body-text flex">
      {%- for option in results.sort_options -%}
       {% if option.value == sort_by %}
         {{ option.name }}
+        {% render 'icons', icon:"sort" %}
       {% endif %}
      {% endfor %}
      </span>

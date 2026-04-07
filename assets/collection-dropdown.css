@@ -1,0 +1,78 @@
+.collection-dropdown .collection-dropdown__image img{
+  width: 100%;
+  height: 100%;
+  transition: all .5s ease-in-out;
+  aspect-ratio: 840/576;
+}
+.collection-dropdown .collection-dropdown__image img:hover{
+  transition: all .5s ease-in-out;
+  transform: scale(1.1);
+}
+.collection-dropdown .collection-name-icon-wrapper-inner{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.collection-dropdown .collection-dropdown__content{
+  padding-inline: 3rem;
+  max-width: 41.667vw;
+  width: 100%;
+}
+.collection-dropdown-wrapper{
+  background: rgb(var(--color-background));
+  color:  rgb(var(--color-foreground));
+}
+
+.collection-dropdown .collection-dropdown__content acordion-animated:not(:first-child) details {
+  padding-block: 2.7rem;
+} 
+.collection-dropdown .collection-dropdown__content acordion-animated:first-child details{
+  padding-bottom: 2.7rem;
+  padding-top: 3rem;
+}
+.collection-dropdown .collection-dropdown__content acordion-animated details{
+  border-bottom: .1rem solid #D3D3D3;
+}
+.collection-dropdown .collection-name-icon-wrapper img{
+  width: 100%;
+  max-width: 4rem;
+  height: 100%;
+  max-height: 3.4rem;
+}
+.collection-dropdown .colletion-dropdown-description{
+  margin-bottom: 1.5rem;
+}
+.collection-dropdown .details-inner{
+  margin-bottom: .5rem;
+  margin-top: 1.5rem;
+}
+.collection-dropdown__image{
+  overflow: hidden;
+  width: 100%;
+}
+.collection-dropdown .collection-media {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+.collection-dropdown .collection-media.active-img{
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+@media screen and (max-width: 768px) {
+  .collection-dropdown .collection-dropdown__content{
+    padding-inline: 1.6rem;
+    max-width: 100%;
+  }
+  .collection-dropdown-wrapper{
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .collection-dropdown__image{
+    padding-inline: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+}

@@ -45,8 +45,8 @@
         "link_list_6qXm9a"
       ],
       "settings": {
-        "background_color": "#000000",
-        "text_color": "#ffffff",
+        "background_color": "#f8f2ea",
+        "text_color": "#000000",
         "newsletter_enable": true,
         "newsletter_heading": "Subscribe to Learn More About Our L:atest News,<br> Products and Adventures",
         "newsletter_container_width": 491,
@@ -58,12 +58,12 @@
         "social_title": "Social",
         "show_social": true,
         "social_container_width": 82,
-        "margin_top": 35,
+        "margin_top": 48,
         "margin_top_mobile": 15,
         "padding_top_desktop": 70,
         "padding_bottom_desktop": 30,
         "padding_top_mobile": 16,
-        "padding_bottom_mobile": 30
+        "padding_bottom_mobile": 55
       }
     },
     "image_grid_n7CcdP": {
@@ -72,19 +72,19 @@
         "image_eygLLr": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_35.png"
+            "image": "shopify://shop_images/Footer_Image_Center_1.png"
           }
         },
         "image_irbrGe": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_37.png"
+            "image": "shopify://shop_images/Footer_Image_Left_1.png"
           }
         },
         "image_ETYBVE": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_36.png"
+            "image": "shopify://shop_images/Footer_Image_Right_1.png"
           }
         }
       },
@@ -99,8 +99,8 @@
         "text_color": "#ffffff",
         "section_height_desktop": 70,
         "section_height_mobile": 70,
-        "logo_image": "shopify://shop_images/Group_1171275688.svg",
-        "logo_text": "Diamond Affaire"
+        "logo_image": "shopify://shop_images/Logo_Container.svg",
+        "logo_text": "Diamond Tine"
       }
     }
   },

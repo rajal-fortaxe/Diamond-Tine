@@ -599,18 +599,17 @@ theme.PriceRange = (function () {
       var self = this;
 
       slider.on('update', function(values) {
+        var minVal = Math.round(parseFloat(values[0]));
+        var maxVal = Math.round(parseFloat(values[1]));
+
         self.displayMinEl.innerHTML = theme.Currency.formatMoney(
-          values[0],
+          minVal * 100,  
           theme.settings.moneyFormat
         );
         self.displayMaxEl.innerHTML = theme.Currency.formatMoney(
-          values[1],
+          maxVal * 100,
           theme.settings.moneyFormat
         );
-
-        if (self.onUpdate) {
-          self.onUpdate(values);
-        }
       });
 
       slider.on('change', function(values) {

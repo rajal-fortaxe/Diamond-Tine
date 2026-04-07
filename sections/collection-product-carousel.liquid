@@ -21,14 +21,14 @@
 {%- endstyle -%}
 <section id="product-carousel-{{ section.id }}" class="product-carousel isolate section-{{ section.id }}-padding">
   {% if section.settings.heading_text != blank or section.settings.link_text != blank  %}
-    <div class="heading-wrapper uppercase page-width flex">
+    <div class="heading-wrapper page-width flex">
         {%  if section.settings.heading_text != blank %}
-          <div class="section-heading uppercase body-text-large small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+          <div class="section-heading heading-extra-large-v2 small-heading-extra-large-v2" style="color: {{ section.settings.heading_text_color  }}">
             {{ section.settings.heading_text }}
           </div>
         {%  endif %}
         {% if section.settings.collection != blank and section.settings.collection.products_count > 10  %}
-          <a class="link uppercase  body-text-v2 small-body-text-v2" href="{{ section.settings.collection.url  }}" style="color: {{  section.settings.button_color }}"> {{ section.settings.link_text }}</a>
+          <a class="link heading-text-small-thin-v2" href="{{ section.settings.collection.url  }}" style="color: {{  section.settings.button_color }}"> {{ section.settings.link_text }}</a>
         {% endif %}
     </div>
   {% endif %}

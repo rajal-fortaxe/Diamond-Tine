@@ -31,9 +31,9 @@
 }
 
 .scroll-item{
-  padding-right: 1rem;
+  padding-right: 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
 }
     

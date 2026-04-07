@@ -35,6 +35,11 @@
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
       <!-- noUiSlider moved to sections/ecom_filters.liquid - only loads on collection pages -->
+      {% if template.name == "collection" %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css"
+          media="print" onload="this.media='all'">
+        <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.1/dist/nouislider.min.js" defer></script>
+      {% endif %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
@@ -248,10 +253,10 @@
         --spacing-sections-desktop: {{ settings.spacing_sections }}px;
         --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
 
-        --grid-desktop-vertical-spacing: 5rem;
+        --grid-desktop-vertical-spacing: 3rem;
         --grid-desktop-horizontal-spacing: 2rem;
-        --grid-mobile-vertical-spacing: 2rem;
-        --grid-mobile-horizontal-spacing: 1rem;
+        --grid-mobile-vertical-spacing: 1.6rem;
+        --grid-mobile-horizontal-spacing: .8rem;
 
         --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
         --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;

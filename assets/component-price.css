@@ -28,7 +28,7 @@
 }
 
 .price:not(.price--show-badge) .price-item--last:last-of-type {
-  margin: 0;
+  /* margin: 0; */
 }
 
 @media screen and (min-width: 769px) {
@@ -74,9 +74,10 @@
 }
 
 .price--on-sale .price__sale {
-  display: initial;
-  flex-direction: row;
+  display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .price--center {
@@ -86,8 +87,8 @@
 
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: rgba(var(--color-foreground), 0.75);
-  font-size: 1.3rem;
+  color: rgba(var(--color-foreground));
+  /* font-size: 1.3rem; */
 }
 
 .unit-price {

@@ -60,7 +60,7 @@
   {%- paginate collection.products by products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if enable_sorting and filter_type == 'vertical' -%}
-      <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+      <facet-filters-form class="facets facets-vertical-sort page-width small-hide" style="--color-background: 248, 242, 234">
         <form class="facets-vertical-form" id="FacetSortForm">
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
@@ -255,7 +255,7 @@
                 data-total-items="{{ paginate.items }}"
                 data-current-page="{{ paginate.current_page }}"
               >
-                <div id="load-more-btn" class="load-more-button uppercase body-text-v2">View More</div>
+                <div id="load-more-btn" class="load-more-button heading-text-small-thin-v2">View More</div>
               </load-more-products>
 
                 {% endif %}

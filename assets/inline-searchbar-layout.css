@@ -1,53 +1,80 @@
-.has-inline-searchbar-layout{
-    overflow-x: hidden;
-    padding-inline: 0 !important;
-}
-.has-inline-searchbar-layout .header__heading-link,
-.has-inline-searchbar-layout .header__icons{
-    padding-bottom: 0;
-}
 
-.has-inline-searchbar-layout .inline-searchbar-header-layout{
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 1.6rem;
-    position: relative;
-    align-items: center;
-    gap: 1rem;
-    padding-inline: 3rem;
-}
-.has-inline-searchbar-layout .inline-searchbar-menu-layout{
-    position: relative;
-    padding-top: 1.6rem;
-    padding-inline: 3rem;
-    background: rgb(var(--color-background));
-}
-.has-inline-searchbar-layout .inline-searchbar-header-layout::after,
-.has-inline-searchbar-layout .inline-searchbar-menu-layout::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    background: rgba(var(--color-foreground), 0.1);
-    height: .1rem;
-    width: 100vw;
-}
-
-.header-predictive-inline-search-layot .predictive-search{
-    --combined-header-height : calc(var(--searchbar-header-height) + var(--announcement-visible-height));
-    top: calc(var(--combined-header-height) + .5rem);
-    left: 3rem;
-    position: fixed;
-    width: calc(100vw - 6rem);
-    border-radius: 2rem;
-}
 body:has(predictive-search[open]),
 body:has(.mega-menu[open]){
     overflow: hidden;
 }
-.inline-searchbar-menu-layout .mega-menu__content{
-    position: fixed;
-     --combined-header-menu-height : calc(var(--header-height) + var(--announcement-visible-height));
-    top: calc(var(--combined-header-menu-height));
+
+@media screen and (min-width: 990px) {
+    .has-inline-searchbar-layout{
+        overflow-x: hidden;
+        padding-inline: 0 !important;
+    }
+    .has-inline-searchbar-layout .header__heading-link,
+    .has-inline-searchbar-layout .header__icons{
+        padding-bottom: 0;
+    }
+
+    .has-inline-searchbar-layout .inline-searchbar-header-layout{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1.6rem;
+        position: relative;
+        align-items: center;
+        gap: 1rem;
+        padding-inline: 3rem;
+    }
+    .has-inline-searchbar-layout .inline-searchbar-menu-layout{
+        position: relative;
+        padding-top: 1.6rem;
+        padding-inline: 3rem;
+        background: rgb(var(--color-background));
+    }
+    .has-inline-searchbar-layout .inline-searchbar-header-layout::after,
+    .has-inline-searchbar-layout .inline-searchbar-menu-layout::after{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        background: rgba(var(--color-foreground), 0.1);
+        height: .1rem;
+        width: 100vw;
+    }
+
+    .header-predictive-inline-search-layot .predictive-search{
+        --combined-header-height : calc(var(--searchbar-header-height) + var(--announcement-visible-height));
+        top: calc(var(--combined-header-height) + .5rem);
+        left: 3rem;
+        position: fixed;
+        width: calc(100vw - 6rem);
+        border-radius: 2rem;
+    }
+    .inline-searchbar-menu-layout .mega-menu__content{
+        position: fixed;
+        --combined-header-menu-height : calc(var(--header-height) + var(--announcement-visible-height));
+        top: calc(var(--combined-header-menu-height));
+    }
+}
+@media screen and (max-width: 990px) {
+    .has-inline-searchbar-layout .inline-searchbar-header-layout{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .has-inline-searchbar-layout .header__icons{
+        padding-bottom: 0;
+    }
+    sticky-header:has(.has-inline-searchbar-layout){
+        border-bottom: .1rem solid rgba(var(--color-foreground), .4) !important;
+    }
+     .has-inline-searchbar-layout .search-modal.modal__content{
+        min-height: 7rem;
+        padding-block: 1rem;
+    }
+    header-drawer summary .slide-pill{
+        width: 36px;
+        height: 24px;
+        border: 1px solid;
+        justify-content: center;
+    }
 }
