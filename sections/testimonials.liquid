@@ -1,0 +1,203 @@
+{{ 'testimonials-carousel.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #testimonials-carousel-{{ section.id }}{
+    --color-foreground: {{ section.settings.text_color.red }}, {{ section.settings.text_color.green }},{{ section.settings.text_color.blue }};
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-link : var(--color-foreground);
+    --content-background: {{  section.settings.content_background }};
+    --star-color: {{ section.settings.star_color }}
+  }
+{%- endstyle -%}
+<section id="testimonials-carousel-{{ section.id }}" class="testimonials-carousel section-{{ section.id }}-padding ">
+  <testimonials-carousel>
+    <div class="testimonials-carousel-wrapper swiper js-testimonials-carousel">
+      <div class="swiper-wrapper page-width">
+        {% for block in section.blocks %}
+          <div class="swiper-slide testimonial-card flex relative">
+            <div class="testimonial-content-wrapper flex">
+              {% if section.settings.enable_stars == true %}
+                <div class="stars-wrapper flex">
+                  {%  for star in (1..5) %}
+                    {% assign star_fill = true %}
+                     {% if block.settings.star_rating < star %}
+                        {% assign star_fill = false %}
+                      {%  endif %}
+                      <div class="flex star-svg {% if star_fill == true %} fill{% endif %}">
+                        {% render 'icons', icon:"stars", star_fill: star_fill %}
+                      </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <div class="testimonial-description heading-text-v2 small-heading-text-v2">
+                  {{ block.settings.description }}
+                </div>
+              {% endif %}
+            </div>
+          
+            <div class="testimonial-user-wrapper flex">
+                {% if block.settings.user_image != blank %}
+                 {{ block.settings.user_image  | image_url: width: 300, height:300 | image_tag  }}
+                {% endif %}
+
+                {% if block.settings.user_name != blank or block.settings.place != blank %}
+                  <div class="testimonial-user body-text">
+                    {{ block.settings.user_name }} 
+                    {% if  block.settings.user_name != blank and block.settings.place != blank  %} –  {% endif %}
+                    {{ block.settings.place }}
+                  </div>
+                {% endif %}
+
+              </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+    
+  </testimonials-carousel>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "content_background",
+        "label": "Content Background",
+        "default": "#F8F2EA"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_stars",
+        "label": "Enable Star Rating",
+      },
+      {
+        "type": "color",
+        "id": "star_color",
+        "label": "Star Color",
+        "default": "#161616",
+        "visible_if": "{{ section.settings.enable_stars == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 15
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial_slide",
+        "name": "Testimonial Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "user_image",
+            "label": "User Image"
+          },
+          {
+            "type": "range",
+            "id": "star_rating",
+            "label": "Star Rating",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default": 5,
+            "visible_if": "{{ section.settings.enable_stars == true }}"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+          },
+          {
+            "type": "text",
+            "id": "user_name",
+            "label": "User Name",
+          },
+          {
+            "type": "text",
+            "id": "place",
+            "label": "Place"
+
+          }
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+      }
+    ]
+  }
+{% endschema %}

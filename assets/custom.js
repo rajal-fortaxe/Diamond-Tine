@@ -1059,3 +1059,243 @@ class CollectionDropdown extends HTMLElement {
 }
 
 customElements.define('collection-dropdown', CollectionDropdown);
+
+class DeliveryDate extends HTMLElement {
+  connectedCallback() {
+    const target = this.querySelector("#delivery-date-text");
+    if (!target) return;
+
+    const minDays = parseInt(this.getAttribute("min-days")) || 3;
+    const maxDays = parseInt(this.getAttribute("max-days")) || 6;
+
+    const today = new Date();
+
+    const startDate = this.getWorkingDate(today, minDays);
+    const endDate = this.getWorkingDate(today, maxDays);
+
+    const text = `${this.formatDate(startDate)} and ${this.formatDate(endDate)}`;
+
+    target.innerText = text;
+  }
+
+  getWorkingDate(startDate, daysToAdd) {
+    let date = new Date(startDate);
+    let addedDays = 0;
+
+    while (addedDays < daysToAdd) {
+      date.setDate(date.getDate() + 1);
+
+      // Skip Sunday
+      if (date.getDay() !== 0) {
+        addedDays++;
+      }
+    }
+
+    return date;
+  }
+
+  formatDate(date) {
+    const weekday = date.toLocaleString('en-IN', { weekday: 'long' });
+    const month = date.toLocaleString('en-IN', { month: 'short' });
+    const day = date.getDate();
+
+    return `${weekday}, ${month} ${day}`;
+  }
+}
+
+customElements.define("delivery-date", DeliveryDate);
+
+
+class DeliveryCountdown extends HTMLElement {
+  constructor() {
+    super();
+    this.timer = null;
+  }
+
+  connectedCallback() {
+    // Get values
+    this.hours = parseInt(this.dataset.hour) || 0;
+    this.minutes = parseInt(this.dataset.minute) || 0;
+    this.seconds = parseInt(this.dataset.second) || 0;
+    this.enableRestart = this.dataset.enableRestart === "true";
+
+    // Convert to seconds
+    this.initialTime = this.hours * 3600 + this.minutes * 60 + this.seconds;
+    this.totalSeconds = this.initialTime;
+
+    // Elements
+    this.wrapper = this.querySelector(".countdown-wrapper");
+    this.wrapperAfter = this.querySelector(".countdown-text-after");
+    this.wrapperBefore = this.querySelector(".countdown-text-before");
+    this.hoursEl = this.querySelector(".hours");
+    this.minutesEl = this.querySelector(".minutes");
+    this.secondsEl = this.querySelector(".seconds");
+    this.afterTextEl = this.querySelector(".after-text");
+
+    // Ensure initial state
+    if (this.afterTextEl) this.afterTextEl.style.display = "none";
+
+    this.startCountdown();
+  }
+
+  startCountdown() {
+    this.updateDisplay();
+
+    this.timer = setInterval(() => {
+
+      if (this.totalSeconds <= 0) {
+        clearInterval(this.timer);
+
+        if (this.enableRestart) {
+          this.totalSeconds = this.initialTime;
+
+          if (this.afterTextEl) this.afterTextEl.style.display = "none";
+          if (this.wrapper) this.wrapper.style.display = "inline";
+          if (this.wrapperAfter) this.wrapperAfter.style.display = "inline";
+          if (this.wrapperBefore) this.wrapperBefore.style.display = "inline";
+
+          this.startCountdown();
+        } else {
+          if (this.wrapper) this.wrapper.style.display = "none";
+          if (this.afterTextEl) this.afterTextEl.style.display = "inline";
+          if (this.wrapperAfter) this.wrapperAfter.style.display = "none";
+          if (this.wrapperBefore) this.wrapperBefore.style.display = "none";
+
+          this.updateDisplay(); 
+        }
+
+        return;
+      }
+
+      this.totalSeconds--;
+      this.updateDisplay();
+
+    }, 1000);
+  }
+
+  updateDisplay() {
+    let hrs = Math.floor(this.totalSeconds / 3600);
+    let mins = Math.floor((this.totalSeconds % 3600) / 60);
+    let secs = this.totalSeconds % 60;
+
+    if (this.hoursEl) this.hoursEl.textContent = this.format(hrs);
+    if (this.minutesEl) this.minutesEl.textContent = this.format(mins);
+    if (this.secondsEl) this.secondsEl.textContent = this.format(secs);
+  }
+
+  format(value) {
+    return value.toString().padStart(2, "0");
+  }
+}
+
+customElements.define("delivery-countdown", DeliveryCountdown);
+
+class TestimonialsCarousel extends HTMLElement {
+  constructor() {
+    super();
+			
+			var swiper = new Swiper(".js-testimonials-carousel", {
+				slidesPerView: 1.3,
+				spaceBetween:30,
+        slidesOffsetAfter:0,
+        a11y: true,
+				breakpoints: {
+					769: {
+						slidesPerView: 2.3,
+						spaceBetween:  40,
+					},
+					1024: {
+						slidesPerView: 2.9,
+						spaceBetween: 40,
+            slidesOffsetAfter:20,
+					}
+				}
+			});
+
+  }
+}
+
+customElements.define('testimonials-carousel', TestimonialsCarousel);
+
+
+
+(function () {
+  let panzoomInstances = new Map(); // Keep track of instances to clean up
+
+  function initPanzoom() {
+    if (window.innerWidth >= 769) {
+      // Cleanup if resizing from mobile to desktop
+      document.querySelectorAll('.pinch-zoom').forEach(img => {
+        if (img.dataset.panzoomInitialized) {
+          img.style.transform = 'none';
+          delete img.dataset.panzoomInitialized;
+        }
+      });
+      return;
+    }
+
+    document.querySelectorAll('.pinch-zoom').forEach((img) => {
+      if (img.dataset.panzoomInitialized) return;
+      img.dataset.panzoomInitialized = "true";
+
+      const panzoom = Panzoom(img, {
+        maxScale: 4,
+        minScale: 1,
+        contain: 'outside',
+        cursor: 'grab'
+      });
+
+      function forceReset() {
+        img.style.transform = 'translate(0px, 0px) scale(1)';
+        panzoom.setOptions({
+          startX: 0,
+          startY: 0,
+          startScale: 1
+        });
+      }
+
+      setTimeout(forceReset, 50);
+      setTimeout(forceReset, 150);
+
+      if (!img.complete) {
+        img.addEventListener('load', () => {
+          setTimeout(forceReset, 50);
+        });
+      }
+
+      img.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+
+      let lastTap = 0;
+      img.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTap < 300) {
+          e.preventDefault();
+          if (panzoom.getScale() > 1) {
+            panzoom.zoom(1, { animate: true });
+            panzoom.pan(0, 0, { animate: true });
+          } else {
+            panzoom.zoom(2.5, { animate: true });
+          }
+        }
+        lastTap = now;
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initPanzoom);
+
+  // Initialize on resize to catch orientation changes or window resizing
+  window.addEventListener('resize', () => {
+    initPanzoom();
+  });
+
+  // Dawn re-render fix
+  document.addEventListener('variant:change', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.pinch-zoom').forEach(img => {
+        img.style.transform = 'translate(0px, 0px) scale(1)';
+      });
+      initPanzoom();
+    }, 300);
+  });
+})();

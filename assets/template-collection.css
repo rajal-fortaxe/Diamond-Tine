@@ -116,15 +116,3 @@
   }
 }
 
-.collection-badgfe-wish-wrappper{
- justify-content: space-between;
- align-items: center;
- padding-top: 1rem;
- gap: 1rem;
-}
-.collection-badgfe-wish-wrappper .product-card__badge{
-  width: fit-content;
-}
-.collection-badgfe-wish-wrappper:not(:has(.product-card__badge)){
-  justify-content: flex-end;
-}

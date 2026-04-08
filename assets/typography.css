@@ -6,6 +6,13 @@
     letter-spacing: 0;
     text-transform: uppercase;
 }
+.heading-text-v2{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 2.4rem;
+    line-height: 3rem;
+    letter-spacing: 0;
+}
 .heading-extra-large{
     font-family: var(--font-heading-family-thin);
     font-weight: 100;
@@ -41,6 +48,13 @@
     font-size: 2.4rem;
     line-height: 2.8rem;
     letter-spacing: .7px;
+}
+.heading-text-thin-medium{
+    font-family: var(--font-heading-family-thin);
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: .6px;
 }
 .heading-text-small-thin{
     font-family: var(--font-heading-family-thin);
@@ -252,5 +266,12 @@
         font-size: 3rem;
         line-height: 3rem;
         letter-spacing: 0.9px;
+    }
+    .small-heading-text-v2{
+        font-family: var(--font-heading-family-thin);
+        font-weight: 100;
+        font-size: 2rem;
+        line-height: 2.6rem;
+        letter-spacing: 0;
     }
 }

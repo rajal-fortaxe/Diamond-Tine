@@ -13,3 +13,12 @@
     padding-inline: 1.6rem;
   }
 }
+
+.recently-viewed a .product-title{
+  transition: opacity .3s ease-in-out
+}
+
+.recently-viewed a:hover .product-title{
+  transition: opacity .3s ease-in-out;
+  opacity: .5;
+}

@@ -394,4 +394,32 @@ load-more-products-search .load-more-button{
     aspect-ratio: 270/270;
     height: auto;
   }
+
+  .pinch-zoom {
+    touch-action: none;
+    cursor: grab;
+    overflow: visible !important;
+  }
+
+  .pinch-zoom:active {
+    cursor: grabbing;
+  }
+  
+  .product__media-item,
+  .product__media,
+  .media {
+    overflow: hidden;
+  }
+}
+.collection-badge-wish-wrappper{
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 1rem;
+ gap: 1rem;
+}
+.collection-badge-wish-wrappper .product-card__badge{
+  width: fit-content;
+}
+.collection-badge-wish-wrappper:not(:has(.product-card__badge)){
+  justify-content: flex-end;
 }

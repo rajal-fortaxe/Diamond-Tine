@@ -25,20 +25,41 @@
           "type": "title",
           "settings": {}
         },
+        "text_aMdqtp": {
+          "type": "text",
+          "settings": {
+            "text": "A timeless piece crafted with elegance and grace.",
+            "enable_secondary_color": true,
+            "text_style": "body"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
         },
+        "detail_text_mj7WHB": {
+          "type": "detail_text",
+          "disabled": true,
+          "settings": {
+            "text_1": "Premium 18K Gold-Plated / Sterling Silver",
+            "text_2": "Adjustable Chain (16\"–18\")",
+            "text_3": "Hypoallergenic & Skin-Friendly",
+            "text_4": "Handcrafted with Love",
+            "text_5": ""
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "button",
+            "swatch_shape": "square"
           }
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {
+            "picker_type": "button"
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -53,12 +74,20 @@
             "enable_accordian": true
           }
         },
-        "text_fEmnze": {
-          "type": "text",
+        "delivey_date_text_VGRh8t": {
+          "type": "delivey_date_text",
           "settings": {
-            "text": "Order in the next 10 hours 57 minutes to get it between Tuesday, Dec 9 and Monday, Dec 15",
-            "enable_secondary_color": false,
-            "text_style": "body"
+            "enable_countdown": true,
+            "hours": "10",
+            "miniutes": "57",
+            "second": "",
+            "countdown_text_before": "in the next",
+            "countdown_text_after": "to get it between",
+            "enable_restart": false,
+            "after_text": "now to get between",
+            "text_iamge": "shopify://shop_images/Shipping-Truck--Streamline-Core.svg",
+            "text": "Order",
+            "text_instead_countdown": "now to get it between"
           }
         },
         "share": {
@@ -72,10 +101,13 @@
           "settings": {
             "layout": "horizontal",
             "icon_1": "heart",
+            "image_1": "shopify://shop_images/Group_1171276366.svg",
             "heading_1": "Certified Diamonds",
             "icon_2": "return",
+            "image_2": "shopify://shop_images/Group_1171276370.svg",
             "heading_2": "Always 14k Solid Gold",
             "icon_3": "truck",
+            "image_3": "shopify://shop_images/Group_1171276370.svg",
             "heading_3": "Hand Crafted"
           }
         },
@@ -99,12 +131,14 @@
       "block_order": [
         "vendor",
         "title",
+        "text_aMdqtp",
         "price",
+        "detail_text_mj7WHB",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "text_fEmnze",
+        "delivey_date_text_VGRh8t",
         "share",
         "icon_with_text_dKqbmw",
         "accordians_LryDKn",
@@ -113,12 +147,20 @@
       ],
       "settings": {
         "highlighated_background": "#fff8ee",
+        "text_color": "#000000",
+        "secondry_text_color": "#777777",
+        "button_color": "#161616",
+        "button_text_color": "#ffffff",
+        "buy_button_color": "#f5f5f5",
+        "buy_button_text_color": "#000000",
+        "badge_background": "#161616",
+        "badge_text_color": "#ffffff",
         "hide_variants": true,
         "enable_video_looping": true,
         "padding_top_desktop": 20,
         "padding_bottom_desktop": 25,
         "padding_top_mobile": 20,
-        "padding_bottom_mobile": 25
+        "padding_bottom_mobile": 10
       }
     },
     "collection_dropdown_eyi4m8": {
@@ -182,9 +224,9 @@
         "button_background_color": "#161616",
         "button_text_color": "#ffffff",
         "padding_top_desktop": 50,
-        "padding_bottom_desktop": 50,
-        "padding_top_mobile": 35,
-        "padding_bottom_mobile": 35
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 10
       }
     },
     "image_and_text_carousel_xJCmpq": {
@@ -289,13 +331,13 @@
         "heading_text_color": "#000000",
         "text_color": "#000000",
         "button_color": "#000000",
-        "badge_background_color": "#00000080",
+        "badge_background_color": "#161616",
         "badge_text_color": "#ffffff",
         "heading": "You may also like",
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
-        "padding_top_mobile": 25,
-        "padding_bottom_mobile": 25
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
       }
     },
     "recently_viewed_G33Yy9": {
@@ -305,13 +347,13 @@
         "heading_text_color": "#000000",
         "text_color": "#000000",
         "button_color": "#000000",
-        "badge_background_color": "#00000080",
+        "badge_background_color": "#161616",
         "badge_text_color": "#ffffff",
         "heading_text": "Recently Viewed",
         "padding_top_desktop": 35,
         "padding_bottom_desktop": 35,
-        "padding_top_mobile": 25,
-        "padding_bottom_mobile": 25
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
       }
     }
   },

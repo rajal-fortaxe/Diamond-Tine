@@ -30,15 +30,15 @@
         "button_color": "#ffffff",
         "media_type_desktop": "image",
         "media_type_mobile": "image",
-        "desktop_image": "shopify://shop_images/Rectangle_2_567c0f82-13a1-45dc-910f-b1ce3c338b34.png",
-        "mobile_image": "shopify://shop_images/Rectangle_3_da4dae61-a915-4cb9-a216-6e5dac367e2d.png",
-        "title": "About Diamond Affaire",
+        "desktop_image": "shopify://shop_images/Hero_Image_3.png",
+        "mobile_image": "shopify://shop_images/Rectangle_3.png",
+        "title": "<p>About Diamond Affaire</p>",
         "subheading": "",
         "description": "<p>Diamond Affaire was founded in 2020 by Sumita Gupta from her home in Herndon, Virginia, USA. A dedicated mother of two boys who balances a full–time career while realizing her dream of running a diamond jewelry boutique.</p>",
         "link_text": "",
         "link": "",
         "button_type": "outline",
-        "text_align": "center-center",
+        "text_align": "bottom-center",
         "section_height": "750px",
         "mobile_height": "750px"
       }
@@ -53,7 +53,8 @@
         "enable_padding": true,
         "media_position_desktop": "left",
         "media_position_mobile": "top",
-        "desktop_image": "shopify://shop_images/Rectangle_161125032.png",
+        "desktop_image": "shopify://shop_images/Bracelet_on_Wrist_1.png",
+        "mobile_image": "shopify://shop_images/Rectangle_161125032.png",
         "auto_height": false,
         "media_height_desktop": 420,
         "media_height_mobile": 210,
@@ -79,7 +80,8 @@
         "enable_padding": true,
         "media_position_desktop": "right",
         "media_position_mobile": "top",
-        "desktop_image": "shopify://shop_images/Rectangle_161125033.png",
+        "desktop_image": "shopify://shop_images/Image_6.png",
+        "mobile_image": "shopify://shop_images/Rectangle_161125033.png",
         "auto_height": false,
         "media_height_desktop": 420,
         "media_height_mobile": 210,
@@ -105,7 +107,8 @@
         "enable_padding": true,
         "media_position_desktop": "left",
         "media_position_mobile": "top",
-        "desktop_image": "shopify://shop_images/Rectangle_161125034.png",
+        "desktop_image": "shopify://shop_images/Earring_Image.png",
+        "mobile_image": "shopify://shop_images/Rectangle_161125034.png",
         "auto_height": false,
         "media_height_desktop": 420,
         "media_height_mobile": 210,
@@ -127,7 +130,7 @@
         "image_HffLaa": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/Image_1.png",
+            "image": "shopify://shop_images/Image_7.png",
             "heading": "Prachi Gupta",
             "subheading": "The Designer"
           }
@@ -135,7 +138,7 @@
         "image_f43arF": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/Image.png",
+            "image": "shopify://shop_images/Image_8.png",
             "heading": "Bharat Gupta",
             "subheading": "The Maker"
           }

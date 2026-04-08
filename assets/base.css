@@ -1432,19 +1432,24 @@ shopify-accelerated-checkout-cart {
 .share-button__button {
   font-size: 1.4rem;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
   margin-left: 0;
   padding: 0;
 }
-
+.bold{
+  font-weight:700;
+}
 details[open] > .share-button__fallback {
   animation: animateMenuOpen var(--duration-default) ease;
 }
 
+
 .share-button__button:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  /* text-decoration: underline; */
+  /* text-underline-offset: 0.3rem; */
+  transition: opacity .3s ease-in-out;
+  opacity: .5;
 }
 
 .share-button__button,
@@ -1452,6 +1457,7 @@ details[open] > .share-button__fallback {
   cursor: pointer;
   background-color: transparent;
   border: none;
+  transition: opacity .3s ease-in-out;
 }
 
 .share-button__button .icon-share {
@@ -1936,12 +1942,13 @@ input[type='checkbox'] {
   width: 100%;
   display: flex;
   border-radius: var(--inputs-radius);
-  min-height: 2.5rem;
+  min-height: 2.6rem;
+  border: .1rem solid #E7E7E7;
 }
 
 .quantity:after {
   pointer-events: none;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1957,7 +1964,7 @@ input[type='checkbox'] {
 .quantity:before {
   background: rgb(var(--color-background));
   pointer-events: none;
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: 0;
   right: 0;
@@ -1985,6 +1992,7 @@ input[type='checkbox'] {
   flex-grow: 1;
   -webkit-appearance: none;
   appearance: none;
+  max-width:3rem;
 }
 
 .quantity__button {
@@ -1998,9 +2006,13 @@ input[type='checkbox'] {
   align-items: center;
   justify-content: center;
   color: rgb(var(--color-foreground));
-  padding: 0.6;
+  padding: 0.6rem;
 }
-
+.quantity__button svg{
+  pointer-events: auto;
+  position: relative;
+  z-index:-1;
+}
 .quantity__button:first-child {
   margin-left: calc(var(--inputs-border-width));
 }
@@ -3736,13 +3748,12 @@ details-disclosure > details {
   border: 1px solid #000000;
   transition: all .3s ease-in-out;
 }
-.product .button--primary{
-   transition: all .3s ease-in-out;
+.button--primary{
+  transition: all .3s ease-in-out;
 }
 button.shopify-payment-button__button--unbranded:hover,
 .cart-drawer .cart__checkout-button:hover,
-.featured-product .button--primary:hover,
-.product .button--primary:hover{
+ .button--primary:hover{
   color: rgb(var(--color-button)); 
   background-color: transparent;
   transition: all .3s ease-in-out;
@@ -3933,6 +3944,11 @@ collection-product-carousel .swiper-wrapper{
 .underline{
   text-decoration: underline;
   text-underline-offset: .3rem;
+  transition: all .3s ease-in-out
+}
+.underline:hover{
+   opacity:.5;
+   transition: all .3s ease-in-out
 }
 .h-100{
   height: 100%;

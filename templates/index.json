@@ -22,9 +22,9 @@
         "media_type_mobile": "image",
         "desktop_image": "shopify://shop_images/Rectangle_1.png",
         "mobile_image": "shopify://shop_images/Rectangle_2_1.webp",
-        "title": "",
+        "title": "<p>Grace that wraps <br/><em>around you.</em></p>",
         "subheading": "",
-        "description": "<p>Grace that wraps <br/><em>around you.</em></p>",
+        "description": "",
         "link_text": "",
         "link": "#",
         "button_type": "solid",
@@ -429,6 +429,7 @@
     },
     "our_thought_Npemqe": {
       "type": "our-thought",
+      "disabled": true,
       "name": "Our Thought",
       "settings": {
         "text_color": "#000000",
@@ -441,6 +442,58 @@
         "padding_bottom_desktop": 50,
         "padding_top_mobile": 35,
         "padding_bottom_mobile": 35
+      }
+    },
+    "testimonials_RzgNmt": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_slide_8dKAiz": {
+          "type": "testimonial_slide",
+          "settings": {
+            "user_image": "shopify://shop_images/profile.png",
+            "star_rating": 4,
+            "description": "<p>“An absolutely stunning stay! The valley views from our room were breathtaking, and the wooden interiors gave such a warm and premium feel. Perfect mountain getaway.”</p>",
+            "user_name": "Rohan Mehta",
+            "place": "New Delhi"
+          }
+        },
+        "testimonial_slide_87y8Ve": {
+          "type": "testimonial_slide",
+          "settings": {
+            "user_image": "shopify://shop_images/profile.png",
+            "star_rating": 5,
+            "description": "<p>“La Hault Courtyard blends comfort and elegance beautifully. Waking up to snow-covered peaks was magical. The hospitality made our trip even more special.”</p>",
+            "user_name": "Ananya Kapoor",
+            "place": "Mumbai"
+          }
+        },
+        "testimonial_slide_96Wr4A": {
+          "type": "testimonial_slide",
+          "settings": {
+            "user_image": "shopify://shop_images/profile.png",
+            "star_rating": 2,
+            "description": "<p>“A peaceful retreat in Sissu. Spacious rooms, serene courtyard, and incredible views. It’s the kind of place where you truly relax and disconnect.”</p>",
+            "user_name": "Vikram Sharma",
+            "place": "Chandigarh"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_slide_8dKAiz",
+        "testimonial_slide_87y8Ve",
+        "testimonial_slide_96Wr4A"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "background_color": "#ffffff",
+        "content_background": "#f8f2ea",
+        "text_color": "#000000",
+        "enable_stars": true,
+        "star_color": "#161616",
+        "padding_top_desktop": 35,
+        "padding_bottom_desktop": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15
       }
     },
     "collection_dropdown_6XzxnL": {
@@ -536,6 +589,7 @@
     "trending_product_PRTP4h",
     "collection_product_carousel_PpNEiT",
     "our_thought_Npemqe",
+    "testimonials_RzgNmt",
     "collection_dropdown_6XzxnL",
     "our_thought_w8FAwr"
   ]

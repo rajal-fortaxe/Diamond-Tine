@@ -21,9 +21,9 @@
 {%- endstyle -%}
 <section id="recently-viewed-{{ section.id }}" class="recently-viewed isolate section-{{ section.id }}-padding">
   {% if section.settings.heading_text != blank or section.settings.link_text != blank  %}
-    <div class="heading-wrapper uppercase page-width flex">
+    <div class="heading-wrapper page-width flex">
         {%  if section.settings.heading_text != blank %}
-          <div class="section-heading body-text-large  small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+          <div class="section-heading heading-extra-large-v2 small-heading-extra-large-v2" style="color: {{ section.settings.heading_text_color  }}">
             {{ section.settings.heading_text }}
           </div>
         {%  endif %}
@@ -188,17 +188,19 @@
    <div class="main-product swiper-slide">
     <a class="link text-decoration-none" href="${item.productUrl}">
         <div class="product-media relative flex">
-          
+        <div class="collection-badge-wish-wrappper flex">
           ${badgesHtml}
                 
-                <div class="button-wishlist mobile" data-title="wishlist">
-          <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="${ item.productHandle }">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon icon-wishlist">
-            <path d="M12.0051 19.1127L4.77114 12.5602C0.839611 8.62871 6.61894 1.0802 12.0051 7.18715C17.3913 1.0802 23.1445 8.65493 19.2392 12.5602L12.0051 19.1127Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <div class="button-wishlist mobile" data-title="wishlist">
+            <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="${ item.productHandle }">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon icon-wishlist">
+              <path d="M12.0051 19.1127L4.77114 12.5602C0.839611 8.62871 6.61894 1.0802 12.0051 7.18715C17.3913 1.0802 23.1445 8.65493 19.2392 12.5602L12.0051 19.1127Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
+        </div>
                 
+
         <div class="product-media-inner w-100 flex relative">
           <img src="${item.productImg}" alt="${item.productTitle}" class="product-image product-main-image" loading="lazy">
           

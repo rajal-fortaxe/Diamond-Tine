@@ -76,13 +76,13 @@
               <div class="video-banner-content page-width content-align-{{ section.settings.text_align }}">
                   <div class="video-banner-content__inner-wrapper">
                   {%- if section.settings.title != blank -%}
-                      <div class="video-content__heading uppercase heading-extra-large small-heading-extra-large heading-text-large-thin">{{ section.settings.title }}</div>
+                      <div class="video-content__heading heading-extra-large small-heading-extra-large heading-text-large-thin">{{ section.settings.title }}</div>
                   {%  endif %}
                   {%- if section.settings.subheading != blank -%}
                       <div class="video-content__subheading heading-text-small-thin">{{ section.settings.subheading }}</div>
                   {%  endif %}
                   {%- if section.settings.description != blank -%}
-                      <div class="video-content__description heading-extra-large small-heading-extra-large">{{ section.settings.description }}</div>
+                      <div class="video-content__description boody-text">{{ section.settings.description }}</div>
                   {%  endif %}
                   {%- if section.settings.link != blank and section.settings.link_text != blank -%}
                       <a href='{{ section.settings.link }}' class="video-content__button button {%if section.settings.button_type == "outline" %} button--secondary {% endif %} body-text-small small-body-text-small">{{ section.settings.link_text }}</a>
@@ -182,7 +182,7 @@
       "label": "Video - Mobile",
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "title",
       "label": "Title"
     },
