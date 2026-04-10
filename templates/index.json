@@ -29,8 +29,8 @@
         "link": "#",
         "button_type": "solid",
         "text_align": "bottom-center",
-        "section_height": "750px",
-        "mobile_height": "750px"
+        "section_height": "800px",
+        "mobile_height": "850px"
       }
     },
     "scrolling_promotion_RwBDRU": {
@@ -69,21 +69,37 @@
         "collection_Rd8jT7": {
           "type": "collection",
           "settings": {
-            "collection_name": "test 1",
-            "collection": "charms"
+            "collection_name": "Rings",
+            "collection": "rings"
           }
         },
         "collection_UUTtyq": {
           "type": "collection",
           "settings": {
-            "collection_name": "test 2",
+            "collection_name": "Earrings",
+            "collection": "earrings"
+          }
+        },
+        "collection_t4jmk7": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Necklaces",
+            "collection": "charms"
+          }
+        },
+        "collection_EVXzyt": {
+          "type": "collection",
+          "settings": {
+            "collection_name": "Bracelets",
             "collection": "frontpage"
           }
         }
       },
       "block_order": [
         "collection_Rd8jT7",
-        "collection_UUTtyq"
+        "collection_UUTtyq",
+        "collection_t4jmk7",
+        "collection_EVXzyt"
       ],
       "name": "Collection Tab",
       "settings": {
@@ -450,11 +466,13 @@
         "testimonial_slide_8dKAiz": {
           "type": "testimonial_slide",
           "settings": {
+            "testimonial_image": "shopify://shop_images/Bracelet_on_Wrist_1.png",
             "user_image": "shopify://shop_images/profile.png",
             "star_rating": 4,
             "description": "<p>“An absolutely stunning stay! The valley views from our room were breathtaking, and the wooden interiors gave such a warm and premium feel. Perfect mountain getaway.”</p>",
             "user_name": "Rohan Mehta",
-            "place": "New Delhi"
+            "place": "New Delhi",
+            "testimonial_product": "14k-gold-diamond-airplane-charm-pendant"
           }
         },
         "testimonial_slide_87y8Ve": {
@@ -464,7 +482,8 @@
             "star_rating": 5,
             "description": "<p>“La Hault Courtyard blends comfort and elegance beautifully. Waking up to snow-covered peaks was magical. The hospitality made our trip even more special.”</p>",
             "user_name": "Ananya Kapoor",
-            "place": "Mumbai"
+            "place": "Mumbai",
+            "testimonial_product": ""
           }
         },
         "testimonial_slide_96Wr4A": {
@@ -474,7 +493,8 @@
             "star_rating": 2,
             "description": "<p>“A peaceful retreat in Sissu. Spacious rooms, serene courtyard, and incredible views. It’s the kind of place where you truly relax and disconnect.”</p>",
             "user_name": "Vikram Sharma",
-            "place": "Chandigarh"
+            "place": "Chandigarh",
+            "testimonial_product": ""
           }
         }
       },

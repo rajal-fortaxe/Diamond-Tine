@@ -152,25 +152,34 @@ customElements.define('collection-product-carousel', CollectionProductCarousel);
 class IamgeWithTextCarousel extends HTMLElement {
   constructor() {
     super();
-			
-			var imageSwiper  = new Swiper(".js-iamge-carousel", {
-				slidesPerView: 1,
-         spaceBetween: 20,
-        a11y: true,
-         pagination: {
-          el: ".swiper-pagination.image-pagination",
-        },
-        loop: true,
-			});
 
-      var contentSwiper  = new Swiper(".js-content-carousel", {
-				slidesPerView: 1,
-         a11y: true,
-         loop: true,
-			});
+    const autoRotate = this.dataset.autoRotate === 'true';
+    const rotationSpeed = (parseInt(this.dataset.speed) || 5) * 1000;
 
-      imageSwiper.controller.control = contentSwiper;
-      contentSwiper.controller.control = imageSwiper;
+    const autoplayConfig = autoRotate ? {
+      delay: rotationSpeed,
+      disableOnInteraction: false,
+    } : false;
+    const imageSwiper = new Swiper(this.querySelector(".js-iamge-carousel"), {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      a11y: true,
+      loop: true,
+      pagination: {
+        el: this.querySelector(".swiper-pagination.image-pagination"),
+        clickable: true,
+      },
+      autoplay: autoplayConfig
+    });
+
+    const contentSwiper = new Swiper(this.querySelector(".js-content-carousel"), {
+      slidesPerView: 1,
+      a11y: true,
+      loop: true,
+    });
+
+    imageSwiper.controller.control = contentSwiper;
+    contentSwiper.controller.control = imageSwiper;
   }
 }
 
@@ -1035,20 +1044,14 @@ class CollectionDropdown extends HTMLElement {
 
     details.forEach((detail) => {
       detail.addEventListener("toggle", () => {
-        // We only care when the details element is being OPENED
         if (detail.open) {
           const contentAttr = detail.getAttribute("data-collection-name");
-
-          // 1. Remove active class from all images first (reset state)
           imgs.forEach((img) => img.classList.remove("active-img"));
-
-          // 2. Find and activate the matching image
           imgs.forEach((img) => {
             const imgAttr = img.getAttribute("data-collection-image");
             
             if (contentAttr === imgAttr) {
               img.classList.add("active-img");
-              console.log("📸 Image activated for:", contentAttr);
             }
           });
         }

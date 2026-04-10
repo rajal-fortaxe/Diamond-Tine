@@ -54,7 +54,7 @@
         "walmart_link": "https://www.walmart.com/browse/0?facet=brand:DiamondAffaire",
         "ebay_link": "https://www.ebay.com/str/diamondaffaire?_trksid=p4429486.m145687.l149086",
         "etsy_link": "https://www.etsy.com/shop/diamondaffaire?ref=seller-platform-mcnav",
-        "also_available": true,
+        "also_available": false,
         "social_title": "Social",
         "show_social": true,
         "social_container_width": 82,

@@ -26,6 +26,11 @@
         {% for block in section.blocks %}
           <div class="swiper-slide testimonial-card flex relative">
             <div class="testimonial-content-wrapper flex">
+              <div class="testimonial-media flex">
+                    {%  if  block.settings.testimonial_image != blank %}
+                    {{ block.settings.testimonial_image  | image_url: width: 700, height:700 | image_tag  }}
+                  {%  endif %}
+                  </div>
               {% if section.settings.enable_stars == true %}
                 <div class="stars-wrapper flex">
                   {%  for star in (1..5) %}
@@ -48,6 +53,7 @@
             </div>
           
             <div class="testimonial-user-wrapper flex">
+              <div class="user-wrapper flex">
                 {% if block.settings.user_image != blank %}
                  {{ block.settings.user_image  | image_url: width: 300, height:300 | image_tag  }}
                 {% endif %}
@@ -59,7 +65,12 @@
                     {{ block.settings.place }}
                   </div>
                 {% endif %}
-
+              </div>
+                {% if block.settings.testimonial_product != blank %}
+                  <a class="testimonial-product flex" href="{{ block.settings.testimonial_product.url }}">
+                    {% render 'icons', icon:"right-arrow" %}
+                  </a>
+                {% endif %}
               </div>
           </div>
         {% endfor %}
@@ -162,6 +173,11 @@
         "settings": [
           {
             "type": "image_picker",
+            "id": "testimonial_image",
+            "label": "Testimonial Image"
+          },
+          {
+            "type": "image_picker",
             "id": "user_image",
             "label": "User Image"
           },
@@ -189,8 +205,12 @@
             "type": "text",
             "id": "place",
             "label": "Place"
-
-          }
+          },
+          {
+            "type": "product",
+            "id": "testimonial_product",
+            "label": "Linked Product"
+          },
         ]
       },
     ],

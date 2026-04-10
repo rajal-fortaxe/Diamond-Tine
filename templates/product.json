@@ -39,7 +39,6 @@
         },
         "detail_text_mj7WHB": {
           "type": "detail_text",
-          "disabled": true,
           "settings": {
             "text_1": "Premium 18K Gold-Plated / Sterling Silver",
             "text_2": "Adjustable Chain (16\"–18\")",
@@ -51,7 +50,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "dropdown",
             "swatch_shape": "square"
           }
         },
@@ -83,7 +82,7 @@
             "second": "",
             "countdown_text_before": "in the next",
             "countdown_text_after": "to get it between",
-            "enable_restart": false,
+            "enable_restart": true,
             "after_text": "now to get between",
             "text_iamge": "shopify://shop_images/Shipping-Truck--Streamline-Core.svg",
             "text": "Order",
@@ -146,7 +145,7 @@
         "shipping_and_retrn_7BffVG"
       ],
       "settings": {
-        "highlighated_background": "#fff8ee",
+        "highlighated_background": "#f8f2ea",
         "text_color": "#000000",
         "secondry_text_color": "#777777",
         "button_color": "#161616",
@@ -291,6 +290,8 @@
         "content_background_color": "#fff8ee",
         "text_color": "#000000",
         "button_color": "#000000",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "text_align": "center",
         "text_align_mobile": "left",
         "padding_top_desktop": 35,

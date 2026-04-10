@@ -5,7 +5,7 @@
      {% assign mobile_aspect_ratio = section.settings.mobile_height | remove: "px" | times: 1 %}
           .video-banner-{{ section.id }} video,
           .video-banner-{{ section.id }} img{
-                height: {{  section.settings.mobile_height }} !important;
+                height: {{  section.settings.mobile_height }};
                 overflow: hidden;
                  aspect-ratio: 375/{{ mobile_aspect_ratio }};
           }
@@ -281,6 +281,10 @@
           "label": "750px",
           "value": "750px"
         },
+        {
+          "label": "800px",
+          "value": "800px"
+        },
        // {
          // "label": "t:sections.hero-video.settings.section_height.options.100vh.label",
         //  "value": "100vh"
@@ -324,6 +328,10 @@
         {
           "label": "750px",
           "value": "750px"
+        },
+         {
+          "label": "850px",
+          "value": "850px"
         },
         //{
           //"label": "t:sections.hero-video.settings.mobile_height.options.100vh.label",

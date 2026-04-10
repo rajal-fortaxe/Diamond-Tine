@@ -136,6 +136,16 @@
                   <div class="line"></div> {% endcomment %}
               {%- when 'detail_text' -%}
                   <div class="details-products-wrapper">
+                    {% if product.metafields.custom.highlights_etsy_description != blank %}
+                      {% assign dec_val = product.metafields.custom.highlights_etsy_description |split: "," %}
+                      {% for highlight in dec_val %}
+                          <div class="details-text-wrapper body-text" style="color: {{ section.settings.secondry_text_color }}">
+                            <div class="flex " style="color: {{ section.settings.button_color }}">{% render 'icons', icon:"product-check-mark" %} </div>
+                            {{ highlight }}
+                          </div>
+                      {% endfor %}
+
+                    {% else %}
                       {% for i in (1..5) %}
                         {% capture text_id %}text_{{ i }}{% endcapture %}
                         {% assign dynamic_text = block.settings[text_id] %}
@@ -147,6 +157,7 @@
                           </div>
                         {% endif %}
                       {% endfor %}
+                    {% endif %}
                   </div>
                   <div class="separator-div"></div>
               {%- when 'text' -%}

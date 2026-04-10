@@ -20,9 +20,9 @@
   }
 {%- endstyle -%}
 <section id="image-and-text-carousel-{{ section.id }}" class="image-and-text-carousel  page-width section-{{ section.id }}-padding">
-  <image-and-text-carousel>
+  <image-and-text-carousel data-auto-rotate="{{ section.settings.auto_rotate }}" {% if section.settings.auto_rotate == true %} data-speed="{{ section.settings.change_slides_speed }}" {% endif %}>
     <div class="image-and-text-wrapper">
-      <div class="swiper js-iamge-carousel">
+      <div class="swiper js-iamge-carousel" >
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
             <div class="image-and-text-media flex swiper-slide">
@@ -88,6 +88,23 @@
         "label": "Button Color",
         "default": "#000000"
       },
+      {
+        "type": "checkbox",
+        "id": "auto_rotate",
+        "label": "Auto Rotate",
+        "default": false,
+      },
+      {
+        "type": "range",
+        "id": "change_slides_speed",
+        "min": 3,
+        "max": 10,
+        "step": 1,
+        "unit": "s",
+        "label": "Autorotate speed",
+        "default": 5,
+        "visible_if": "{{ section.settings.auto_rotate == true }}"
+      },   
       {
         "type": "select",
         "id": "text_align",
