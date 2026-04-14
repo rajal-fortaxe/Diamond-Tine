@@ -3923,6 +3923,30 @@ body:has(.header__search details[open]) header.has-inline-searchbar-layout .inli
 .flex{
   display: flex;
 }
+.gap-10{
+  gap: 1rem;
+}
+.gap-15{
+  gap: 1.5rem;
+}
+.gap-20{
+  gap: 2rem;
+}
+.justify-space-btwn{
+  justify-content: space-between;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-item-center{
+  align-items: center;
+}
+.direction-column{
+  flex-direction: column;
+}
+.flex-1{
+  flex: 1;
+}
 .relative{
   position: relative;
 }
@@ -3952,6 +3976,9 @@ collection-product-carousel .swiper-wrapper{
 }
 .h-100{
   height: 100%;
+}
+.h-auto{
+  height: auto;
 }
 .w-100{
   width: 100%;

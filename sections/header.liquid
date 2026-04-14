@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'svg-animation.css' | asset_url }}" media="print" onload="this.media='all'">
 <link
   rel="stylesheet"
   href="{{ 'component-cart-notification.css' | asset_url }}"
@@ -39,6 +40,11 @@ header{
     --color-menu-background: {{ section.settings.color_background_bottom_menu.red }},{{ section.settings.color_background_bottom_menu.green }},{{ section.settings.color_background_bottom_menu.blue }};
      --color-foreground: var(--color-menu-text);
        --color-background: var(--color-menu-background);
+  }
+
+  header.has-inline-searchbar-layout {
+    --color-mega-menu-text:{{ section.settings.color_menu_text.red }},{{ section.settings.color_menu_text.green }},{{ section.settings.color_menu_text.blue }};
+    --color-mega-menu-background: {{ section.settings.color_background_menu.red }},{{ section.settings.color_background_menu.green }},{{ section.settings.color_background_menu.blue }};
   }
   header-drawer {
     justify-self: start;
@@ -218,6 +224,7 @@ header{
             endif
           endif
         %}
+        
       {% endif %}
 
       {%- if section.settings.logo_position == 'middle-center' -%}
@@ -253,7 +260,18 @@ header{
         {%- endif -%}
       {%- endif -%}
       {% if section.settings.header_with_search_layout == true %}
-          {% render 'header-search-bar', input_id: 'Search-In-Modal', class:"medium-hide small-hide" %} 
+          {% render 'header-search-bar', input_id: 'Search-In-Modal', class:"medium-hide small-hide search-layout-wide-search" %} 
+          <div class="search-layout-scroll-menu hidden">
+              {%- liquid
+                if section.settings.menu != blank
+                  if section.settings.menu_type_desktop == 'dropdown'
+                    render 'header-dropdown-menu'
+                  elsif section.settings.menu_type_desktop != 'drawer'
+                    render 'header-mega-menu', block: block
+                  endif
+                endif
+              %}
+          </div>
       {% endif %}
 
       <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
@@ -281,7 +299,7 @@ header{
           {%- endif -%}
         </div>
         {% if section.settings.header_with_search_layout == true %}
-          {% assign search_class = "large-up-hide"  %}
+          {% assign search_class = "large-up-hide pop-up-search"  %}
         {% endif %}
 
           {% render 'header-search', input_id: 'Search-In-Modal', class: search_class %} 
@@ -409,6 +427,7 @@ header{
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
+      this.hideSearchLayout();
     }
 
     setHeaderHeight() {
@@ -429,6 +448,36 @@ header{
       observer.observe(this.header);
     }
 
+    hideSearchLayout() {
+      if (this.scrollInitialized) return;
+      this.scrollInitialized = true;
+
+      const is_inlineSearch = this.querySelector(".has-inline-searchbar-layout");
+      if (!is_inlineSearch) return;
+
+      const hide_searchBar = this.querySelector(".search-layout-wide-search");
+      const hide_bottomMenu = this.querySelector(".inline-searchbar-menu-layout");
+      const display_scrollMenu = this.querySelector(".search-layout-scroll-menu");
+      const display_seachIcon = this.querySelector(".pop-up-search");
+      const hide_selector = this.querySelector(".header__icons .desktop-localization-wrapper");
+
+      window.addEventListener("scroll", () => {
+        const scrolled = window.scrollY > 300;
+
+        // Toggle UI
+        if (hide_searchBar) hide_searchBar.classList.toggle("hidden", scrolled);
+        if (hide_bottomMenu) hide_bottomMenu.classList.toggle("hidden", scrolled);
+        if (display_scrollMenu) display_scrollMenu.classList.toggle("hidden", !scrolled);
+        if (display_seachIcon) display_seachIcon.classList.toggle("large-up-hide", !scrolled);
+        if (hide_selector) hide_selector.classList.toggle("hidden", scrolled);
+
+        // 🔥 Update CSS variable
+        requestAnimationFrame(() => {
+          const headerHeight = this.offsetHeight;
+          document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
+        });
+      });
+    }
     onScroll() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -824,6 +873,68 @@ header{
           "id": "megamenu_url_2",
           "label": "Megamenu Link - 2",
           "visible_if": "{{ section.settings.menu_type_desktop == 'mega' }}"
+        },
+        
+      ]
+    },
+    {
+      "type": "active_menu_icon",
+      "name": "Active Menu Icon Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_id",
+          "label": "Menu ID",
+          "info": "Please add the numbering as MainMenuItem, if Ring is the first main menu, enter 1.",
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "select",
+          "id": "active_menu_icon",
+          "options": [
+            {
+              "value": "animataed-header-logo",
+              "label": "Default"
+            },
+            {
+              "value": "home",
+              "label": "Home"
+            },
+            {
+              "value": "ring",
+              "label": "Ring"
+            },
+            {
+              "value": "earrings",
+              "label": "Earrings"
+            },
+            {
+              "value": "bracelet",
+              "label": "Bracelet"
+            },
+            {
+              "value": "necklace",
+              "label": "Necklace"
+            },
+            {
+              "value": "charms",
+              "label": "Charms"
+            },
+            {
+              "value": "gift",
+              "label": "Gift"
+            },
+            {
+              "value": "ready-to-ship",
+              "label": "Ready To Ship"
+            }
+          ],
+          "default": "animataed-header-logo",
+          "label": "Active Menu Icon"
         },
         
       ]

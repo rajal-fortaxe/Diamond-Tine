@@ -1,29 +1,63 @@
+{%  if display_add_to_cart != true %}
   <a class="link text-decoration-none w-100" href="{{ product.url }}">
-    <div class="product-media relative flex">
-      <div class="flex wish-badge-wrapper">
-         {% render 'product-badge', block: block, product: product %}
-          <div class="button-wishlist mobile" data-title="wishlist">
-            <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="{{ product.handle }}">
-              {% render 'icons', icon: 'wishlist' %}
-            </button>
-          </div>
-        </div>
-      <div class="product-media-inner flex relative w-100">
-          {% if product.featured_image != blank %}
-              {{ product.featured_image | image_url: width: 2500, height: 2500 | image_tag: class: "product-image product-main-image" , loading:"lazy"  }}
-              {%  if product.media[1] != blank %}
-                {{ product.media[1] | image_url: width: 2500, height: 2500 | image_tag: class: "product-image product-secondary-image", loading:"lazy"  }}
-              {%  endif %}
+{% endif %}
+    {%  if display_add_to_cart == true %}
+      <a class="link text-decoration-none w-100" href="{{ product.url }}">
+    {% endif %}
+      <div class="product-media relative flex">
+        <div class="flex wish-badge-wrapper {%  if hide_wishlist == true and hide_badge == true %} hidden {% endif %}">
+          {% if hide_badge == false %}
+          {% render 'product-badge', block: block, product: product %}
           {% endif %}
-      </div>
-    </div>
-    <div class="product-content">
-        <div class="product-title body-text">
-          {{ product.title | split: '-' | first | strip }}
+            <div class="button-wishlist mobile {%  if hide_wishlist == true  %} hidden {% endif %}" data-title="wishlist">
+              <button type="button" aria-label="wishlist" class="" button-wishlist data-product-handle="{{ product.handle }}">
+                {% render 'icons', icon: 'wishlist' %}
+              </button>
+            </div>
+          </div>
+        <div class="product-media-inner flex relative w-100">
+            {% if product.featured_image != blank %}
+                {{ product.featured_image | image_url: width: 2500, height: 2500 | image_tag: class: "product-image product-main-image" , loading:"lazy"  }}
+                {%  if product.media[1] != blank %}
+                  {{ product.media[1] | image_url: width: 2500, height: 2500 | image_tag: class: "product-image product-secondary-image", loading:"lazy"  }}
+                {%  endif %}
+            {% endif %}
         </div>
-
+      </div>
+    {%  if display_add_to_cart == true %}
+      </a>
+    {% endif %}
+    <div class="product-content flex direction-column">
+       {%  if display_add_to_cart == true %}
+          <a class="link text-decoration-none w-100" href="{{ product.url }}">
+        {% endif %}
+          <div class="product-title body-text">
+            {{ product.title | split: '-' | first | strip }}
+          </div>
+        {% if display_add_to_cart == true %}
+          </a>
+        {% endif %}
         <div class="product-price">
         {%- render 'price', product: product, block: block, enable_policy: false, font_class: "body-text color-gray", use_variant: true -%}
         </div>
+
+        {%  if display_add_to_cart == true %}
+          {% form 'cart', cart, class: 'flex justify-center' %}
+            {% assign is_soldout = false %}
+            {% if product.selected_or_first_available_variant.available == false or product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+              {% assign is_soldout = true %}
+            {%  endif %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="card-add-to-cart button button--primary flex">
+              {% if is_soldout == true %}
+                  {{ 'products.product.sold_out' | t }}
+              {%  else %}
+                  {{ 'products.product.add_to_cart' | t }}
+              {% endif %}
+            </button>
+        {% endform %}
+        {% endif %}
     </div>
+{%  if display_add_to_cart != true %}
   </a>
+{% endif %}

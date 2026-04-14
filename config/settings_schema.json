@@ -1435,6 +1435,11 @@
         "default": false
       },
       {
+        "type": "collection",
+        "id": "cart_drawer_upsell_collection",
+        "label": "Upsell Product Collection - Cart Drawer",
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.cart.settings.cart_drawer.header"
       },

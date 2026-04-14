@@ -1220,7 +1220,120 @@ class TestimonialsCarousel extends HTMLElement {
 
 customElements.define('testimonials-carousel', TestimonialsCarousel);
 
+/**
+ * Custom Element for Cart Upsell Carousel
+ * Handles Swiper initialization and AJAX Add to Cart
+ */
+if (!customElements.get('cart-upsell-product')) {
+  customElements.define('cart-upsell-product', class CartUpsellProduct extends HTMLElement {
+    constructor() {
+      super();
+      this.cart = document.querySelector('cart-drawer');
+    }
 
+    connectedCallback() {
+      this.initCarousel();
+      this.addEventListener('submit', this.onSubmitHandler.bind(this));
+    }
+
+    initCarousel() {
+      const container = this.querySelector('.js-cart-upsell-carousel');
+      if (!container) return;
+
+      // Initialize Swiper
+      this.swiper = new Swiper(container, {
+        observer: true,
+        observeParents: true,
+        threshold: 5, // Prevents accidental clicks while swiping
+        slidesPerView: 1.3,
+        spaceBetween: 10,
+        breakpoints: {
+          769: { slidesPerView: 1.9, spaceBetween: 10 },
+          1024: { slidesPerView: 2.2, spaceBetween: 10 },
+        },
+      });
+    }
+
+    onSubmitHandler(event) {
+      event.preventDefault();
+      const form = event.target;
+      const submitButton = form.querySelector('[type="submit"]');
+
+      if (!form || !submitButton) return;
+
+      submitButton.setAttribute('disabled', true);
+      submitButton.classList.add('loading');
+
+      const formData = new FormData(form);
+      
+      // Tell the Cart Drawer to include its section ID in the response
+      // so we can update the drawer HTML automatically.
+      formData.append('sections', 'cart-drawer');
+      formData.append('sections_url', window.location.pathname);
+
+      fetch(`${routes.cart_add_url}`, {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Accept': 'application/javascript'
+        },
+        body: formData
+      })
+      .then((response) => response.json())
+      .then((parsedState) => {
+        // Find the cart-drawer component and trigger its internal refresh logic
+        if (this.cart && this.cart.renderContents) {
+          this.cart.renderContents(parsedState);
+        } else {
+          // Fallback: If your theme uses a different cart-drawer update method
+          window.location.reload(); 
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      })
+      .finally(() => {
+        submitButton.removeAttribute('disabled');
+        submitButton.classList.remove('loading');
+      });
+    }
+
+    // Clean up swiper if element is removed from DOM
+    disconnectedCallback() {
+      if (this.swiper) {
+        this.swiper.destroy();
+      }
+    }
+  });
+}
+
+class IconWithText extends HTMLElement {
+  constructor() {
+    super();
+			
+			var swiper = new Swiper(".js-icon-with-text-section", {
+				slidesPerView: 3,
+				spaceBetween:10,
+				slidesOffsetAfter:30,
+        a11y: true,
+				breakpoints: {
+					769: {
+						slidesPerView: 4,
+						spaceBetween:  20,
+						slidesOffsetAfter: 0,
+					},
+					1024: {
+						slidesPerView: 5,
+						spaceBetween: 30,
+						slidesOffsetAfter:0,
+					}
+				}
+			});
+
+  }
+}
+
+customElements.define('icon-with-text-section', IconWithText);
 
 (function () {
   let panzoomInstances = new Map(); // Keep track of instances to clean up
@@ -1302,3 +1415,6 @@ customElements.define('testimonials-carousel', TestimonialsCarousel);
     }, 300);
   });
 })();
+
+
+

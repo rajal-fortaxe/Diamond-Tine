@@ -46,6 +46,55 @@
     "header": {
       "type": "header",
       "blocks": {
+        "active_menu_icon_iVjKWX": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "7",
+            "active_menu_icon": "ready-to-ship"
+          }
+        },
+        "active_menu_icon_FaKHN9": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "6",
+            "active_menu_icon": "gift"
+          }
+        },
+        "active_menu_icon_RW4bBH": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "5",
+            "active_menu_icon": "charms"
+          }
+        },
+        "active_menu_icon_x9b6jr": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "4",
+            "active_menu_icon": "bracelet"
+          }
+        },
+        "active_menu_icon_7qxbNw": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "3",
+            "active_menu_icon": "earrings"
+          }
+        },
+        "active_menu_icon_jDPX7w": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "2",
+            "active_menu_icon": "ring"
+          }
+        },
+        "active_menu_icon_fRaWWy": {
+          "type": "active_menu_icon",
+          "settings": {
+            "menu_id": "1",
+            "active_menu_icon": "home"
+          }
+        },
         "megamenu_block_QdkY7p": {
           "type": "megamenu_block",
           "settings": {
@@ -68,6 +117,13 @@
         }
       },
       "block_order": [
+        "active_menu_icon_iVjKWX",
+        "active_menu_icon_FaKHN9",
+        "active_menu_icon_RW4bBH",
+        "active_menu_icon_x9b6jr",
+        "active_menu_icon_7qxbNw",
+        "active_menu_icon_jDPX7w",
+        "active_menu_icon_fRaWWy",
         "megamenu_block_QdkY7p",
         "megamenu_block_86qUyq"
       ],

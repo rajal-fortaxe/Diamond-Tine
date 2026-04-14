@@ -25,9 +25,37 @@
                   >
                     <a href="{{ link.url }}" class="text-decoration-none flex">
                       {%- if link.child_active %}
-                        <div class="slide-pill">
-                          {% render 'icons', icon:"animataed-header-logo" %}
-                        </div>
+                        {% assign no_icon_block = true %}
+                        {% for block in section.blocks %}
+                          {% if block.type == "active_menu_icon" %}
+                            {% assign menuId = block.settings.menu_id | strip | times: 1 %}
+                            {% if main_index == menuId %}
+                                {% assign no_icon_block = false %}
+                                {% if block.settings.icon_image != blank %}
+                                  <div class="icon-animate-image-icon flex">
+                                    {{ block.settings.icon_image | image_url: width:16 | image_tag  }}
+                                  </div>
+                                {% else %}
+                                  {% if block.settings.active_menu_icon != "animataed-header-logo" %}
+                                    <div class="menu-active-icon icon-{{ block.settings.active_menu_icon }} flex">
+                                      {%  assign menu_icon = block.settings.active_menu_icon | strip %}
+                                        {% render 'icons', icon: menu_icon %}
+                                    </div>
+                                  {% else %}
+                                    <div class="slide-pill">
+                                      {% render 'icons', icon:"animataed-header-logo" %}
+                                    </div>
+                                  {% endif %}
+                                {% endif %}
+
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {%  if no_icon_block == true %}
+                          <div class="slide-pill">
+                            {% render 'icons', icon:"animataed-header-logo" %}
+                          </div>
+                        {% endif %}
                       {% endif %}
                       {{- link.title | escape -}}
                        {%- unless link.child_active %}
@@ -136,9 +164,37 @@
             >
 
               {%- if link.current %}
-                 <div class="slide-pill">
-                    {% render 'icons', icon:"animataed-header-logo" %}
-                  </div>
+                  {% assign no_icon_block = true %}
+                        {% for block in section.blocks %}
+                          {% if block.type == "active_menu_icon" %}
+                            {% assign menuId = block.settings.menu_id | strip | times: 1 %}
+                            {% if main_index == menuId %}
+                                {% assign no_icon_block = false %}
+                                {% if block.settings.icon_image != blank %}
+                                  <div class="icon-animate-image-icon flex">
+                                    {{ block.settings.icon_image | image_url: width:16 | image_tag  }}
+                                  </div>
+                                {% else %}
+                                  {% if block.settings.active_menu_icon != "animataed-header-logo" %}
+                                    <div class="menu-active-icon icon-{{ block.settings.active_menu_icon }} flex">
+                                      {%  assign menu_icon = block.settings.active_menu_icon | strip %}
+                                        {% render 'icons', icon: menu_icon %}
+                                    </div>
+                                  {% else %}
+                                    <div class="slide-pill">
+                                      {% render 'icons', icon:"animataed-header-logo" %}
+                                    </div>
+                                  {% endif %}
+                                {% endif %}
+
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {%  if no_icon_block == true %}
+                          <div class="slide-pill">
+                            {% render 'icons', icon:"animataed-header-logo" %}
+                          </div>
+                        {% endif %}
               {% endif %}
               {{- link.title | escape -}}
             </span>

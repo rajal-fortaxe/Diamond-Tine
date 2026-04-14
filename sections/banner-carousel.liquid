@@ -41,7 +41,7 @@
 
 <section class="video-banner video-banner-{{ section.id }} banner-carousel {% if section.settings.enable_spacing == true %} has-spacing{%  endif %}  scroll-trigger animate--slide-in  {%  if section.index == 1 and section.settings.enable_tranprent_header == true %} transprent-header{%  endif %}">
   <banner-carousel data-auto-play="{{section.settings.auto_rotate}}" {% if section.settings.auto_rotate == true %} data-auto-speed="{{ section.settings.rotating_speed | times: 1000 }}" {% endif %}>
-    <div class="video-banner-wrapper swiper js-banner-carousel">
+    <div class="video-banner-wrapper swiper js-banner-carousel relative">
       {% render 'banner-carousel-slide' %}
       {% if section.blocks.size > 1  %}
         {% if section.settings.auto_rotate == true %}
@@ -127,7 +127,11 @@
         {
           "label": "750px",
           "value": "750px"
-        }
+        },
+        {
+          "label": "800px",
+          "value": "800px"
+        },
       ]
     },
     {
@@ -167,7 +171,11 @@
         {
           "label": "750px",
           "value": "750px"
-        }
+        },
+        {
+          "label": "850px",
+          "value": "850px"
+        },
       ]
     }
   ],
@@ -230,7 +238,7 @@
           "label": "Video - Mobile"
         },
         {
-          "type": "text",
+          "type": "richtext",
           "id": "title",
           "label": "Title"
         },

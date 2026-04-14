@@ -219,8 +219,14 @@
                 </div>
                  <div class="separator-div"></div>
               {%- when 'title' -%}
-                <div class="product__title body-text-medium-large" {{ block.shopify_attributes }}>
+                <div class="product__title body-text-medium-large flex justify-space-btwn gap-10" {{ block.shopify_attributes }}>
                   <h1 class="body-text-medium-large">{{ product.title | split: '-' | first | strip }}</h1>
+                    <div class="product-button-wishlist button-wishlist mobile relative body-text" data-title="wishlist">
+                      <button type="button" aria-label="wishlist" class="body-text" button-wishlist data-product-handle="{{ product.handle }}">
+                        {% render 'icons', icon: 'wishlist' %} 
+                        <span class="wishlist-text small-hide medium-hide">Add to Wishlist</span>
+                      </button>
+                    </div>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1 body-text-medium-large">
                       {{ product.title | split: '-' | first | strip }}
@@ -406,12 +412,7 @@
                   show_pickup_availability: true,
                   font_class: "heading-text-extra-small"
                 -%}
-                <div class="product-button-wishlist button-wishlist mobile relative body-text" data-title="wishlist">
-                  <button type="button" aria-label="wishlist" class="body-text" button-wishlist data-product-handle="{{ product.handle }}">
-                    {% render 'icons', icon: 'wishlist' %} 
-                    <span class="wishlist-text">Add to Wishlist</span>
-                  </button>
-                </div>
+                
                  <div class="separator-div"></div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}

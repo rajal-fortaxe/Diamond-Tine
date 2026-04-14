@@ -17,14 +17,17 @@
 {%- endstyle -%}
 <section id="two-image-grid-{{ section.id }}" class="two-image-grid section-{{ section.id }}-padding" >
   {%  if section.settings.heading != blank %}
-          <div class="section-heading heading-text-large-thin center" style="color: {{ section.settings.heading_text_color  }}">
+          <div class="section-heading page-width heading-text-large-thin {% if section.settings.text_align == "center" %}center {%  endif %}" style="color: {{ section.settings.heading_text_color  }}">
             {{ section.settings.heading }}
           </div>
         {%  endif %}
 
-  <div class="two-image-grid-wrapper page-width relative">
+  <div class="two-image-grid-wrapper page-width  {% if section.settings.enable_space_betwn_img != true %} no_spacing {% endif %} {% if section.settings.enable_inline_spacing != true %} no_padding {%  endif %} relative">
     {% for block in section.blocks %}
         <div class="two-image-item">
+          {% if block.settings.link != blank %}
+            <a class="two-image-grid-link text-decoration-none" href="{{ block.settings.link }}">
+          {%  endif %}
         {% if block.settings.image != blank%}
           <div class="two-image-grid-item flex">
             {{ block.settings.image  | image_url: width: 2500, height:3500 | image_tag  }}
@@ -41,12 +44,13 @@
                 {% endif %}
               </div>
             </div>
-          {%  endif %}
+        {%  endif %}
+        {% if block.settings.link != blank %}
+          </a>
+        {%  endif %}
         </div>
       {% endfor %}
     </div>
-
-
 </section>
 
 {% schema %}
@@ -73,9 +77,37 @@
         "default": "#000000"
       },
       {
+        "type": "checkbox",
+        "id": "enable_space_betwn_img",
+        "label": "Enable Sapcing In Between Image - Desktop",
+        "default": true,
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_inline_spacing",
+        "label": "Enable Inline Spacing - Desktop",
+        "default": true,
+      },
+      {
         "type": "text",
         "id": "heading",
         "label": "Heading"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Heading Text Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+        ]
       },
       {
         "type": "header",
@@ -146,6 +178,11 @@
             "type": "text",
             "id": "subheading",
             "label": "Subheading"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
           },
         ]
       },

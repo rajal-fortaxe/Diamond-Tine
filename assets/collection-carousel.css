@@ -16,6 +16,7 @@
  aspect-ratio: 335 / 335;
  height: 100%;
  width: 100%;
+ border-radius: var(--image-radius);
 }
 .collection-carousel .collection-name{
   position: absolute;

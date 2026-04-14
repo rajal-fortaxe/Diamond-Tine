@@ -38,7 +38,7 @@
                 onclick="this.closest('cart-drawer').close()"
                 aria-label="{{ 'accessibility.close' | t }}"
               >
-                {% render 'icons', icon: "cart-close" %}
+                {% render 'icons', icon: 'cart-close' %}
               </button>
               <a href="{{ routes.all_products_collection_url }}" class="button">
                 {{ 'general.continue_shopping' | t }}
@@ -67,7 +67,7 @@
           onclick="this.closest('cart-drawer').close()"
           aria-label="{{ 'accessibility.close' | t }}"
         >
-          {% render 'icons', icon: "cart-close" %}
+          {% render 'icons', icon: 'cart-close' %}
         </button>
       </div>
       <cart-drawer-items
@@ -83,7 +83,7 @@
         >
           <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
             {%- if cart != empty -%}
-              <div class="drawer__cart-items-wrapper">
+              <div class="drawer__cart-items-wrapper flex">
                 <table class="cart-items" role="table">
                   <thead role="rowgroup" class="hidden">
                     <tr role="row">
@@ -141,7 +141,7 @@
                           {% endif %}
                         </td>
 
-                        <td class="cart-item__details flex" role="cell" headers="CartDrawer-ColumnProduct">
+                        <td class="cart-item__details flex justify-space-btwn" role="cell" headers="CartDrawer-ColumnProduct">
                           <div class="item-info">
                             {%- if settings.show_vendor -%}
                               <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
@@ -202,29 +202,34 @@
                                             target="_blank"
                                             aria-describedby="a11y-new-window-message"
                                           >
-                                            
-{% assign file_type = property.last | split: '.' | last | downcase %}
-{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
-{% if file_types contains file_type %}
-  <div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
-{% else %}
-  <span class="bcpo-cart-file">Uploaded file</span>
-{% endif %}
-
+                                            {% assign file_type = property.last | split: '.' | last | downcase %}
+                                            {% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff'
+                                              | split: ','
+                                            %}
+                                            {% if file_types contains file_type %}
+                                              <div class="bcpo-cart-file">
+                                                <img src="{{ property.last }}" style="max-width: 50px; height: auto;">
+                                              </div>
+                                            {% else %}
+                                              <span class="bcpo-cart-file">Uploaded file</span>
+                                            {% endif %}
                                           </a>
                                         {%- else -%}
-                                          
-{% if property.last contains '/uploads/' %}
-	{% assign file_type = property.last | split: '.' | last | downcase %}
-	{% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
-	{% if file_types contains file_type %}
-		<div class="bcpo-cart-file"><img src="{{ property.last }}" style="max-width: 50px; height: auto;"></div>
-	{% else %}
-		<span class="bcpo-cart-file">Uploaded file</span>
-	{% endif %}
-{% else %}
-	{{ property.last }}
-{% endif %}
+                                          {% if property.last contains '/uploads/' %}
+                                            {% assign file_type = property.last | split: '.' | last | downcase %}
+                                            {% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff'
+                                              | split: ','
+                                            %}
+                                            {% if file_types contains file_type %}
+                                              <div class="bcpo-cart-file">
+                                                <img src="{{ property.last }}" style="max-width: 50px; height: auto;">
+                                              </div>
+                                            {% else %}
+                                              <span class="bcpo-cart-file">Uploaded file</span>
+                                            {% endif %}
+                                          {% else %}
+                                            {{ property.last }}
+                                          {% endif %}
                                         {%- endif -%}
                                       </dd>
                                     </div>
@@ -248,10 +253,10 @@
                               {%- endfor -%}
                             </ul>
                             <div
-                            class="cart-item__quantity {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
-                            role="cell"
-                            headers="CartDrawer-ColumnQuantity"
-                          >
+                              class="cart-item__quantity {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
+                              role="cell"
+                              headers="CartDrawer-ColumnQuantity"
+                            >
                               {%- liquid
                                 assign has_qty_rules = false
                                 if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
@@ -263,101 +268,112 @@
                                   assign has_vol_pricing = true
                                 endif
                               -%}
-                              <div class="quantity-select flex" data-url="{{ item.url }}" data-section="{{ section.id }}">
-                                <div class="body-text color-gray">
-                                      {{ 'products.product.quantity.label' | t }}:
-                                </div>
+                              <div
+                                class="quantity-select flex"
+                                data-url="{{ item.url }}"
+                                data-section="{{ section.id }}"
+                              >
+                                <div class="body-text color-gray">{{ 'products.product.quantity.label' | t }}:</div>
                                 <div class="quantity--select">
-                                  <label class="visually-hidden heading-text-small-thin" for="Quantity-{{ section.id }}">
+                                  <label
+                                    class="visually-hidden heading-text-small-thin"
+                                    for="Quantity-{{ section.id }}"
+                                  >
                                     {{ 'products.product.quantity.label' | t }}
                                   </label>
-                                    {%- liquid
-                                      assign variant = item.variant
-                                      assign min = variant.quantity_rule.min | default: 1
-                                      assign max = variant.quantity_rule.max
+                                  {%- liquid
+                                    assign variant = item.variant
+                                    assign min = variant.quantity_rule.min | default: 1
+                                    assign max = variant.quantity_rule.max
 
-                                      if max == null
-                                        if variant.inventory_management != null and variant.inventory_policy == 'deny'
-                                          assign max = variant.inventory_quantity
-                                        else
-                                          assign max = 10
-                                        endif
+                                    if max == null
+                                      if variant.inventory_management != null and variant.inventory_policy == 'deny'
+                                        assign max = variant.inventory_quantity
+                                      else
+                                        assign max = 10
                                       endif
+                                    endif
 
-                                      # Ensure max doesn't cause a massive loop (performance safety)
-                                      if max > 20
-                                        assign max = 20
-                                      endif
-                                    -%}
+                                    # Ensure max doesn't cause a massive loop (performance safety)
+                                    if max > 20
+                                      assign max = 20
+                                    endif
+                                  -%}
 
-                                    <select
-                                      name="updates[]"
-                                      id="Quantity-{{ item.index | plus: 1 }}"
-                                      class="quantity__select body-text"
-                                      data-index="{{ item.index | plus: 1 }}"
-                                      onchange="this.form.submit()" 
-                                    >
-                                      {% for i in (min..max) %}
-                                        <option value="{{ i }}" {% if item.quantity == i %}selected{% endif %}>
-                                          {% if i < 10 %}0{% endif %}{{ i }}
-                                        </option>
-                                      {% endfor %}
-                                    </select>
+                                  <select
+                                    name="updates[]"
+                                    id="Quantity-{{ item.index | plus: 1 }}"
+                                    class="quantity__select body-text"
+                                    data-index="{{ item.index | plus: 1 }}"
+                                    onchange="this.form.submit()"
+                                  >
+                                    {% for i in (min..max) %}
+                                      <option
+                                        value="{{ i }}"
+                                        {% if item.quantity == i %}
+                                          selected
+                                        {% endif %}
+                                      >
+                                        {% if i < 10 %}0{% endif -%}
+                                        {{- i }}
+                                      </option>
+                                    {% endfor %}
+                                  </select>
                                 </div>
                               </div>
+                            </div>
                           </div>
+                          <div class="cart-item-remove">
+                            <cart-remove-button
+                              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                              data-index="{{ item.index | plus: 1 }}"
+                            >
+                              <button
+                                type="button"
+                                class="button button--tertiary cart-remove-button"
+                                aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                                data-variant-id="{{ item.variant.id }}"
+                                {% if item.instructions and item.instructions.can_remove == false %}
+                                  class="hidden"
+                                {% endif %}
+                              >
+                                {% render 'icons', icon: 'cart-remove' %}
+                              </button>
+                            </cart-remove-button>
+                          </div>
+                        </td>
 
-                                   
-                        </div>
-                        <div class="cart-item-remove"> 
-                          <cart-remove-button
-                                    id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-                                    data-index="{{ item.index | plus: 1 }}"
-                                  >
-                                    <button
-                                      type="button"
-                                      class="button button--tertiary cart-remove-button"
-                                      aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
-                                      data-variant-id="{{ item.variant.id }}"
-                                      {% if item.instructions and item.instructions.can_remove == false %}
-                                        class="hidden"
-                                      {% endif %}
-                                    >
-                                       {% render 'icons', icon: "cart-remove" %}
-                                    </button>
-                                  </cart-remove-button>
-                        </div>              
-                      </td>
-
-                        {% comment %} <td class="cart-item__totals right hidden" role="cell" headers="CartDrawer-ColumnTotal">
-                          {%- render 'loading-spinner' -%}
-                          <div class="cart-item__price-wrapper">
-                            {%- if item.original_line_price != item.final_line_price -%}
-                              <div class="cart-item__discounted-prices">
-                                <span class="visually-hidden">
-                                  {{ 'products.product.price.regular_price' | t }}
-                                </span>
-                                <s class="cart-item__old-price price price--end">
-                                  {{ item.original_line_price | money }}
-                                </s>
-                                <span class="visually-hidden">
-                                  {{ 'products.product.price.sale_price' | t }}
-                                </span>
+                        {% comment %}
+                          <td class="cart-item__totals right hidden" role="cell" headers="CartDrawer-ColumnTotal">
+                            {%- render 'loading-spinner' -%}
+                            <div class="cart-item__price-wrapper">
+                              {%- if item.original_line_price != item.final_line_price -%}
+                                <div class="cart-item__discounted-prices">
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.regular_price' | t }}
+                                  </span>
+                                  <s class="cart-item__old-price price price--end">
+                                    {{ item.original_line_price | money }}
+                                  </s>
+                                  <span class="visually-hidden">
+                                    {{ 'products.product.price.sale_price' | t }}
+                                  </span>
+                                  <span class="price price--end">
+                                    {{ item.final_line_price | money }}
+                                  </span>
+                                </div>
+                              {%- else -%}
                                 <span class="price price--end">
-                                  {{ item.final_line_price | money }}
+                                  {{ item.original_line_price | money }}
                                 </span>
-                              </div>
-                            {%- else -%}
-                              <span class="price price--end">
-                                {{ item.original_line_price | money }}
-                              </span>
-                            {%- endif -%}
+                              {%- endif -%}
 
-                            {%- if item.variant.available and item.unit_price_measurement -%}
-                              {% render 'unit-price', price: item.unit_price, measurement: item.unit_price_measurement %}
-                            {%- endif -%}
-                          </div>
-                        </td> {% endcomment %}
+                              {%- if item.variant.available and item.unit_price_measurement -%}
+                                {% render 'unit-price', price: item.unit_price, measurement: item.unit_price_measurement %}
+                              {%- endif -%}
+                            </div>
+                          </td>
+                        {% endcomment %}
                         {%- liquid
                           assign has_qty_rules = false
                           if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
@@ -369,11 +385,12 @@
                             assign has_vol_pricing = true
                           endif
                         -%}
-                    
                       </tr>
                     {%- endfor -%}
                   </tbody>
                 </table>
+
+               
               </div>
             {%- endif -%}
             <p id="CartDrawer-LiveRegionText" class="visually-hidden" role="status"></p>
@@ -383,6 +400,36 @@
           </div>
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
+         {% if settings.cart_drawer_upsell_collection != blank %}
+                  {{ 'upsell-cart.css' | asset_url | stylesheet_tag }}
+                  <div class="cart-deawr-upsell-product-wrapper">
+                    <cart-upsell-product>
+                      <div class="swiper js-cart-upsell-carousel">
+                        <div class="swiper-wrapper"> 
+                          {% for up_product in settings.cart_drawer_upsell_collection.products %}
+                            {% assign is_in_cart = false %}
+
+                              {% for item in cart.items %}
+                                {% if item.id == up_product.selected_or_first_available_variant.id %}
+                                  {% assign is_in_cart = true %}
+                                {% endif %}
+                              {% endfor %}
+                            {% if is_in_cart == false %}
+                              <div class="swiper-slide cart-up-product main-product">
+                                {%  render 'custom-product-card', 
+                                  product: up_product, 
+                                  hide_badge: true, 
+                                  hide_wishlist: true, 
+                                  display_add_to_cart: true,
+                                %}
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </cart-upsell-product>
+                  </div>
+                {% endif %}
       </cart-drawer-items>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}

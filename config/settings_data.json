@@ -124,7 +124,8 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
-    "cart_drawer_collection": "",
+    "cart_drawer_upsell_collection": "earrings",
+    "cart_drawer_collection": "charms",
     "cart_color_scheme": "scheme-1",
     "sections": {
       "main-password-header": {

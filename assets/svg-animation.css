@@ -1,0 +1,100 @@
+/* Ring Animation */
+/* @keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.icon-ring svg{
+  animation: spin 2s linear infinite;
+} */
+ @keyframes magsnap {
+  0%,100% { transform: scale(1) rotate(0deg); }
+  20%     { transform: scale(0.6) rotate(-20deg); }
+  45%     { transform: scale(1.35) rotate(10deg); }
+  65%     { transform: scale(0.92) rotate(-4deg); }
+  85%     { transform: scale(1.03) rotate(2deg); }
+}
+.icon-ring svg { animation: magsnap 3s cubic-bezier(0.34,1.56,0.64,1) infinite; }
+
+
+/* Earring Animation */
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15); }
+}
+.icon-earrings svg{
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+
+/* Bracelet Animation */
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  20%      { transform: rotate(-15deg); }
+  40%      { transform: rotate(15deg); }
+  60%      { transform: rotate(-10deg); }
+  80%      { transform: rotate(10deg); }
+}
+.icon-bracelet svg{
+  animation: shake 2s ease-in-out infinite;
+}
+
+
+/* Necklace  Animation */
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  25%      { transform: translateY(-8px); }
+  75%      { transform: translateY(8px); }
+}
+.icon-necklace svg{
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+
+/* Charm Animation */
+@keyframes pop {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50%      { transform: scale(1.2) rotate(45deg); }
+}
+.icon-charms svg{
+  animation: pop 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+
+/* Gift Animation */
+@keyframes gift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30%      { transform: translateY(-10px) rotate(-8deg); }
+  60%      { transform: translateY(-6px) rotate(8deg); }
+}
+.icon-gift svg{
+  animation: gift 1.8s ease-in-out infinite;
+}
+
+/* Ready to ship Animation */
+@keyframes truck {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  40%      { transform: translateX(4px) translateY(-4px); }
+  70%      { transform: translateX(-2px) translateY(2px); }
+}
+.icon-ready-to-ship svg{
+  animation: truck 2s ease-in-out infinite;
+}
+
+/* Home nimtion  */
+@keyframes walk {
+  0%,50%,100% { transform: translateY(0) rotate(0deg); }
+  25%         { transform: translateY(-4px) rotate(-5deg); }
+  75%         { transform: translateY(-4px) rotate(5deg); }
+}
+.icon-home svg { animation: walk 2s ease-in-out infinite; }
+
+/* Image animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.icon-animate-image-icon img {
+  animation: float 3s ease-in-out infinite;
+}

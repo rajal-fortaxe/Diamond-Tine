@@ -132,7 +132,8 @@
           "settings": {
             "image": "shopify://shop_images/Image_7.png",
             "heading": "Prachi Gupta",
-            "subheading": "The Designer"
+            "subheading": "The Designer",
+            "link": ""
           }
         },
         "image_f43arF": {
@@ -140,7 +141,8 @@
           "settings": {
             "image": "shopify://shop_images/Image_8.png",
             "heading": "Bharat Gupta",
-            "subheading": "The Maker"
+            "subheading": "The Maker",
+            "link": ""
           }
         }
       },

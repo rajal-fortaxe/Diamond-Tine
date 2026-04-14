@@ -92,7 +92,7 @@ cart-items .title-wrapper-with-link {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 6rem;
+  min-height: 1.6rem;
   margin-bottom: 1rem;
 }
 

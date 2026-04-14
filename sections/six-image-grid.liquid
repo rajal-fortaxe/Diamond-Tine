@@ -1,0 +1,180 @@
+{{ 'six-image-grid.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  #six-image-grid-{{ section.id }}{
+    --color-background: {{ section.settings.background_color.red }}, {{ section.settings.background_color.green }},{{ section.settings.background_color.blue }};
+    --color-link : var(--color-foreground);
+  }
+{%- endstyle -%}
+<section id="six-image-grid-{{ section.id }}" class="six-image-grid section-{{ section.id }}-padding page-width">
+  {% if section.settings.heading_text != blank or section.settings.link != blank and section.settings.link_text != blank  %}
+    <div class="heading-wrapper page-width flex">
+        {%  if section.settings.heading_text != blank %}
+          <div class="section-heading uppercase body-text-large small-body-text-large" style="color: {{ section.settings.heading_text_color  }}">
+            {{ section.settings.heading_text }}
+          </div>
+        {%  endif %}
+    </div>
+  {% endif %}
+  <div class="collection-6-grid-wrapper flex align-item-center gap-15">
+    <div class="collection-4-grid ">
+      {% for block in section.blocks %}
+        {%  if forloop.index <= 4 %}
+          <div class="collection-grid-item relative flex">
+            <a class="text-decoration-none" href="{{ block.settings.link.url }}">
+            {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+            <div class="collection-name body-text-medium small-body-text-medium flex {%  if section.settings.text_align == 'center' %}justify-center {% endif %}" style="color: {{ section.settings.collection_text_color }}; "> 
+              {{ block.settings.collection_name | default: block.settings.link.title }} 
+            </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="collection-2-grid flex align-item-center gap-15">
+      {% for block in section.blocks %}
+          {%  if forloop.index > 4 %}
+            <div class="collection-grid-item relative flex">
+               <a class="text-decoration-none" href="{{ block.settings.link.url }}">
+              {{ block.settings.collection_image  | image_url: width: 2500, height:3500 | image_tag  }}
+              <div class="collection-name body-text-medium small-body-text-medium flex {%  if section.settings.text_align == 'center' %}justify-center {% endif %}" style="color: {{ section.settings.collection_text_color }}; "> 
+                {{ block.settings.collection_name | default: block.settings.link.title }} 
+              </div>
+              </a>
+            </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+</section>
+
+{% schema %}
+  {
+    "name": "Six Collection Grid",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "heading_text_color",
+        "label": "Heading Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "collection_text_color",
+        "label": "Collection Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text Alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Padding - Desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding Top - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 70
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding Bottom - Desktop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 35
+      },
+      {
+        "type": "header",
+        "content": "Padding - Mobile"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding Top - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding Bottom - Mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 25
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "limit": 6,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Collection Image"
+          },
+          {
+            "type": "text",
+            "id": "collection_name",
+            "label": "Collection Name",
+          },
+          {
+            "type": "collection",
+            "id": "link",
+            "label": "Collection"
+          }
+        ]
+      },
+    ],
+    "presets": [
+      {
+        "name": "Six Collection Grid",
+      }
+    ]
+  }
+{% endschema %}

@@ -3,7 +3,7 @@
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 50%;
   display: flex;
   gap: 12px;
   z-index: 10;

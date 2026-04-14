@@ -4,6 +4,13 @@
   gap: 2rem;
 }
 
+.two-image-grid .two-image-grid-wrapper.no_padding{
+ padding-inline: 0 
+}
+
+.two-image-grid .two-image-grid-wrapper.no_spacing {
+    gap: 0;
+}
 .two-image-grid .two-image-grid-wrapper .two-image-grid-content-wrapper{
   margin-top: 2rem;
 }

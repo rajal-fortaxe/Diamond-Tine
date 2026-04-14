@@ -18,18 +18,19 @@ body:has(.mega-menu[open]){
         display: flex;
         justify-content: space-between;
         padding-bottom: 1.6rem;
-        position: relative;
+        border-bottom: .1rem solid rgba(var(--color-foreground), 0.1);
         align-items: center;
         gap: 1rem;
         padding-inline: 3rem;
     }
     .has-inline-searchbar-layout .inline-searchbar-menu-layout{
-        position: relative;
+        /* position: relative; */
+         border-bottom: .1rem solid rgba(var(--color-foreground), 0.1);
         padding-top: 1.6rem;
         padding-inline: 3rem;
         background: rgb(var(--color-background));
     }
-    .has-inline-searchbar-layout .inline-searchbar-header-layout::after,
+    /* .has-inline-searchbar-layout .inline-searchbar-header-layout::after,
     .has-inline-searchbar-layout .inline-searchbar-menu-layout::after{
         content: "";
         position: absolute;
@@ -39,7 +40,7 @@ body:has(.mega-menu[open]){
         background: rgba(var(--color-foreground), 0.1);
         height: .1rem;
         width: 100vw;
-    }
+    } */
 
     .header-predictive-inline-search-layot .predictive-search{
         --combined-header-height : calc(var(--searchbar-header-height) + var(--announcement-visible-height));
@@ -47,7 +48,7 @@ body:has(.mega-menu[open]){
         left: 3rem;
         position: fixed;
         width: calc(100vw - 6rem);
-        border-radius: 2rem;
+        /* border-radius: 2rem; */
     }
     .inline-searchbar-menu-layout .mega-menu__content{
         position: fixed;
