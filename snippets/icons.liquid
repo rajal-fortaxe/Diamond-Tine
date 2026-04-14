@@ -336,4 +336,28 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="currentColor"/>
         </svg>
+    {% when 'animated-rings' %}
+        <svg class="animated-bg-svg small-hide" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <style>
+                @keyframes pulse-r {
+                    0%,100% { opacity: 0; }
+                    40%      { opacity: 0.5; }
+                }
+                .animated-ring { fill: none; stroke: currentColor; stroke-width: 0.8; opacity: 0; }
+                .r1 { animation: pulse-r 3.6s ease-in-out 0.0s infinite; }
+                .r2 { animation: pulse-r 3.6s ease-in-out 0.6s infinite; }
+                .r3 { animation: pulse-r 3.6s ease-in-out 1.2s infinite; }
+                .r4 { animation: pulse-r 3.6s ease-in-out 1.8s infinite; }
+                .r5 { animation: pulse-r 3.6s ease-in-out 2.4s infinite; }
+                .r6 { animation: pulse-r 3.6s ease-in-out 3.0s infinite; }
+                </style>
+            </defs>
+            <circle class="animated-ring r1" cx="320" cy="40" r="40"/>
+            <circle class="animated-ring r2" cx="320" cy="40" r="80"/>
+            <circle class="animated-ring r3" cx="320" cy="40" r="120"/>
+            <circle class="animated-ring r4" cx="320" cy="40" r="160"/>
+            <circle class="animated-ring r5" cx="320" cy="40" r="200"/>
+            <circle class="animated-ring r6" cx="320" cy="40" r="240"/>
+        </svg>
 {% endcase %}

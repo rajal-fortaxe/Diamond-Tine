@@ -1,0 +1,179 @@
+.shop-the-look-v4 .shop-the-look-banner-media img{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1440 / 750;
+}
+.shop-the-look-v4 .shop-the-look-headings{
+    position: absolute;
+    top: 0;
+    padding: 2rem;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.shop-the-look-v4 .shop-the-look-banner-media{
+    position: relative;
+    z-index: 3
+}
+shop-the-look-v4 .shop-the-look-prd-wrapper{
+    background: var(--product-part-backgrpound);
+}
+.shop-the-look-v4 .shop-the-look-headings > *{
+    color: rgb(var(--color-foreground));
+}
+.shop-the-look-v4 .look-product{
+    gap: 1.5rem;
+}
+
+shop-the-look-v4 .shop-the-look-products-wrapper .look-product{
+    width:100%;
+    background: var(--product-part-backgrpound);
+    /* padding: 1.5rem; */
+        height: auto;
+    display: flex;
+    justify-content: center;
+}
+shop-the-look-v4 .shop-the-look-products-wrapper .look-product .link{
+    height: 100%;
+    display: flex;
+    /* gap: 1.5rem; */
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+shop-the-look-v4 .shop-the-look-prd-wrapper,
+.shop-the-look-v4 .shop-the-look-banner-media{
+    width: 50%;
+}
+
+
+
+.look-nav-buttons{
+    display flex;
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: rgba(var(--color-foreground), .2);
+    left: unset;
+    right: unset;
+    top: unset;
+    /* transform: translateX(-50%); */
+    bottom: unset;
+    margin: 0;
+}
+.look-product-buttons-wrapper{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
+}
+.look-nav-buttons svg{
+    color: rgb(var(--color-foreground));
+    width: 2rem;
+    height: 2rem;
+}
+.look-product-prev{
+    rotate: 90deg;
+    /* left:0; */
+}
+.look-product-next{
+    rotate: 270deg;
+    /* right: 0; */
+}
+.look-nav-buttons::after{
+    content: none;
+}
+.dot.look-dot {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--dots-color);
+    border-radius: 100%;
+    transition: backgroundColor 0.3s ease;
+    cursor: pointer;
+}
+.dot.look-dot.active {
+  transition: color 0.3s ease;
+  --dots-color: var(--active-dot-color);
+}
+.dot.look-dot .sonar-ring {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem; height: 1rem;
+  opacity: 0;
+  animation: sonar-fill 3s ease-out infinite;
+  border: 1.5px solid var(--dots-color);
+  background: color-mix(in srgb, var(--dots-color) 12%, transparent);
+}
+
+.dot.look-dot .sonar-ring:nth-child(1) { animation-delay: 0s; }
+.dot.look-dot .sonar-ring:nth-child(2) { animation-delay: 1s; }
+.dot.look-dot .sonar-ring:nth-child(3) { animation-delay: 2s; }
+
+shop-the-look-v4 .animated-bg-svg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    right:  0;
+    top: -3.6rem;
+}
+
+@keyframes sonar-fill {
+  0%   { width: 1rem;  height: 1rem;  opacity: 0.85; }
+  60%  { opacity: 0.25; }
+  100% { width: 5.2rem; height: 5.2rem; opacity: 0; }
+}
+
+.look-v3-main-heading{
+    margin-bottom: 3rem;
+}
+@media screen and (min-width: 769px) {
+    shop-the-look-v4 .shop-the-look-prd-wrapper{
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+    shop-the-look-v4 .shop-the-look-products-wrapper{
+        width: 55%;
+    }
+    shop-the-look-v4 .shop-the-look-products-wrapper .look-product img,
+    shop-the-look-v4 .shop-the-look-products-wrapper .product-media{
+        max-width: 30rem;
+        height: 30rem;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    shop-the-look-v4 .shop-the-look-banner-wrapper{
+        flex-direction: column; 
+    }
+    shop-the-look-v4 .shop-the-look-products-wrapper{
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        right: unset;
+        left: unset;
+        bottom: unset;
+        flex-direction: column;
+    }
+    shop-the-look-v4 .shop-the-look-products-wrapper{
+        padding-inline: 1.6rem;
+        padding-block: 2rem;
+    }
+    .shop-the-look-v4 .shop-the-look-banner-media img{
+        aspect-ratio: 375/550;
+    }
+    shop-the-look-v4 .shop-the-look-products-wrapper .look-product{
+        min-width: unset;
+    }
+    .look-v3-main-heading{
+        margin-bottom: 2rem;
+    }
+    shop-the-look-v4 .shop-the-look-prd-wrapper,.shop-the-look-v4 .shop-the-look-banner-media{
+        width: 100%;
+    }
+}

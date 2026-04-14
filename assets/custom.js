@@ -1306,6 +1306,66 @@ if (!customElements.get('cart-upsell-product')) {
     }
   });
 }
+class ShopTheLookCardsV4 extends HTMLElement {
+  connectedCallback() {
+    const isMobile = window.innerWidth < 769;
+    const dots = this.querySelectorAll(".look-dot");
+    dots.forEach((dot) => {
+      const raw = dot.getAttribute("data-dot-index");
+    });
+
+    this.swiper = new Swiper(".js-shop-the-look-v3-carousel", {
+      // effect: isMobile ? "slide" : "flip",
+      slidesPerView: isMobile ? 2 : "auto",
+      a11y: true,
+      loop: true,
+      spaceBetween: isMobile ? 10 : 0,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next.look-product-next",
+        prevEl: ".swiper-button-prev.look-product-prev",
+      },
+      on: {
+        init: (swiper) => {
+          this.setActiveDot(swiper.realIndex);
+        },
+        slideChange: (swiper) => {
+          this.setActiveDot(swiper.realIndex);
+        }
+      }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const raw = dot.getAttribute("data-dot-index");
+        const clickedIndex = parseInt(raw.trim()) - 1;
+        this.swiper.slideToLoop(clickedIndex);
+        this.setActiveDot(clickedIndex);
+      });
+    });
+  }
+
+  setActiveDot(index) {
+    const dots = this.querySelectorAll(".look-dot"); 
+    const targetVal = index + 1;
+
+    dots.forEach((dot) => {
+      dot.classList.remove("active");
+
+      const dotVal = parseInt(dot.getAttribute("data-dot-index")?.trim());
+
+      if (dotVal === targetVal) {
+        dot.classList.add("active");
+      }
+    });
+  }
+}
+
+customElements.define('shop-the-look-v4', ShopTheLookCardsV4);
 
 class IconWithText extends HTMLElement {
   constructor() {
